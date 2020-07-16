@@ -6,8 +6,9 @@ router.get('/', function(req, res, next) {
     Project.find({}, function(err, data) {
         if(err) {
             console.log(err);
+            res.status(500).send('Error occured while trying to process this request.');
         } else {
-            res.send(JSON.stringify(data));
+            res.status(200).send(JSON.stringify(data));
             next();    
         }
     });
@@ -20,8 +21,9 @@ router.get('/:id', function(req, res, next) {
     Project.find({_id: req.body.id}, function(err, data) {
         if(err) {
             console.log(err);
+            res.status(500).send('Error occured while trying to process this request.');
         } else {
-            res.send(JSON.stringify(data));
+            res.status(200).send(JSON.stringify(data));
             next();
         }
     });
