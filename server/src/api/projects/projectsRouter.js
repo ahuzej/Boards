@@ -9,8 +9,36 @@ router.get('/', function(req, res, next) {
             res.status(500).send('Error occured while trying to process this request.');
         } else {
             res.status(200).send(JSON.stringify(data));
-            next();    
         }
+    });
+});
+
+router.put('/', function(req, res, next) {
+    const project = new Project(
+        {
+            title: req.body.title,
+            description: req.body.description,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate
+        }
+    );
+    project.save({}, (err, data) => {
+        if(err) {
+            req.report = {
+                status: 500,
+                err: err,
+                msg: 'Error occured while trying to process this request.',
+                data: data
+            };
+        } else {
+            req.report = {
+                status: 200,
+                err: err,
+                msg: 'Project has been created.',
+                data: data
+            };
+        }
+        next();
     });
 });
 

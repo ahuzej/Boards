@@ -13,11 +13,18 @@ const userRouter = require('./src/api/users/usersRouter');
 const projectRouter = require('./src/api/projects/projectsRouter');
 const authenticationRouter = require('./src/api/authentication/authenticationRouter');
 
-app.use(cors());
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use('/users', userRouter);
-app.use('/projects', projectRouter);
+app.use('/projects', projectRouter, function(req, res) {
+    const { status, msg } = req.report;
+    if(req.report) {
+        res.status(status).send(JSON.stringify(msg));
+    } else {
+        res.sendStatus(500);
+    }
+});
 app.use('/authentication', authenticationRouter);
 
 app.get('/', (req, res) => {

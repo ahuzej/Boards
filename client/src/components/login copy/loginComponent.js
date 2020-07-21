@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
-import FormInput from '../formInput/formInputComponent';
+import React, { useState, useContext } from 'react';
+import FormInput from '../../_components/formInput/FormInput';
 import axios from 'axios';
+import { AuthContext } from '../../context/authContext/AuthContext';
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const { setUser } = useContext(AuthContext);
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:3001/authentication', {
             username, password
-        }).then((data) => console.log(data)).catch((error) => console.log(error));
+        },{withCredentials: true, credentials: 'include'})
+        .then((data) => {
+            console.log(data);
+            setUser(data); 
+        })
+        .catch((error) => console.log(error));
     }
 
     return (

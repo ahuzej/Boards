@@ -20,6 +20,8 @@ const authenticationMiddleware = function(req, res, next) {
                     expiresIn: '1h'
                 });
 
+                res.cookie('token', token);
+
                 return res.json({token: token});
 
             });
