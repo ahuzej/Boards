@@ -1,39 +1,49 @@
 if(process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
+const { initiateRequestProcess, finalizeRequestProcess, sendResponse } = require('./src/core/middleware/baseMiddleware');
+const { fetchToken, validateToken } = require('./src/core/middleware/tokenMiddleware');
+
+const fs = require('fs');
+const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 3001;
-const cors = require('cors');
 require('./src/core/passport/passportStrategies');
 const userRouter = require('./src/api/users/usersRouter');
 const projectRouter = require('./src/api/projects/projectsRouter');
 const authenticationRouter = require('./src/api/authentication/authenticationRouter');
+// ACCESS LOGGER
+const morgan = require('morgan');
+const accessLogStream = fs.createWriteStream(path.join(__dirname, process.env.LOGFOLDER, 'access.log'), { flags: 'a' })
+app.use(morgan('combined', { stream: accessLogStream }));
 
+// BASE LOGGER
+const logger = require('./src/core/logging/logger');
+
+// REQUEST CONFIGURATION
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use('/users', userRouter);
-app.use('/projects', projectRouter, function(req, res) {
-    const { status, msg } = req.report;
-    if(req.report) {
-        res.status(status).send(JSON.stringify(msg));
-    } else {
-        res.sendStatus(500);
-    }
-});
-app.use('/authentication', authenticationRouter);
 
-app.get('/', (req, res) => {
-    res.send('bla');
-});
-
+const useProtection = process.env.USEPROTECTION;
+// ROUTES / MIDDLEWARE CONFIGURATION
+const protectedRoutes = [
+    '/users',
+    '/projects'
+];
+app.use(initiateRequestProcess);
+app.use('/users', fetchToken, validateToken, userRouter);
+app.use('/projects', validateToken, validateToken, projectRouter);
+app.use('/auth', authenticationRouter);
+app.use(finalizeRequestProcess, sendResponse);
 app.listen(port, () => console.log(`App listening at port ${port}`)); 
 
-
+// MONGO CONFIGURATION
 mongoose.connect(`mongodb://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@127.0.0.1:27017/project-planner`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

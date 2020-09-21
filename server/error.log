@@ -1,0 +1,39 @@
+{"message":"Initiating HTTP request process!","level":"error"}
+{"message":"Error occured while trying to fetch user data.","level":"error"}
+{"message":"Cannot create property 'Symbol(level)' on string 'User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]'","level":"error"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"User validation failed: username: Path `username` is required.","level":"error"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"User validation failed: lastName: Path `lastName` is required., username: Path `username` is required.","level":"error"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"User validation failed: lastName: Path `lastName` is required., username: Path `username` is required.","level":"error"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"User validation failed: lastName: Path `lastName` is required., username: Path `username` is required.","level":"error"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"User validation failed: lastName: Path `lastName` is required., username: Path `username` is required.","level":"error"}
+{"message":"User validation failed: lastName: Path `lastName` is required., username: Path `username` is required.","level":"error"}
+{"message":"Error has occured while processing your request.","level":"error"}
+{"message":"Error has occured while processing your request.","level":"error"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Cast to ObjectId failed for value \"23\" at path \"_id\" for model \"User\"","level":"error"}
+{"message":"Cast to ObjectId failed for value \"23\" at path \"_id\" for model \"User\"","level":"error"}
+{"message":"Cast to ObjectId failed for value \"23\" at path \"_id\" for model \"User\"","level":"error"}
+{"message":"Cast to ObjectId failed for value \"sdsf23\" at path \"_id\" for model \"User\"","level":"error"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"Error has occured while processing your request.","level":"error"}
+{"message":500,"level":"error"}
+{"message":"No matching document was found for the given document ID.","level":"error"}
+{"message":"Project validation failed: startDate: Cast to date failed for value \"18.10.2020\" at path \"startDate\", endDate: Cast to date failed for value \"18.10.2020\" at path \"endDate\"","level":"error"}
+{"message":"Cast to ObjectId failed for value \"23\" at path \"_id\" for model \"Project\"","level":"error"}
+{"message":"Project validation failed: startDate: Cast to date failed for value \"18.10.2020\" at path \"startDate\", endDate: Cast to date failed for value \"18.10.2020\" at path \"endDate\"","level":"error"}
+{"message":"Project validation failed: users.0: Cast to ObjectId failed for value \"50\" at path \"users\", users: Cast to Array failed for value \"[ 50 ]\" at path \"users\"","level":"error"}

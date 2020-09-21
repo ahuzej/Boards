@@ -1,5 +1,5 @@
 const passport = require('passport');
-const User = require('../../api/users/usersSchema');
+const User = require('../models/users');
 const LocalStrategy = require('passport-local').Strategy;
 const JWTStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
@@ -20,6 +20,7 @@ passport.use('login', new LocalStrategy({}, async function(username, password, d
         }
 
         return done(null, user, {message: 'Logged in succesfully.'});
+        
     } catch(error) {
         done(error);
     }

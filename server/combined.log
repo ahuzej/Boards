@@ -1,0 +1,772 @@
+{"message":"hello","level":"info","service":"user-service"}
+{"message":"Initiating HTTP request process!","level":"info","service":"user-service"}
+{"message":"Initiating HTTP request process!","level":"info"}
+{"message":"Initiating HTTP request process!","level":"error"}
+{"message":"Initiating HTTP request process: [object Object]","level":"info"}
+{"message":"Initiating HTTP request process: {\"ip\":\"::1\"}","level":"info"}
+{"message":"Initiating HTTP request process: {\"initialized\":1600203623135,\"ip\":\"::1\"}","level":"info"}
+{"message":"Initiating HTTP request process: {\"_id\":\"5f612ce6c4c96d32af538571\",\"initialized\":\"2020-09-15T21:06:46.366Z\",\"ip\":\"::1\"}","level":"info"}
+{"message":"5f612d5db3acf432d23b8349: Initiating HTTP request process at: Tue Sep 15 2020 23:08:45 GMT+0200 (GMT+02:00)","level":"info"}
+{"message":"Initiating HTTP request process at: Wed Sep 16 2020 17:14:12 GMT+0200 (GMT+02:00)","level":"info"}
+{"message":"Current payload is: {\"requestId\":\"5f622bc42ed92633fed475d4\"}","level":"info"}
+{"message":"Initiating HTTP request process at: Wed Sep 16 2020 17:16:03 GMT+0200 (GMT+02:00)","level":"info"}
+{"message":"Current payload is: {\"requestId\":\"5f622c33265cbf34305efa03\"}","level":"info"}
+{"message":"Initiating HTTP request process at: Wed Sep 16 2020 17:23:20 GMT+0200 (GMT+02:00)","level":"info"}
+{"message":"Current payload is: {\"requestId\":\"5f622de8f5064f34aa6fa460\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600269800942","level":"info"}
+{"message":"Initiating HTTP request process at: Wed Sep 16 2020 17:24:10 GMT+0200 (GMT+02:00)","level":"info"}
+{"message":"Current payload is: {\"requestId\":\"5f622e1a567b7134d2218361\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600269850919","level":"info"}
+{"message":"Succesfully updated request data.","level":"info"}
+{"message":"Initiating HTTP request process at: Wed Sep 16 2020 17:25:05 GMT+0200 (GMT+02:00)","level":"info"}
+{"message":"Current payload is: {\"requestId\":\"5f622e51b1ffbf34f305a4dd\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600269905664","level":"info"}
+{"message":"Succesfully updated request data.","level":"info"}
+{"message":"Initiating HTTP request process at: { time: 2020-09-16T16:11:50.961Z, data: { id: '1234' } }","level":"info"}
+{"message":"Current payload is: {\"requestId\":\"5f62394637e19c35a9ce3b37\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600272710987","level":"info"}
+{"message":"Succesfully updated request data.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600277677919, target is: /users","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Entering user middleware","level":"info"}
+{"message":"Initiating HTTP request process at: 1600277717962, target is: /users","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Entering user middleware","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600277717990","level":"info"}
+{"message":"Succesfully updated request data.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600278859942, target is: /users, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600278859968","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600280462494, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"_id\":\"5f5b9f54b4cf2320070ed944\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Inserted user with id 5f62578e6e4d2f396561c16d","level":"info"}
+{"message":"Initiating HTTP request process at: 1600280491658, target is: /users, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Error occured while trying to fetch user data.","level":"error"}
+{"message":"Cannot create property 'Symbol(level)' on string 'User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]'","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600280491667","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600280644340, target is: /users, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600280644367","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600280761776, target is: /users, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600280761802","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600281132240, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"User validation failed: username: Path `username` is required.","level":"error"}
+{"message":"Initiating HTTP request process at: 1600281179319, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Novi\",\"password\":\"12345\"}","level":"info"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"User validation failed: lastName: Path `lastName` is required., username: Path `username` is required.","level":"error"}
+{"message":"Initiating HTTP request process at: 1600281315367, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Novi\",\"password\":\"12345\"}","level":"info"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"User validation failed: lastName: Path `lastName` is required., username: Path `username` is required.","level":"error"}
+{"message":"Initiating HTTP request process at: 1600281437628, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Novi\",\"password\":\"12345\"}","level":"info"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"User validation failed: lastName: Path `lastName` is required., username: Path `username` is required.","level":"error"}
+{"message":"Initiating HTTP request process at: 1600281540528, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Novi\",\"password\":\"12345\"}","level":"info"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"User validation failed: lastName: Path `lastName` is required., username: Path `username` is required.","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600281540549","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600281586138, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Novi\",\"password\":\"12345\"}","level":"info"}
+{"message":"User validation failed: lastName: Path `lastName` is required., username: Path `username` is required.","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600281586158","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600291973376, target is: /users, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600291973404","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600291984114, target is: /users/5f5ba290056e0c202fb6b40a, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"User data: {\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600291984122","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600505494833, target is: /users/5f5ba290056e0c202fb6b40a, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"User data: {\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600505494882","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600507651849, target is: /users/5f5ba290056e0c202fb6b40a, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"User data: {\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600507651876","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600515778183, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"pperic\",\"password\":\"123\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600515807300, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"pperic\",\"password\":\"123\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600515930810, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"pperic\",\"password\":\"123\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600516262528, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"pperic\",\"password\":\"123\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600521060901, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"pperic\",\"password\":\"123\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600521103218, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"pperic\",\"password\":\"123\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600522056364, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"pperic\",\"password\":\"123\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600522174398, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"pperic\",\"password\":\"123\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600522206638, target is: /users, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600522209961","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600522236773, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600522290370, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123\"}","level":"info"}
+{"message":"Error has occured while processing your request.","level":"error"}
+{"message":"Initiating HTTP request process at: 1600522331731, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123\"}","level":"info"}
+{"message":"Error has occured while processing your request.","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600522331822","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600522408538, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600522461409, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123\"}","level":"info"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600522461500","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600522486979, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123\"}","level":"info"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Initiating HTTP request process at: 1600522509668, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123\"}","level":"info"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Initiating HTTP request process at: 1600522553787, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123\"}","level":"info"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Initiating HTTP request process at: 1600522570538, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123\"}","level":"info"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Initiating HTTP request process at: 1600522687668, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123\"}","level":"info"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600522687757","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600522699329, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600522699401","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600523490652, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123\"}","level":"info"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600523490728","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600523530102, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600523592383, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600523592474","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600523637695, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600523671694, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600523671784","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600523688756, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600523750428, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600523750519","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600523788076, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600523788169","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600523799265, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600524198835, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600524198929","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600524209124, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600524227286","level":"info"}
+{"message":"Initiating HTTP request process at: 1600524243557, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600529634914, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600529738121, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600529738213","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600529746846, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600529812267, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600529812360","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600529825666, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"123445\"}","level":"info"}
+{"message":"Wrong password.","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600529825736","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600529828607, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600529828677","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600529860203, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600529860276","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600529868393, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600530024878, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600530024970","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600615816612, target is: /users, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600615816644","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600615826156, target is: /users/23, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Cast to ObjectId failed for value \"23\" at path \"_id\" for model \"User\"","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600615826161","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600615855501, target is: /users/23, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600615900157, target is: /users/23, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Cast to ObjectId failed for value \"23\" at path \"_id\" for model \"User\"","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600615900177","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600616028385, target is: /users/sdsf23, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Cast to ObjectId failed for value \"sdsf23\" at path \"_id\" for model \"User\"","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600616028389","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600616047189, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600616047197","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600616067031, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Novi\",\"password\":\"12345\"}","level":"info"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600616067036","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600616082946, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Zadnji\",\"lastname\":\"Zadnjic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600616082951","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600616495174, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Zadnji\",\"lastname\":\"Zadnjic\",\"username\":\"zzadnjic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Error while inserting new user!","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600616495181","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600619689663, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Zadnji\",\"lastname\":\"Zadnjic\",\"username\":\"zzadnjic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600619729597, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Zadnji\",\"lastname\":\"Zadnjic\",\"username\":\"zzadnjic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600619749290, target is: /users, method is: POST","level":"info"}
+{"message":"Request body is: {\"firstName\":\"Zadnji\",\"lastName\":\"Zadnjic\",\"username\":\"zzadnjic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Inserted user with id 5f6784e51dd0e351a7e3726e","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600619749377","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600619759405, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0},{\"_id\":\"5f6784e51dd0e351a7e3726e\",\"firstName\":\"Zadnji\",\"lastName\":\"Zadnjic\",\"username\":\"zzadnjic\",\"password\":\"$2b$10$hWdXcqeSBC2z/wR1KDrOqeqfmdVhNoaVNXXgh6JZ.gl8e8ZxcoiEG\",\"registrationDate\":\"2020-09-20T16:35:49.307Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600619759413","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600619771300, target is: /users/5f6784e51dd0e351a7e3726e, method is: DELETE","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"User data: {\"_id\":\"5f6784e51dd0e351a7e3726e\",\"firstName\":\"Zadnji\",\"lastName\":\"Zadnjic\",\"username\":\"zzadnjic\",\"password\":\"$2b$10$hWdXcqeSBC2z/wR1KDrOqeqfmdVhNoaVNXXgh6JZ.gl8e8ZxcoiEG\",\"registrationDate\":\"2020-09-20T16:35:49.307Z\",\"__v\":0}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600619771307","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600619774657, target is: /users/5f6784e51dd0e351a7e3726e, method is: DELETE","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Error has occured while processing your request.","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600619774663","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600619796885, target is: /users/5f6784e51dd0e351a7e3726e, method is: DELETE","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600619958521, target is: /users/5f6784e51dd0e351a7e3726e, method is: DELETE","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":500,"level":"error"}
+{"message":"Finalizing HTTP request process at: 1600619958544","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600620004300, target is: /users/5f6784e51dd0e351a7e3726e, method is: DELETE","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600620028839, target is: /users/5f6784e51dd0e351a7e3726e, method is: DELETE","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"No matching document was found for the given document ID.","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600620028862","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Project data: [{\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Project data: [{\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Project data: [{\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Project data: [{\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Project data: [{\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Initiating HTTP request process at: 1600621113331, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Project data: [{\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Project data: [{\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Project data: [{\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Initiating HTTP request process at: 1600621461986, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Project data: [{\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600621462018","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600621476898, target is: /projects/5f16b824b93b1d07dcdf603f, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Project data: {\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600621500591, target is: /projects/5f16b824b93b1d07dcdf603f, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Project data: {\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600621500618","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600621927901, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"10.10.2020\",\"endDate\":\"10.10.2020\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600621986002, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"10.10.2020\",\"endDate\":\"10.10.2020\"}","level":"info"}
+{"message":"Inserted project with id 5f678da6c134545414b5bdd4","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600621997724","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600622020501, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"18.10.2020\",\"endDate\":\"18.10.2020\"}","level":"info"}
+{"message":"Project validation failed: startDate: Cast to date failed for value \"18.10.2020\" at path \"startDate\", endDate: Cast to date failed for value \"18.10.2020\" at path \"endDate\"","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600622036028","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600622151867, target is: /projects/23, method is: DELETE","level":"info"}
+{"message":"Request body is: {\"id\":\"5f5b9f48b4cf2320070ed942\"}","level":"info"}
+{"message":"Cast to ObjectId failed for value \"23\" at path \"_id\" for model \"Project\"","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600622151889","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600622328229, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"18.10.2020\",\"endDate\":\"18.10.2020\",\"users\":[50]}","level":"info"}
+{"message":"Project validation failed: startDate: Cast to date failed for value \"18.10.2020\" at path \"startDate\", endDate: Cast to date failed for value \"18.10.2020\" at path \"endDate\"","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600622328249","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600622334013, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"10.10.2020\",\"endDate\":\"10.10.2020\",\"users\":[50]}","level":"info"}
+{"message":"Inserted project with id 5f678efe60eb2c543a9d7e70","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600622334017","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600622370414, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"10.10.2020\",\"endDate\":\"10.10.2020\",\"users\":[50]}","level":"info"}
+{"message":"Project validation failed: users.0: Cast to ObjectId failed for value \"50\" at path \"users\", users: Cast to Array failed for value \"[ 50 ]\" at path \"users\"","level":"error"}
+{"message":"Finalizing HTTP request process at: 1600622370439","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600622378606, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600622378615","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600622400074, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"10.10.2020\",\"endDate\":\"10.10.2020\",\"users\":[\"5f5ba290056e0c202fb6b40a\"]}","level":"info"}
+{"message":"Inserted project with id 5f678f40162280545e2f48d1","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600622400080","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600622411250, target is: /projects/5f678f40162280545e2f48d1, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Project data: {\"users\":[\"5f5ba290056e0c202fb6b40a\"],\"_id\":\"5f678f40162280545e2f48d1\",\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600622411256","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600622418773, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Project data: [{\"users\":[],\"_id\":\"5f16b824b93b1d07dcdf603f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f678d749c940953f453bb43\",\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f678da6c134545414b5bdd4\",\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f678efe60eb2c543a9d7e70\",\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[\"5f5ba290056e0c202fb6b40a\"],\"_id\":\"5f678f40162280545e2f48d1\",\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600622418782","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600622431220, target is: /projects/5f16b824b93b1d07dcdf603f, method is: DELETE","level":"info"}
+{"message":"Request body is: {\"id\":\"5f5b9f48b4cf2320070ed942\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600622431224","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600622435221, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Project data: [{\"users\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f678d749c940953f453bb43\",\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f678da6c134545414b5bdd4\",\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"_id\":\"5f678efe60eb2c543a9d7e70\",\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[\"5f5ba290056e0c202fb6b40a\"],\"_id\":\"5f678f40162280545e2f48d1\",\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600622435227","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600627531098, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Project data: [{\"users\":[],\"owners\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f678d749c940953f453bb43\",\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f678da6c134545414b5bdd4\",\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f678efe60eb2c543a9d7e70\",\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[\"5f5ba290056e0c202fb6b40a\"],\"owners\":[],\"_id\":\"5f678f40162280545e2f48d1\",\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600627531130","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600627978680, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Project data: [{\"users\":[],\"owners\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f678d749c940953f453bb43\",\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f678da6c134545414b5bdd4\",\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f678efe60eb2c543a9d7e70\",\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[\"5f5ba290056e0c202fb6b40a\"],\"owners\":[],\"_id\":\"5f678f40162280545e2f48d1\",\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600627978713","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600627994880, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600628082808, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600628162250, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600629924062, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600629924089","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600629957086, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600629992848, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600630033153, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600630033172","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600630134965, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600630134983","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600633753722, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Project data: [{\"users\":[],\"owners\":[],\"_id\":\"5f16b8b8e0951907e7f323fe\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16ba98b31a7a08135c9077\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16bae3f85ae9083c9c2b7f\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16bb27b361ff084883442b\",\"title\":\"Bla\",\"description\":\"Blabla\",\"startDate\":\"2020-07-21T09:39:23.599Z\",\"endDate\":\"2020-07-21T09:39:23.599Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f16bbaab361ff084883442c\",\"title\":\"Gaga\",\"description\":\"Ulala\",\"startDate\":\"2020-07-21T09:55:49.210Z\",\"endDate\":\"2020-07-21T09:55:49.210Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7e2316858003322292c7\",\"title\":\"Test\",\"description\":\"Test\",\"startDate\":\"2020-07-25T18:46:53.963Z\",\"endDate\":\"2020-07-25T18:46:53.963Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7ee316858003322292c8\",\"title\":\"tewtew\",\"description\":\"ewtwet\",\"startDate\":\"2020-07-25T18:50:06.321Z\",\"endDate\":\"2020-07-25T18:50:06.321Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7fbd16858003322292c9\",\"title\":\"WTETEW\",\"description\":\"TEWEWTEW\",\"startDate\":\"2020-07-25T18:53:43.340Z\",\"endDate\":\"2020-07-25T18:53:43.340Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c7fd016858003322292ca\",\"title\":\"ETWETW\",\"description\":\"TEWT\",\"startDate\":\"2020-07-25T18:54:05.641Z\",\"endDate\":\"2020-07-25T18:54:05.641Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c806e16858003322292cb\",\"title\":\"ewtwete\",\"description\":\"twetwwte\",\"startDate\":\"2020-07-25T18:56:43.594Z\",\"endDate\":\"2020-07-25T18:56:43.594Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f1c81fa16858003322292cc\",\"title\":\"wetwe\",\"description\":\"twetwetew\",\"startDate\":\"2020-07-25T19:03:14.879Z\",\"endDate\":\"2020-07-25T19:03:14.879Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f678d749c940953f453bb43\",\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f678da6c134545414b5bdd4\",\"title\":\"Wogo\",\"description\":\"Eight Thoughts\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[],\"owners\":[],\"_id\":\"5f678efe60eb2c543a9d7e70\",\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0},{\"users\":[\"5f5ba290056e0c202fb6b40a\"],\"owners\":[],\"_id\":\"5f678f40162280545e2f48d1\",\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"2020-10-09T22:00:00.000Z\",\"endDate\":\"2020-10-09T22:00:00.000Z\",\"tasks\":[],\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600633753760","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600633783773, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600633820723, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600633820741","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600634140205, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600634140224","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600634142428, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600634142431","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600634146734, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"10.10.2020\",\"endDate\":\"10.10.2020\",\"users\":[\"5f5ba290056e0c202fb6b40a\"]}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600634146738","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600634165016, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"10.10.2020\",\"endDate\":\"10.10.2020\",\"users\":[\"5f5ba290056e0c202fb6b40a\"]}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600634180946","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600634206616, target is: /projects/5f16b824b93b1d07dcdf603f, method is: DELETE","level":"info"}
+{"message":"Request body is: {\"id\":\"5f5b9f48b4cf2320070ed942\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600634247725, target is: /projects/5f16b824b93b1d07dcdf603f, method is: DELETE","level":"info"}
+{"message":"Request body is: {\"id\":\"5f5b9f48b4cf2320070ed942\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600634247744","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600634511849, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"10.10.2020\",\"endDate\":\"10.10.2020\",\"users\":[\"5f5ba290056e0c202fb6b40a\"]}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600634563647, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600634597514, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"10.10.2020\",\"endDate\":\"10.10.2020\",\"users\":[\"5f5ba290056e0c202fb6b40a\"]}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600634635415, target is: /projects/, method is: POST","level":"info"}
+{"message":"Request body is: {\"title\":\"Buhuu\",\"description\":\"Vatafak\",\"startDate\":\"10.10.2020\",\"endDate\":\"10.10.2020\",\"users\":[\"5f5ba290056e0c202fb6b40a\"]}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600634635434","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600634639072, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600634639075","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600639251443, target is: /projects/, method is: GET","level":"info"}
+{"message":"Request body is: {}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600639251481","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600640798578, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600640798587","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600640830920, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600640834985, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600640837363, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600640844113, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600640885837, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600640913378, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Validating user token!","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600640913418","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600704631333, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNTMwMDI0LCJleHAiOjE2MDA1MzM2MjR9.DjUT5LPYyHcTUAP3fEkGY5bq7mvFv8ovs4efw01Yjeo","level":"info"}
+{"message":"Is valid token: undefined","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600704631361","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600704799071, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600704883615, target is: /users/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600719830272, target is: /auth/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600719856578, target is: /auth/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600719876993, target is: /auth/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Starting passport login strategy for authentication.","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600719877084","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600719911385, target is: /auth/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Starting passport login strategy for authentication.","level":"info"}
+{"message":"Logging in user ID 5f62578e6e4d2f396561c16d username nnovic.","level":"info"}
+{"message":"Generated JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzE5OTExLCJleHAiOjE2MDA3MjM1MTF9._n_wbmA2MfyuIz6HcldZpFK6jHUQQu9DtbJDlfbPJvQ.","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600719911479","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600719920524, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzE5OTExLCJleHAiOjE2MDA3MjM1MTF9._n_wbmA2MfyuIz6HcldZpFK6jHUQQu9DtbJDlfbPJvQ","level":"info"}
+{"message":"Is valid token: undefined","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600719920529","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600719940228, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzE5OTExLCJleHAiOjE2MDA3MjM1MTF9._n_wbmA2MfyuIz6HcldZpFK6jHUQQu9DtbJDlfbPJvQ","level":"info"}
+{"message":"Is valid token: undefined","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600719940231","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600719998184, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzE5OTExLCJleHAiOjE2MDA3MjM1MTF9._n_wbmA2MfyuIz6HcldZpFK6jHUQQu9DtbJDlfbPJvQ","level":"info"}
+{"message":"Is valid token: undefined","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600719998204","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720000449, target is: /auth/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Starting passport login strategy for authentication.","level":"info"}
+{"message":"Logging in user ID 5f62578e6e4d2f396561c16d username nnovic.","level":"info"}
+{"message":"Generated JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMDAwLCJleHAiOjE2MDA3MjM2MDB9.kru79jpJxvG8J20pZ1U31oxYlv11A9O_AiFsa_NkH38.","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720000522","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720002100, target is: /auth/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Starting passport login strategy for authentication.","level":"info"}
+{"message":"Logging in user ID 5f62578e6e4d2f396561c16d username nnovic.","level":"info"}
+{"message":"Generated JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMDAyLCJleHAiOjE2MDA3MjM2MDJ9.VozMP72biG9AISgm6KbtovlLQc9wZmJqk_C7n_cChtE.","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720002169","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720033356, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMDAyLCJleHAiOjE2MDA3MjM2MDJ9.VozMP72biG9AISgm6KbtovlLQc9wZmJqk_C7n_cChtE","level":"info"}
+{"message":"Is valid token: undefined","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720033360","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720045216, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMDAyLCJleHAiOjE2MDA3MjM2MDJ9.VozMP72biG9AISgm6KbtovlLQc9wZmJqk_C7n_cChtE","level":"info"}
+{"message":"Is valid token: undefined","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720045219","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720219520, target is: /auth/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Starting passport login strategy for authentication.","level":"info"}
+{"message":"Logging in user ID 5f62578e6e4d2f396561c16d username nnovic.","level":"info"}
+{"message":"Generated JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMjIyLCJleHAiOjE2MDA3MjM4MjJ9.7vcYqbhggXf1KHrlxZ5HDh7Is1XoDiQhqssSYFh3Lko.","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720225699","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720231705, target is: /auth/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Starting passport login strategy for authentication.","level":"info"}
+{"message":"Logging in user ID 5f62578e6e4d2f396561c16d username nnovic.","level":"info"}
+{"message":"Generated JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMjM0LCJleHAiOjE2MDA3MjM4MzR9.qm2CeBmNDo5vvVNJ3sHueuv-aI9-MyI8v-wV1juTxg4.","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720235765","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720241129, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720344118, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMjIyLCJleHAiOjE2MDA3MjM4MjJ9.7vcYqbhggXf1KHrlxZ5HDh7Is1XoDiQhqssSYFh3Lko","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720344150","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720354362, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMjIyLCJleHAiOjE2MDA3MjM4MjJ9.7vcYqbhggXf1KHrlxZ5HDh7Is1XoDiQhqssSYFh3Lko","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720354368","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720374215, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: undefined","level":"info"}
+{"message":"Is valid token: false","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720374218","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720377220, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: undefined","level":"info"}
+{"message":"Is valid token: false","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720377223","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720384841, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: undefined","level":"info"}
+{"message":"Is valid token: false","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720384843","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720401632, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: undefined","level":"info"}
+{"message":"Is valid token: false","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720401635","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720416673, target is: /auth/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Starting passport login strategy for authentication.","level":"info"}
+{"message":"Logging in user ID 5f62578e6e4d2f396561c16d username nnovic.","level":"info"}
+{"message":"Generated JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwNDE2LCJleHAiOjE2MDA3MjQwMTZ9.rnPrQaOEUkXFihlD85qZ7mvX80tkv1aEf1vsPWq6wwY.","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720416747","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720423255, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwNDE2LCJleHAiOjE2MDA3MjQwMTZ9.rnPrQaOEUkXFihlD85qZ7mvX80tkv1aEf1vsPWq6wwY","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720423260","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600720427027, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwNDE2LCJleHAiOjE2MDA3MjQwMTZ9.rnPrQaOEUkXFihlD85qZ7mvX80tkv1aEf1vsPWq6wwY","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600720427033","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723557140, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Fetching token from cookie value is: [object Object]","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwNDE2LCJleHAiOjE2MDA3MjQwMTZ9.rnPrQaOEUkXFihlD85qZ7mvX80tkv1aEf1vsPWq6wwY","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600723557170","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723655032, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Fetching token from cookie value is: {\"type\":\"Cookie\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwNDE2LCJleHAiOjE2MDA3MjQwMTZ9.rnPrQaOEUkXFihlD85qZ7mvX80tkv1aEf1vsPWq6wwY\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwNDE2LCJleHAiOjE2MDA3MjQwMTZ9.rnPrQaOEUkXFihlD85qZ7mvX80tkv1aEf1vsPWq6wwY","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600723655062","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723714514, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Fetching token from cookie value is: undefined","level":"info"}
+{"message":"Validating user token! Token submitted: undefined","level":"info"}
+{"message":"Is valid token: false","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600723714518","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723741328, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723772938, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Fetching token from cookie value is: undefined","level":"info"}
+{"message":"Parsed token line is: [\"Bearer\",\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMDAyLCJleHAiOjE2MDA3MjM2MDJ9.VozMP72biG9AISgm6KbtovlLQc9wZmJqk_C7n_cChtE\"]","level":"info"}
+{"message":"Validating user token! Token submitted: undefined","level":"info"}
+{"message":"Is valid token: false","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600723772958","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723778126, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Fetching token from cookie value is: undefined","level":"info"}
+{"message":"Parsed token line is: [\"Bearer\",\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMDAyLCJleHAiOjE2MDA3MjM2MDJ9.VozMP72biG9AISgm6KbtovlLQc9wZmJqk_C7n_cChtE\"]","level":"info"}
+{"message":"Validating user token! Token submitted: undefined","level":"info"}
+{"message":"Is valid token: false","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600723778129","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723790044, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723884547, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Fetching token from cookie value is: undefined","level":"info"}
+{"message":"Parsed token line is: [\"Bearer\",\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMDAyLCJleHAiOjE2MDA3MjM2MDJ9.VozMP72biG9AISgm6KbtovlLQc9wZmJqk_C7n_cChtE\"]","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIwMDAyLCJleHAiOjE2MDA3MjM2MDJ9.VozMP72biG9AISgm6KbtovlLQc9wZmJqk_C7n_cChtE","level":"info"}
+{"message":"Is valid token: false","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600723884567","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723919905, target is: /auth/signIn, method is: POST","level":"info"}
+{"message":"Request body is: {\"username\":\"nnovic\",\"password\":\"12345\"}","level":"info"}
+{"message":"Starting passport login strategy for authentication.","level":"info"}
+{"message":"Logging in user ID 5f62578e6e4d2f396561c16d username nnovic.","level":"info"}
+{"message":"Generated JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k.","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600723919997","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723935338, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Fetching token from cookie value is: {\"type\":\"Cookie\",\"value\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k\"}","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600723935348","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723948267, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Fetching token from cookie value is: undefined","level":"info"}
+{"message":"Parsed token line is: [\"Bearer\",\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k\"]","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600723948273","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723951947, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Fetching token from cookie value is: undefined","level":"info"}
+{"message":"Validating user token! Token submitted: undefined","level":"info"}
+{"message":"Is valid token: false","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600723951950","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600723954514, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Fetching token from cookie value is: undefined","level":"info"}
+{"message":"Parsed token line is: [\"Bearer\",\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k\"]","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600723954519","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600724420743, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Parsed authorization header token line is: [\"Bearer\",\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k\"]","level":"info"}
+{"message":"Fetching token from Bearer value is: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600724420772","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600724689016, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Initiating HTTP request process at: 1600724762125, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Parsed authorization header token line is: [\"Bearer\",\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k\"]","level":"info"}
+{"message":"Fetching token from Bearer value is: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600724762152","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600724769709, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Fetching token from undefined value is: undefined","level":"info"}
+{"message":"Validating user token! Token submitted: undefined","level":"info"}
+{"message":"Is valid token: false","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600724769713","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Initiating HTTP request process at: 1600724772278, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Parsed authorization header token line is: [\"Bearer\",\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k\"]","level":"info"}
+{"message":"Fetching token from Bearer value is: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k","level":"info"}
+{"message":"Is valid token: true","level":"info"}
+{"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600724772284","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}

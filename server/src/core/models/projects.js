@@ -18,10 +18,14 @@ const projectSchema = new Schema({
         type: Date,
         required: true
     },
-    users: {
+    users: [{
         type: [mongoose.Types.ObjectId],
         required: false
-    },
+    }],
+    owners: [{
+        type: [mongoose.Types.ObjectId],
+        required: false
+    }],
     tasks: [{
         name: {
             type: String,
