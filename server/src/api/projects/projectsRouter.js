@@ -14,11 +14,6 @@ router.get('/', async function (req, res, next) {
     const { status } = req.payloadInfo;
 
     var data = undefined;
-    req.payloadInfo = {
-        ...req.payloadInfo,
-        data,
-        msg: undefined
-    };
 
     if (isStatusOk(status)) {
         try {
@@ -47,11 +42,6 @@ router.get('/:projectId', async function (req, res, next) {
     const { status } = req.payloadInfo;
 
     var data = undefined;
-    req.payloadInfo = {
-        ...req.payloadInfo,
-        data,
-        msg: undefined
-    };
 
     if (isStatusOk(status)) {
         try {
@@ -85,11 +75,6 @@ router.post('/', async function (req, res, next) {
     const { status } = req.payloadInfo;
 
     var data = undefined;
-    req.payloadInfo = {
-        ...req.payloadInfo,
-        data,
-        msg: undefined
-    };
 
     if (isStatusOk(status)) {
         try {
@@ -128,11 +113,6 @@ router.post('/:projectId/addUser', async function (req, res, next) {
     const { status } = req.payloadInfo;
 
     var data = undefined;
-    req.payloadInfo = {
-        ...req.payloadInfo,
-        data,
-        msg: undefined
-    };
 
     if (isStatusOk(status)) {
         try {
@@ -147,10 +127,8 @@ router.post('/:projectId/addUser', async function (req, res, next) {
         }
 
         req.payloadInfo = {
-            status,
-            data,
-            msg,
-            ...req.payloadInfo
+            ...req.payloadInfo,
+            data
         };
     }
 
@@ -169,11 +147,6 @@ router.delete('/:projectId', async function (req, res, next) {
     const { status } = req.payloadInfo;
 
     var data = undefined;
-    req.payloadInfo = {
-        ...req.payloadInfo,
-        data,
-        msg: undefined
-    };
 
     if (isStatusOk(status)) {
         try {
@@ -186,10 +159,8 @@ router.delete('/:projectId', async function (req, res, next) {
         }
 
         req.payloadInfo = {
-            status,
-            data,
-            msg,
-            ...req.payloadInfo
+            ...req.payloadInfo,
+            data
         };
     }
 

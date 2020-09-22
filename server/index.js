@@ -31,6 +31,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 const useProtection = process.env.USEPROTECTION;
+logger.info(`Protection is ${useProtection}`);
 // ROUTES / MIDDLEWARE CONFIGURATION
 const protectedRoutes = [
     '/users',
@@ -41,7 +42,7 @@ app.use('/users', fetchToken, validateToken, userRouter);
 app.use('/projects', validateToken, validateToken, projectRouter);
 app.use('/auth', authenticationRouter);
 app.use(finalizeRequestProcess, sendResponse);
-app.listen(port, () => console.log(`App listening at port ${port}`)); 
+app.listen(port, () => logger.info(`App listening at port ${port}`)); 
 
 // MONGO CONFIGURATION
 mongoose.connect(`mongodb://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@127.0.0.1:27017/project-planner`, {
@@ -51,7 +52,7 @@ mongoose.connect(`mongodb://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@
 });
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error: '));
+db.on('error', () => logger.info('connection error: '));
 db.once('open', () => {
-    console.log('Moongoose connected');
+    logger.info('Moongoose connected');
 });

@@ -33,7 +33,6 @@ router.post('/signIn', function (req, res, next) {
                         logger.info(`Generated JWT ${token}.`);
                         res.cookie('token', token);
                         data = token;
-
                     }
                 });
             }

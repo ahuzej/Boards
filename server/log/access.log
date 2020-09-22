@@ -138,3 +138,4 @@
 ::1 - - [21/Sep/2020:21:46:02 +0000] "GET /users/ HTTP/1.1" 200 408 "-" "PostmanRuntime/7.26.5"
 ::1 - - [21/Sep/2020:21:46:09 +0000] "GET /users/ HTTP/1.1" 400 65 "-" "PostmanRuntime/7.26.5"
 ::1 - - [21/Sep/2020:21:46:12 +0000] "GET /users/ HTTP/1.1" 200 408 "-" "PostmanRuntime/7.26.5"
+::1 - - [22/Sep/2020:21:04:30 +0000] "GET /users/ HTTP/1.1" 400 65 "-" "PostmanRuntime/7.26.5"

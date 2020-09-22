@@ -770,3 +770,16 @@
 {"message":"User data: [{\"_id\":\"5f5ba290056e0c202fb6b40a\",\"firstName\":\"Tata\",\"lastName\":\"Perica\",\"username\":\"pperica\",\"password\":\"123\",\"registrationDate\":\"2020-09-11T16:15:12.317Z\",\"__v\":0},{\"_id\":\"5f62578e6e4d2f396561c16d\",\"firstName\":\"Novi\",\"lastName\":\"Novic\",\"username\":\"nnovic\",\"password\":\"$2b$10$dOz5SpCoc6QfujaSFDuPQu1wl2qL6Zm8lTPtx1jmzVUBSR5r8EFTC\",\"registrationDate\":\"2020-09-16T18:21:02.514Z\",\"__v\":0}]","level":"info"}
 {"message":"Finalizing HTTP request process at: 1600724772284","level":"info"}
 {"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"App listening at port 3001","level":"info"}
+{"message":"Moongoose connected","level":"info"}
+{"message":"Initiating HTTP request process at: 1600808670588, target is: /users/, method is: GET","level":"info"}
+{"message":"Request body is: {\"id\":\"1234\"}","level":"info"}
+{"message":"Parsed authorization header token line is: [\"Bearer\",\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k\"]","level":"info"}
+{"message":"Fetching token from Bearer value is: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k","level":"info"}
+{"message":"Validating user token! Token submitted: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjI1NzhlNmU0ZDJmMzk2NTYxYzE2ZCIsInVzZXJuYW1lIjoibm5vdmljIiwiaWF0IjoxNjAwNzIzOTE5LCJleHAiOjE2MDA3Mjc1MTl9.b4YTFpUHubwAQdksazlFF79evHOQteiD8dYe0xnRF7k","level":"info"}
+{"message":"Is valid token: false","level":"info"}
+{"message":"Finalizing HTTP request process at: 1600808670615","level":"info"}
+{"message":"Succesfully updated request data in database.","level":"info"}
+{"message":"Protection is false","level":"info"}
+{"message":"App listening at port 3001","level":"info"}
+{"message":"Moongoose connected","level":"info"}

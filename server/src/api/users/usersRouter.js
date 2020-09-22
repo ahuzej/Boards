@@ -17,11 +17,6 @@ router.get('/', async function (req, res, next) {
     const { status } = req.payloadInfo;
 
     var data = undefined;
-    req.payloadInfo = {
-        ...req.payloadInfo,
-        data: data,
-        msg: undefined
-    };
 
     if (isStatusOk(status)) {
         try {
@@ -50,11 +45,6 @@ router.get('/:userId', async function (req, res, next) {
     const { status } = req.payloadInfo;
 
     var data = undefined;
-    req.payloadInfo = {
-        ...req.payloadInfo,
-        data: data,
-        msg: undefined
-    };
 
     if (isStatusOk(status)) {
         try {
@@ -89,11 +79,6 @@ router.post('/', async function (req, res, next) {
     const { status } = req.payloadInfo;
 
     var data = undefined;
-    req.payloadInfo = {
-        ...req.payloadInfo,
-        data: data,
-        msg: undefined
-    };
 
     if (isStatusOk(status)) {
         try {
@@ -134,11 +119,6 @@ router.put('/:userId', async function (req, res, next) {
     const { status } = req.payloadInfo;
 
     var data = undefined;
-    req.payloadInfo = {
-        ...req.payloadInfo,
-        data,
-        msg: undefined
-    };
 
     if (isStatusOk(status)) {
         try {
@@ -176,11 +156,6 @@ router.delete('/:userId', async function (req, res, next) {
     const { status } = req.payloadInfo;
 
     var data = undefined;
-    req.payloadInfo = {
-        ...req.payloadInfo,
-        data,
-        msg: undefined
-    };
 
     if (isStatusOk(status)) {
         try {

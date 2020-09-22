@@ -34,6 +34,14 @@ const projectSchema = new Schema({
         priority: {
             type: Object,
             required: true
+        },
+        startDate: {
+            type: Date,
+            required: false
+        },
+        endDate: {
+            type: Date,
+            required: false
         }
     }]
 });
