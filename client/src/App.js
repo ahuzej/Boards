@@ -1,34 +1,73 @@
-import React, { useState } from 'react';
-import Navbar from './components/navbar/Navbar';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
-import Home from './components/home/Home';
-import Registration from './components/registration/Registration';
-import Login from './components/login/Login';
-import PrivateRoute from './_components/privateRoute/PrivateRoute';
-import { AuthContext } from './context/authContext/AuthContext';
-import AuthService from './_services/AuthService';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import NewProject from './components/newProject/NewProject';
+import Login from './components/Login';
+import ProjectList from './components/ProjectList';
+import PrivateRoute from './ui/PrivateRoute';
+import { useDispatch, useSelector } from 'react-redux';
+import Profile from './People/Profile';
+import Navbar from './ui/Navbar';
+import { appName } from './ui/uiSettings';
+import { Subtitle } from './ui/Title';
+import BoardForm from './Boards/BoardForm';
+import BoardHome from './Boards/BoardHome';
+import { logoutAction } from './actions/authActions';
+import Register from './components/Register';
 
 function App() {
-  const [user, setUser] = useState(AuthService.getCurrentUser());
-  const value = { user, setUser };
+  const auth = useSelector(function (state) {
+    return state.auth;
+  });
 
-  return (
-    <AuthContext.Provider value={value}>
-      <CssBaseline />
+  const dispatch = useDispatch();
+
+  function handleLogout() {
+    dispatch(logoutAction());
+  }
+  /**
+   * Render app based on login status.
+   */
+  if (!auth.loggedIn) {
+    return (
+      <div>
+        <Login />
+      </div>
+    );
+  } else {
+    return (
       <Router>
-        <Navbar />
-          <Switch>
-            <PrivateRoute path='/home' component={Home} />
-            <Route path='/registration' component={Registration} />
-            <Route path='/login' component={Login} />
-            <PrivateRoute path='/project/new' component={NewProject} />
-          </Switch>
+        <Navbar>
+          <Subtitle dark>{appName}</Subtitle>
+          <Link className='nav-item' to='/projects'>Boards</Link>
+          <Link className='nav-item' to='/account'>Account</Link>
+          <div className='logout-section'>
+            <span className='nav-item' onClick={handleLogout}>Logout</span>
+          </div>
+        </Navbar>
+        <Switch>
+          <Route path='/login'>
+            <Login />
+          </Route>
+          <Route path='/register'>
+            <Register />
+          </Route>
+          <PrivateRoute path='/projects/new'>
+            <BoardForm />
+          </PrivateRoute>
+          <PrivateRoute path='/projects/:id' component={BoardHome}>
+          </PrivateRoute>
+          <PrivateRoute path='/profile/:id' component={Profile}>
+          </PrivateRoute>
+          <PrivateRoute exact path='/projects'>
+            <ProjectList />
+          </PrivateRoute>
+
+        </Switch>
       </Router>
-    </AuthContext.Provider>
-  );
+
+    );
+  }
+
 }
 
 export default App;

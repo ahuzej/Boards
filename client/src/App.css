@@ -1,6 +1,14 @@
-body {
-  box-sizing: border-box;
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans'), url(./fonts/OpenSans-Regular.ttf) format('truetype');
 }
+
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans';
+}
+
+
 .App {
   text-align: center;
 }
