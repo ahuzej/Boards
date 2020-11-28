@@ -10,7 +10,9 @@ import LinkText from '../ui/LinkText';
 import FormikBasicInput, { StyledInput, StyledTextArea } from '../ui/FormikBasicInput';
 import { appName } from '../ui/uiSettings';
 import ProjectAPI from '../api/ProjectAPI';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { createThread } from '../slices/threadsSlice';
+import { getUserSelector } from '../slices/userSlice';
 
 const ThreadSchema = Yup.object().shape({
     title: Yup.string().required('This field is required.').max(50),
@@ -21,15 +23,19 @@ function ThreadForm(props) {
 
     const { className, boardId, redirectTo, onSubmit } = props;
     const history = useHistory();
-    const user = useSelector(state => state.auth);
+    const dispatch = useDispatch();
+    const user = useSelector(getUserSelector);
     document.title = `New thread - ${appName}`;
 
     async function handleSubmit(values, { setSubmitting }) {
         setSubmitting(true);
-        await ProjectAPI.createThread(user.token, values);
-        history.push(redirectTo);
-        setSubmitting(false);
-        onSubmit();
+        try {
+            await dispatch(createThread({token: user.token, data: values}));
+            history.push(redirectTo);
+            onSubmit();
+        } catch (err) {
+            setSubmitting(false);
+        }
     }
 
     return (

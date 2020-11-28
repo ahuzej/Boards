@@ -13,9 +13,11 @@ import ProjectAPI from '../api/ProjectAPI';
 import useRequest from '../hooks/useRequest';
 import Moment from 'react-moment';
 import { dateFormat } from '../ui/uiSettings';
+import { getUserSelector } from '../slices/userSlice';
 
 function Thread(props) {
     const { className } = props;
+    const { threadId } = useParams();
 
     /**
      * Fetches information about the current thread by the thread id.
@@ -42,8 +44,7 @@ function Thread(props) {
         }
     }
 
-    const { threadId } = useParams();
-    const user = useSelector(state => state.auth);
+    const user = useSelector(getUserSelector);
     const query = useQuery();
     const [ threadsLoading, threadsError ] = useRequest(fetchThreadData, [threadId, user.token]);
     const history = useHistory();

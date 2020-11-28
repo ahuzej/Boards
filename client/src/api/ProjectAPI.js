@@ -51,7 +51,7 @@ ProjectAPI.prototype.getThreads = async function (token, boardId) {
     
     response = await axios.get(`${this.url}${boardId}/threads`, config);
     console.log(response.data.data);
-    response = response['data']['data']['threads'];
+    response = response['data']['data'];
     return response;
 }
 ProjectAPI.prototype.getThread = async function (token, threadId) {
@@ -85,7 +85,7 @@ ProjectAPI.prototype.createThread = async function (token, data) {
             'Authorization': `Token ${token}`
         }
     };
-    response = await axios.post(`${this.url}${data.boardId}/threads/create`, data, config);
+    response = await axios.post(`http://localhost:3001/threads/`, data, config);
     response = response['data']['data'];
 
     return response;

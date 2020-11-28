@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
-import { loginAction } from '../actions/authActions';
+import { loginAction } from '../slices/userSlice';
 import DefaultButton from '../ui/DefaultButton';
 import { StyledInput } from '../ui/FormikBasicInput';
 import Title from '../ui/Title';
@@ -14,11 +15,12 @@ function Login(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const history = useHistory();
 
     async function handleSubmit(event) {
         event.preventDefault();
-        console.log(username + ', ' + password);
         dispatch(loginAction({ username, password }));
+        history.push('/projects');
     }
 
     return (

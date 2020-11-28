@@ -13,12 +13,10 @@ import BoardForm from './Boards/BoardForm';
 import BoardHome from './Boards/BoardHome';
 import { logoutAction } from './actions/authActions';
 import Register from './components/Register';
+import { getUserSelector } from './slices/userSlice';
 
 function App() {
-  const auth = useSelector(function (state) {
-    return state.auth;
-  });
-
+  const user = useSelector(getUserSelector);
   const dispatch = useDispatch();
 
   function handleLogout() {
@@ -27,10 +25,21 @@ function App() {
   /**
    * Render app based on login status.
    */
-  if (!auth.loggedIn) {
+  if (!user.loggedIn) {
     return (
       <div>
-        <Login />
+        <Router>
+          <Switch>
+            <Route path='/'>
+              <Login />
+            </Route>
+            <Route exact path='/register'>
+              <Register />
+            </Route>
+
+          </Switch>
+
+        </Router>
       </div>
     );
   } else {
@@ -45,12 +54,6 @@ function App() {
           </div>
         </Navbar>
         <Switch>
-          <Route path='/login'>
-            <Login />
-          </Route>
-          <Route path='/register'>
-            <Register />
-          </Route>
           <PrivateRoute path='/projects/new'>
             <BoardForm />
           </PrivateRoute>

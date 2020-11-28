@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { getAllProjects } from '../actions/projectsActions';
 import useArrayPaging from '../hooks/useArrayPaging';
 import useQuery from '../hooks/useQuery';
+import { getAllBoards, getBoardsSelector } from '../slices/boardsSlice';
+import { getUserSelector } from '../slices/userSlice';
 import ActivityItem from '../ui/ActivityItem';
 import Divider from '../ui/Divider';
 import { StyledInput } from '../ui/FormikInput';
@@ -28,22 +29,21 @@ function ProjectList(props) {
 
     const { className, match } = props;
 
-    const projects = useSelector((state) => {
-        return state.projects;
-    });
+    const projects = useSelector(getBoardsSelector);
+    console.log(projects);
     const query = useQuery();
     const page = query.get('page') ? +query.get('page') : 1;
     const [pagedValues, totalPageNumber] = useArrayPaging(projects, 10, page);
     const history = useHistory();
-    const user = useSelector((state) => state.auth);
+    const user = useSelector(getUserSelector);
     const dispatch = useDispatch();
     
     useEffect(() => {
         const fetch = async () => {
-            await dispatch(getAllProjects({ id: user.id, token: user.token }));
+            await dispatch(getAllBoards({ id: user.id, token: user.token }));
         }
         fetch();
-    }, [dispatch, user]);
+    }, [dispatch, user.id, user.token]);
 
     function changeCurrentPage(nextPage) {
         history.push({

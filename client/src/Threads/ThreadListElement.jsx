@@ -11,10 +11,12 @@ import moment from 'moment';
 
 function ThreadListElement(props) {
     const { className } = props;
-    const { loaded, thread, owner } = props;
-    const { _id: id, title, sticky, locked, comments, lastComment } = thread;
+    const { loaded, thread, lastComment } = props;
+    
+    const { _id: id, title, sticky, locked, comments, owner } = thread;
     const { username, img } = owner;
-    const { dateTime, author } = lastComment;
+
+    const { dateTime, author } = lastComment || {};
     const history = useHistory();
     const { location } = history;
     const [lastCommentTime, setLastCommentTime] = useState(moment(dateTime).fromNow());

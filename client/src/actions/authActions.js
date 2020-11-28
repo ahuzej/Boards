@@ -16,15 +16,15 @@ export const loginAction = createAsyncThunk('auth/login', async (args, { dispatc
         } else if(err.request) {
 
         } else {
-
+            
         }
     }
 });
 
 export const registerAction = createAsyncThunk('auth/register', async (args, { dispatch }) => {
-    const { username, password, email } = args;
     try {
-        const response = await loginUser(username, password);
+        console.log(args);
+        const response = await UserAPI.createUser(args);
         return response;
     } catch (err) {
         if(err.response) {

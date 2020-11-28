@@ -1,7 +1,7 @@
 import axios from 'axios';
 import ProjectPlannerAPI from './ProjectPlannerAPI';
 
-var UserAPI = function () {
+let UserAPI = function () {
     this.url = 'http://localhost:3001/users/';
 }
 UserAPI.prototype = ProjectPlannerAPI;
@@ -14,6 +14,13 @@ UserAPI.prototype.getAll = async function getAll(token, id) {
     };
 
     response = await axios.get(`${this.url}user/${id}`, config);
+    response = response['data']['data'];
+    return response;
+}
+UserAPI.prototype.createUser = async function createUser(registrationDetails) {
+    let response = [];
+
+    response = await axios.post(`http://localhost:3001/auth/signUp`, registrationDetails);
     response = response['data']['data'];
     return response;
 }

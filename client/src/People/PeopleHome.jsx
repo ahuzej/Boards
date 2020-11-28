@@ -19,7 +19,6 @@ function PeopleHome(props) {
 
     const [ peopleRequestError, peopleRequestLoading, forcePeopleRequest ] = useRequest(fetchPeople, [boardId, user.token]);
 
-
     return (
         <div className={className}>
             <div className='people-person-list'>

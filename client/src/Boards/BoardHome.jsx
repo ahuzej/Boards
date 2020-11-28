@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, useHistory, useParams, Switch, useLocation } from 'react-router';
 import ProjectAPI from '../api/ProjectAPI';
 import Container from '../ui/Container';
@@ -16,54 +16,25 @@ import AddPeople from '../People/AddPeople';
 import { Link } from 'react-router-dom';
 import PrivateRoute from '../ui/PrivateRoute';
 import { appName } from '../ui/uiSettings';
-import useRequest from '../hooks/useRequest';
+import { getAllThreads, threadsStatusSelector } from '../slices/threadsSlice';
 import { Skeleton } from '@material-ui/lab';
+import { getUserSelector } from '../slices/userSlice';
+import { boardByIdSelector } from '../slices/boardsSlice';
 
-function ProjectHome(props) {
-
+function BoardHome(props) {
     const { match, className } = props;
     const { id } = useParams();
-    const user = useSelector(state => state.auth);
-    const [board, setBoard] = useState({});
-    const [threads, setThreads] = useState([]);
+    const user = useSelector(getUserSelector);
+    const board = useSelector(state => boardByIdSelector(state, id));
+    //const [threads, setThreads] = useState([]);
+    const threadsStatus = useSelector(state => threadsStatusSelector(state, id));
+    console.log(threadsStatus);
     const pageTitle = useRef('Loading...');
-
+    const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
 
-    async function fetchBoardInfo() {
-        try {
-            if (id && user.token) { // don't attempt to data fetch if board id and token are not defined
-                const response = await ProjectAPI.getById(user.token, id);
-                console.log(response);
-                setBoard(response);
-            }
-        } catch (err) {
-            pageTitle.current = 'Error!';
-        }
-    }
-
-    async function fetchThreadsInfo() {
-        try {
-            if(id && user.token) {
-                let threads = await ProjectAPI.getThreads(user.token, id);
-                console.log(threads);
-                setThreads(threads);
-            }
-        } catch (err) {
-            pageTitle.current = 'Error!';
-        }
-    }
-
-    /**
-     * After every render, fetch information about the current board id only if the board id has changed, or the user token has changed.
-     */
-    const [ boardRequestError, boardRequestLoading, forceBoardInfoRequest ] = useRequest(fetchBoardInfo, [id, user.token]);
-
-    /**
-     * After every render, fetch threads for current board id only if the board id has changed, or the user token has changed.
-     */
-    const [ threadsRequestError, threadsRequestLoading, forceThreadInfoRequest ] = useRequest(fetchThreadsInfo, [id, user.token]);
+    const threadsLoaded = threadsStatus === 'complete';
 
     /**
      * After every render, change the page title only if board name has changed. 
@@ -73,13 +44,17 @@ function ProjectHome(props) {
             pageTitle.current = board.name;
         }
         document.title = `${pageTitle.current} - ${appName}`;
-    }, [board.name])
+    }, [board.name]);
+
+    useEffect(() => {
+        dispatch(getAllThreads({boardId: id, token: user.token}));
+    }, [dispatch, id, user.token]);
 
     function handleTabItemClick(tabValue) {
         switch (tabValue) {
             case 'boards':
                 history.push(`${match.url}/thread`);
-                forceThreadInfoRequest();
+                //forceThreadInfoRequest();
                 break;
             case 'people':
                 history.push(`${match.url}/people`);
@@ -92,7 +67,7 @@ function ProjectHome(props) {
     return (
         <div className={className}>
             <Container light>
-            {!boardRequestLoading ? <Title>{board.name}</Title> : <Skeleton width='200px' />}
+            {threadsLoaded ? <Title>{board.name}</Title> : <Skeleton width='200px' />}
             </Container>
             <TabHeader>
                 <TabItem selected={location.pathname === match.url || location.pathname.includes('/thread')} onClick={evt => handleTabItemClick('boards')}>Board</TabItem>
@@ -109,9 +84,9 @@ function ProjectHome(props) {
                                         <Link to={`${match.url}/thread/new`}  >+ New thread...</Link>
                                     </div>
                                     <Divider />
-                                    <ThreadListPane threads={threads} />
+                                    <ThreadListPane boardId={id} />
                                 </PrivateRoute>
-                                <PrivateRoute path={`${match.url}/thread/new`} render={(props) => (<ThreadForm {...props} boardId={id} onSubmit={forceThreadInfoRequest} redirectTo={`${match.url}/thread`} />)} />
+                                <PrivateRoute path={`${match.url}/thread/new`} render={(props) => (<ThreadForm {...props} boardId={id} redirectTo={`${match.url}/thread`} />)} />
                                 <PrivateRoute path={`${match.url}/thread/:threadId`} component={Thread} />
                             </Switch>
 
@@ -137,7 +112,7 @@ function ProjectHome(props) {
     );
 }
 
-export default styled(ProjectHome)`
+export default styled(BoardHome)`
     & .flexed {
         display: flex;
         justify-content: space-between;

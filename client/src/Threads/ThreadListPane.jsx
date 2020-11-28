@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import useArrayPaging from '../hooks/useArrayPaging';
 import useQuery from '../hooks/useQuery';
+import { getThreadsByBoardIdSelector } from '../slices/threadsSlice';
 import Divider from '../ui/Divider';
 import LinkText from '../ui/LinkText';
 import ThreadListElement from './ThreadListElement';
@@ -23,12 +25,15 @@ import ThreadListElement from './ThreadListElement';
 
 function ThreadListPane(props) {
 
-    const { className, threads } = props;
+    const { className, boardId } = props;
     let query = useQuery();
     let page = +query.get('page');
     const history = useHistory();
     if (!page) page = 1;
-    const [pagedValues, totalPageNumber] = useArrayPaging(threads, 8, page);
+    const threads = useSelector(state => getThreadsByBoardIdSelector(state, boardId));
+    console.log('SHHDHAH')
+    console.log(threads);
+    //const [pagedValues, totalPageNumber] = useArrayPaging(threads, 8, page);
 
     function changeCurrentPage(nextPage) {
         history.push({
@@ -40,31 +45,29 @@ function ThreadListPane(props) {
     return (
         <div className={className}>
                 <div className='thread-list'>
-                    {pagedValues && pagedValues.length === 0 && <span className='info-empty-board'>This board is empty!</span>}
-                    {pagedValues ? pagedValues.map(thread => {
+                    {threads && threads.length === 0 && <span className='info-empty-board'>This board is empty!</span>}
+                    {threads ? threads.map(thread => {
                         return (
                             <ThreadListElement
                                 key={thread._id}
                                 thread={thread}
-                                owner={thread.owner}
+                                lastComment={thread.lastComment}
                                 sticky={thread.sticky}
                                 locked={thread.locked}
                                 loaded={true}
                             />
                         );
                     }) : <>
-                            <ThreadListElement loaded={false} />
-                            <ThreadListElement loaded={false} />
-                            <ThreadListElement loaded={false} />
-                            <ThreadListElement loaded={false} />
-                            <ThreadListElement loaded={false} />
+                            <ThreadListElement owner={{}} thread={{}} loaded={false} />
+                            <ThreadListElement owner={{}} thread={{}} loaded={false} />
+                            <ThreadListElement owner={{}} thread={{}} loaded={false} />
+                            <ThreadListElement owner={{}} thread={{}} loaded={false} />
+                            <ThreadListElement owner={{}} thread={{}} loaded={false} />
                         </>
                     }
                 </div>
             <Divider />
             <div className='thread-navigation'>
-                {page !== 1 && totalPageNumber > 1 && <LinkText onClick={(evt) => changeCurrentPage(page - 1)}>Previous page</LinkText>}
-                {totalPageNumber > page && <LinkText onClick={(evt) => changeCurrentPage(page + 1)}>Next page</LinkText>}
             </div>
         </div>
     );

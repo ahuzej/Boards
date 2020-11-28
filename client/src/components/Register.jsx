@@ -5,15 +5,18 @@ import styled from 'styled-components';
 import DefaultButton from '../ui/DefaultButton';
 import { StyledInput } from '../ui/FormikBasicInput';
 import Title from '../ui/Title';
-import { appName } from '../ui/uiSettings';
+import { appName, fontSizeMd } from '../ui/uiSettings';
 import { registerAction } from '../actions/authActions';
+import Divider from '../ui/Divider';
 
 function Register(props) {
 
     const { className } = props;
     const dispatch = useDispatch();
 
-    async function handleSubmit(values) {
+    function handleSubmit(values, { setSubmitting }) {
+        console.log(values);
+        setSubmitting(true);
         dispatch(registerAction(values));
     }
 
@@ -27,31 +30,57 @@ function Register(props) {
                     email: ''
                 }}
                 onSubmit={handleSubmit}>
-                <Form className='login-form'>
-                    <Title className='form-title' dark>{appName}</Title>
-                    <form onSubmit={handleSubmit}>
-                        <div className='form-input-section'>
-                            <span>Username:</span>
-                            <StyledInput type='text' name='username' id='username' />
-                        </div>
-                        <div className='form-input-section'>
-                            <span className='form-input-text'>Email:</span>
-                            <StyledInput type='email' name='email' id='email' />
-                        </div>
-                        <div className='form-input-section'>
-                            <span className='form-input-text'>Password:</span>
-                            <StyledInput type='password' name='password' id='password'  />
-                        </div>
-                        <div className='form-input-section'>
-                            <span className='form-input-text'>Confim password:</span>
-                            <StyledInput type='password' name='confirmPassword' id='confirmPassword' />
-                        </div>
-                        <div>
-                            <span></span>
-                            <DefaultButton type='submit'>Register</DefaultButton>
-                        </div>
-                    </form>
-                </Form>
+                {formik => (
+                    <Form onClick={console.log(formik)} className='login-form'>
+                        <Title className='form-title' dark>{appName}</Title>
+                        <Divider />
+                        <form>
+                            <span>Create your account...</span>
+                            <div className='form-input-section'>
+                                <span>Username:</span>
+                                <StyledInput
+                                    onChange={formik.handleChange}
+                                    disabled={formik.isSubmitting}
+                                    type='text'
+                                    name='username'
+                                    id='username' />
+                            </div>
+                            <div className='form-input-section'>
+                                <span className='form-input-text'>Email:</span>
+                                <StyledInput
+                                    onChange={formik.handleChange}
+                                    disabled={formik.isSubmitting}
+                                    type='email'
+                                    name='email'
+                                    id='email' />
+                            </div>
+                            <div className='form-input-section'>
+                                <span className='form-input-text'>Password:</span>
+                                <StyledInput
+                                    onChange={formik.handleChange}
+                                    disabled={formik.isSubmitting}
+                                    type='password'
+                                    name='password'
+                                    id='password' />
+                            </div>
+                            <div className='form-input-section'>
+                                <span className='form-input-text'>Confim password:</span>
+                                <StyledInput
+                                    onChange={formik.handleChange}
+                                    disabled={formik.isSubmitting}
+                                    type='password'
+                                    name='confirmPassword'
+                                    id='confirmPassword' />
+                            </div>
+                            <div>
+                                
+                                <span></span>
+                                <DefaultButton type='submit'>Register</DefaultButton>
+                            </div>
+                        </form>
+                    </Form>
+                )}
+
 
             </Formik>
         </div>
@@ -63,10 +92,15 @@ export default styled(Register)`
         height: 500px;
         border: 1px solid #ccc;
         width: 400px;    
+        margin: 0 auto;
+        padding: 16px;
     }
     & > .login-form > form {
         display: table;
-        width: 300px;
+        width: 100%;
+        * {
+            font-size: ${fontSizeMd};
+        }
         > *:last-child {
             text-align: right;
         }

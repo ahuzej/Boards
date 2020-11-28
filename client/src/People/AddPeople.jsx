@@ -55,7 +55,6 @@ function AddPeople(props) {
     }
 
     useEffect(() => {
-        console.log('do dispatch')
         dispatch(getContacts());
     }, [dispatch, user.id]);
 
