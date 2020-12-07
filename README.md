@@ -1,12 +1,12 @@
 ## Boards
 Full-stack boards/threads web application built with Javascript. Includes:
 
-#### - Creating a new Board
-#### - Adding people to Boards
-#### - Creating threads within board
-#### - Comment on a thread
-#### - Mark thread as sticky/locked
-#### - Upvote/downvote a comment
+* - Creating a new Board
+* - Adding people to Boards
+* - Creating threads within board
+* - Comment on a thread
+* - Mark thread as sticky/locked
+* - Upvote/downvote a comment
 
 ### Back-End
 
