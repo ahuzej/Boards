@@ -11,6 +11,7 @@ const loginUser = (username, password) => {
                 loggedIn: true,
                 token,
                 name,
+                username,
                 id
             };
             localStorage.setItem('auth', JSON.stringify(loginCredentials));

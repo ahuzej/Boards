@@ -1,13 +1,11 @@
 import { Form, Formik } from 'formik';
 import React from 'react';
 import "react-datepicker/dist/react-datepicker.css";
-import TitleElement from '../ui/TitleBlock';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import SectionHeading from '../ui/SectionHeading';
 import styled from 'styled-components';
-import UserAPI from '../api/UserAPI';
-import FormikBasicInput, { StyledInput, StyledTextArea } from '../ui/FormikBasicInput';
+import { StyledInput, StyledTextArea } from '../ui/FormikBasicInput';
 import DefaultButton from '../ui/DefaultButton';
 import { useHistory } from 'react-router';
 import { createBoard } from '../slices/boardsSlice';
@@ -15,8 +13,7 @@ import { getUserSelector } from '../slices/userSlice';
 
 const BoardSchema = Yup.object().shape({
     name: Yup.string().required('Required field'),
-    description: Yup.string(),
-    dateTime: Yup.date()
+    description: Yup.string()
 }
 );
 
@@ -30,8 +27,7 @@ function BoardForm(props) {
         <Formik
             initialValues={{
                 name: '',
-                description: '',
-                dateTime: new Date(),
+                description: ''
             }}
             onSubmit={
                 (values, {setSubmitting}) => {
@@ -45,21 +41,15 @@ function BoardForm(props) {
             {(formik) =>
                 <Form className={className}>
                     <div>
-                        <SectionHeading title='Basic information' subtitle='Enter basic information about this project.' />
-                        <TitleElement title="Title:">
-                            <FormikBasicInput name="name">
-                                {
-                                    ({ field, inError }) => { return (<StyledInput size='area' inError={inError} type="text"  disabled={formik.isSubmitting} {...field} />) }
-                                }
-                            </FormikBasicInput>
-                        </TitleElement>
-                        <TitleElement title="Description:" >
-                            <FormikBasicInput name="description">
-                                {
-                                    ({ field, inError, props }) => { return (<StyledTextArea size='area' inError={inError} type="text" disabled={formik.isSubmitting} {...field} />) }
-                                }
-                            </FormikBasicInput>
-                        </TitleElement>
+                        <SectionHeading title='New board' subtitle='Enter basic information about this board.' />
+                        <div>
+                            <span>Title:</span>
+                            <StyledInput disabled={formik.isSubmitting} name='title' id='title' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.title} />
+                        </div>
+                        <div>
+                            <span>Description:</span>
+                            <StyledTextArea disabled={formik.isSubmitting} name='description' id='description' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.title} />
+                        </div>
                     </div>
                     <DefaultButton type="submit">Create</DefaultButton>
 

@@ -6,9 +6,9 @@ import { getUserSelector } from '../slices/userSlice';
 
 function PrivateRoute(props) {
     const user = useSelector(getUserSelector);
-    const { component, children } = props;
+    const { children } = props;
     if (user.loggedIn) {
-        return !children ? <Route {...props} component={component} /> : <Route {...props}>{children}</Route>
+        return <Route {...props}>{children}</Route>
     } else {
         return <Redirect to='/login' />;
     }

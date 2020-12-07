@@ -1,47 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { getContacts } from '../actions/authActions';
+import { addUsersToBoard, fetchUsersForBoard, userByUsernameSelector } from '../slices/usersSlice';
 import AvatarCard from '../ui/AvatarCard';
 import BaseInput from '../ui/BaseInput';
 import DefaultButton from '../ui/DefaultButton';
 import Divider from '../ui/Divider';
+import ScrollBox from '../ui/ScrollBox';
 import Title from '../ui/Title';
-
-const peopleArr = [
-    {
-        id: 1,
-        username: 'pperic',
-        firstName: 'Pero',
-        lastName: 'Peric',
-        joinedAt: '30.10.2020'
-    },
-    {
-        id: 2,
-        username: 'mmajic',
-        firstName: 'Maja',
-        lastName: 'Majic',
-        joinedAt: '30.11.2020'
-    },
-    {
-        id: 3,
-        username: 'jjosip',
-        firstName: 'Josip',
-        lastName: 'Josipovic',
-        joinedAt: '11.10.2020'
-    },
-];
-
 
 function AddPeople(props) {
 
-    const { className } = props;
+    const { className, boardId } = props;
     const [peopleIds, setPeopleIds] = useState([]);
 
-    const [ contacts, setContacts ] = useState([]);
-    const user = useSelector(state => state.auth);
+    const [contacts] = useState([]);
     const dispatch = useDispatch();
-
+    const [searchText, setSearchText] = useState('');
+    
+    const users = useSelector(state => userByUsernameSelector(state, searchText, boardId));
+    console.log(users);
     function handleClick(id) {
         let prevValues = [...peopleIds];
         if (!peopleIds.includes(id)) {
@@ -55,66 +33,74 @@ function AddPeople(props) {
     }
 
     useEffect(() => {
-        dispatch(getContacts());
-    }, [dispatch, user.id]);
+        //dispatch(getContacts({ boardId: boardId }));
+    }, [boardId, dispatch]);
 
     function submitValues() {
+        dispatch(addUsersToBoard({users: peopleIds, boardId: boardId}));
         // values are peopleIds..
     }
 
+    function handleSearchChange(evt) {
+        setSearchText(evt.target.value);
+    }
+
+    useEffect(() => {
+        if (searchText.length >= 3) {
+            dispatch(fetchUsersForBoard({username: searchText, boardId: boardId }));
+        }
+    }, [boardId, dispatch, searchText]);
+
     return (
         <div className={className}>
-            <div className='add-people-row'>
-                <Title dark>
-                    Your contacts
+            <div className='add-people-form'>
+                <div className='add-people-row'>
+                    <Title dark>
+                        Your contacts
                 </Title>
-                <Divider />
-                {contacts && contacts.map(contact => <AvatarCard onSelect={handleClick} selected={peopleIds.includes(contact.id)} key={contact.id} author={contact} />)}
-                <div className='bottom-toolbar'>
-                    <DefaultButton onClick={submitValues} disabled={peopleIds.length === 0}>Add</DefaultButton>
-                </div>
-            </div>
-            <div className='add-people-row'>
-                <Title dark>
-                    Search person
-                </Title>
-                <Divider />
-                <div>
-                    Username:
-                    <BaseInput />
-                    <div className='bottom-toolbar'>
-                </div>
-                <Divider />
-                <div className='bottom-toolbar'>
-                    <DefaultButton onClick={submitValues}>Add</DefaultButton>
-                </div>
+                    <Divider />
+                    {contacts && contacts.map(contact => <AvatarCard onSelect={handleClick} selected={peopleIds.includes(contact.id)} key={contact.id} author={contact} />)}
 
                 </div>
-            </div>
-            <div className='add-people-row'>
-                <Title dark>
-                    Invite by email
+                <div className='add-people-row'>
+                    <Title dark>
+                        Search person
                 </Title>
-                <Divider />
-                <div>
-                    Email:
-                    <BaseInput />
-                    <div className='bottom-toolbar'>
-                    <DefaultButton>Send</DefaultButton>
-                </div>
-
+                    <Divider />
+                    <div>
+                        Username:
+                    <BaseInput value={searchText} onChange={handleSearchChange} />
+                        <div className='bottom-toolbar'>
+                        </div>
+                        <ScrollBox height='500px'>
+                            {users && users.map(user => <AvatarCard onSelect={handleClick} selected={peopleIds.includes(user._id)} key={user._id} author={user} />)}
+                        </ScrollBox>
+                        <Divider />
+                    </div>
                 </div>
             </div>
+            <div className='bottom-toolbar'>
+                <DefaultButton onClick={submitValues} disabled={peopleIds.length === 0}>Add</DefaultButton>
+            </div>
+
         </div>
     );
 }
 
 export default styled(AddPeople)`
     & {
+        padding: 8px;
+    }
+    & .add-people-form {
         display: flex;
         justify-content: space-around;
-        padding: 8px;
 
+        > *:first-child {
+            margin-right: 8px;
+        }
+        > *:last-child {
+            margin-left: 8px;
+        }
         @media (max-width: 1200px) {
             flex-wrap: wrap;
         }
@@ -125,10 +111,11 @@ export default styled(AddPeople)`
                 width: 100%;
             }
             width: 100%;
-            padding: 8px;    
         }
-        & .bottom-toolbar {
-            margin-top: 8px;
-        }
+    }
+
+    & .bottom-toolbar {
+        margin-top: 8px;
+        text-align: right;
     }
 `;

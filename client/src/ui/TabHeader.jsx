@@ -5,7 +5,7 @@ export default styled.ul`
     display: flex;
     padding-left: 0;
     margin: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 8px;
     background-color: ${props => props.theme.lightBg};
     padding-bottom: 1px;
 `;

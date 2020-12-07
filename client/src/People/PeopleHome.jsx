@@ -1,28 +1,23 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import ProjectAPI from '../api/ProjectAPI';
-import useRequest from '../hooks/useRequest';
+import { fetchUsersForBoard, usersByBoardSelector } from '../slices/usersSlice';
 import AvatarPane from '../ui/AvatarPane';
 
 function PeopleHome(props) {
     const { className, boardId } = props;
 
-    const [ people, setPeople ] = useState([]);
-    const user = useSelector(state => state.auth);
+    const users = useSelector(state => usersByBoardSelector(state, boardId));
+    const dispatch = useDispatch();
 
-    async function fetchPeople() {
-        let people = await ProjectAPI.getPeople(user.token, boardId);
-        console.log(people);
-        setPeople(people);
-    }
-
-    const [ peopleRequestError, peopleRequestLoading, forcePeopleRequest ] = useRequest(fetchPeople, [boardId, user.token]);
+    useEffect(() => {
+        dispatch(fetchUsersForBoard({boardId: boardId}));
+    }, [boardId, dispatch]);
 
     return (
         <div className={className}>
             <div className='people-person-list'>
-                {people && people.map(person => <AvatarPane key={person.id} className='people-avatar-icon' author={person} />)}
+                {users && users.map(person => <AvatarPane key={person._id} className='people-avatar-icon' author={person} />)}
             </div>
         </div>
     );

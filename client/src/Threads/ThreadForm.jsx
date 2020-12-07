@@ -9,7 +9,6 @@ import * as Yup from 'yup';
 import LinkText from '../ui/LinkText';
 import FormikBasicInput, { StyledInput, StyledTextArea } from '../ui/FormikBasicInput';
 import { appName } from '../ui/uiSettings';
-import ProjectAPI from '../api/ProjectAPI';
 import { useDispatch, useSelector } from 'react-redux';
 import { createThread } from '../slices/threadsSlice';
 import { getUserSelector } from '../slices/userSlice';

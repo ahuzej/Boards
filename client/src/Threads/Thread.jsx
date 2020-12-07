@@ -1,59 +1,39 @@
-import React, {  useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 import Container from '../ui/Container';
 import Title, { Subtitle } from '../ui/Title';
 import ThreadComment from './ThreadComment';
 import styled from 'styled-components';
 import CommentForm from './CommentForm';
-import useQuery from '../hooks/useQuery';
 import LinkText from '../ui/LinkText';
-import useArrayPaging from '../hooks/useArrayPaging';
-import ProjectAPI from '../api/ProjectAPI';
-import useRequest from '../hooks/useRequest';
 import Moment from 'react-moment';
 import { dateFormat } from '../ui/uiSettings';
-import { getUserSelector } from '../slices/userSlice';
+import { threadByIdSelector, threadsStatusSelector } from '../slices/threadsSlice';
+import { commentsPagingSelector, commentsStatusSelector, getAllComments } from '../slices/commentsSlice';
+import usePaging from '../hooks/usePaging';
 
 function Thread(props) {
     const { className } = props;
     const { threadId } = useParams();
 
-    /**
-     * Fetches information about the current thread by the thread id.
-     */
-    async function fetchThreadData() {
-            const response = await ProjectAPI.getThread(user.token, threadId);
-            console.log(response);
-            setThread(response);
-    }
-
-    function changeCurrentPage(nextPage) {
-        history.push({
-            search: `?page=${nextPage}`
-        });
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
-    }
-
-    async function handleCommentSubmit(values) {
-        try {
-            await ProjectAPI.createComment(user.token, thread._id, values);
-            fetchThreadData();
-        } catch {
-
-        }
-    }
-
-    const user = useSelector(getUserSelector);
-    const query = useQuery();
-    const [ threadsLoading, threadsError ] = useRequest(fetchThreadData, [threadId, user.token]);
-    const history = useHistory();
-    const [thread, setThread] = useState({});
-
+    const itemsPerPage = 10;
+    const [page, changeCurrentPage] = usePaging('page');
+    const { items: comments, totalAmountOfPages } = useSelector(state => commentsPagingSelector(state, page, itemsPerPage));
+    const dispatch = useDispatch();
+    const thread = useSelector(state => threadByIdSelector(state, threadId)) || {};
+    const threadsLoaded = useSelector(threadsStatusSelector) === 'complete';
+    const commentsStatus = useSelector(commentsStatusSelector);
     // Paging thread comments
-    const page = query.get('page') ? +query.get('page') : 1;
-    const [pagedComments, totalPageNumber] = useArrayPaging(thread.commentList, 5, page);
-    const pageNumbers = [...Array(totalPageNumber + 1).keys()].slice(1);
+    const pageNumbers = [...Array(totalAmountOfPages + 1).keys()].slice(1);
+
+    useEffect(() => {
+        dispatch(
+            getAllComments(
+                { threadId }
+            )
+        );
+    }, [dispatch, threadId]);
 
     return (
         <div className={className}>
@@ -63,14 +43,14 @@ function Thread(props) {
             </Container>
             <Container>
                 <div className='thread-comments'>
-                    {(!threadsLoading && !threadsError) && pagedComments && pagedComments.map(comment => <ThreadComment comment={comment} key={comment._id} />)}
+                    {commentsStatus === 'complete' && comments.map(comment => <ThreadComment comment={comment} key={comment._id} />)}
                 </div>
-                {(!threadsLoading && !threadsError) && totalPageNumber > 1 && <div className='thread-pages'>
+                {(threadsLoaded) && totalAmountOfPages > 1 && <div className='thread-pages'>
                     Go to page...
-                    {pageNumbers && pageNumbers.map((num,idx) => <LinkText key={idx} onClick={() => changeCurrentPage(num)} selected={num === page}>{num}</LinkText>)}
+                    {pageNumbers && pageNumbers.map((num, idx) => <LinkText key={idx} onClick={() => changeCurrentPage(num)} selected={num === page}>{num}</LinkText>)}
                 </div>
                 }
-                {!thread.locked && <CommentForm submitCallback={handleCommentSubmit} /> }
+                {!thread.locked && <CommentForm className='thread-comment-form' threadId={threadId} />}
             </Container>
         </div>
     );
@@ -79,6 +59,9 @@ function Thread(props) {
 export default styled(Thread)`
 & .thread-comments > *:not(:first-child) {
     margin: 24px 0;
+}
+& .thread-comment-form {
+    margin-top: 16px;
 }
 
 .thread-pages > * {

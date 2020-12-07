@@ -1,27 +1,39 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import Login from './components/Login';
-import ProjectList from './components/ProjectList';
+import Login from './ui/Login';
+import BoardList from './Boards/BoardList';
 import PrivateRoute from './ui/PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
-import Profile from './People/Profile';
 import Navbar from './ui/Navbar';
-import { appName } from './ui/uiSettings';
-import { Subtitle } from './ui/Title';
 import BoardForm from './Boards/BoardForm';
 import BoardHome from './Boards/BoardHome';
-import { logoutAction } from './actions/authActions';
-import Register from './components/Register';
+import Register from './ui/Register';
 import { getUserSelector } from './slices/userSlice';
+import { getAllBoards, resetBoards } from './slices/boardsSlice';
+import NavigationContext from './contexts/NavigationContext';
+import { appName } from './ui/uiSettings';
 
 function App() {
   const user = useSelector(getUserSelector);
   const dispatch = useDispatch();
+  const [currentNavigation, setCurrentNavigation] = useState(appName);
+  const boardStatus = useSelector(state => state.boards.status);
 
-  function handleLogout() {
-    dispatch(logoutAction());
-  }
+
+  useEffect(() => {
+    if (user.loggedIn && boardStatus === 'idle') {
+      dispatch(getAllBoards());
+    }
+
+    return () => {
+      if (boardStatus === 'complete') {
+        dispatch(resetBoards());
+      }
+    }
+
+  }, [boardStatus, dispatch, user.id, user.loggedIn, user.token]);
+  
   /**
    * Render app based on login status.
    */
@@ -36,36 +48,32 @@ function App() {
             <Route exact path='/register'>
               <Register />
             </Route>
-
           </Switch>
-
         </Router>
       </div>
     );
   } else {
+
     return (
       <Router>
-        <Navbar>
-          <Subtitle dark>{appName}</Subtitle>
-          <Link className='nav-item' to='/projects'>Boards</Link>
-          <Link className='nav-item' to='/account'>Account</Link>
-          <div className='logout-section'>
-            <span className='nav-item' onClick={handleLogout}>Logout</span>
-          </div>
-        </Navbar>
-        <Switch>
-          <PrivateRoute path='/projects/new'>
-            <BoardForm />
-          </PrivateRoute>
-          <PrivateRoute path='/projects/:id' component={BoardHome}>
-          </PrivateRoute>
-          <PrivateRoute path='/profile/:id' component={Profile}>
-          </PrivateRoute>
-          <PrivateRoute exact path='/projects'>
-            <ProjectList />
-          </PrivateRoute>
+        <NavigationContext.Provider value={{
+          title: currentNavigation,
+          setTitle: (newTitle) => { setCurrentNavigation(newTitle) }
+        }}>
+          <Navbar />
+          <Switch>
+            <PrivateRoute path='/projects/new'>
+              <BoardForm />
+            </PrivateRoute>
+            <PrivateRoute path='/projects/:id' component={BoardHome}>
+            </PrivateRoute>
+            <PrivateRoute exact path='/projects'>
+              <BoardList />
+            </PrivateRoute>
 
-        </Switch>
+          </Switch>
+
+        </NavigationContext.Provider>
       </Router>
 
     );

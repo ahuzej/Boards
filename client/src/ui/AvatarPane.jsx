@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import React from 'react';
+import { fontSizeLg } from "./uiSettings";
+import { ReactComponent as UserImage } from '../svgs/user.svg';
 
 function AvatarPane(props) {
     const { className } = props;
@@ -8,7 +10,7 @@ function AvatarPane(props) {
     return (
         <div className={className}>
             <div className='avatar-image'>
-
+                <UserImage fill='#ccc' width='50px' height='50px' />
             </div>
             <div className='avatar-details'>
                 <span className='avatar-username'>
@@ -29,6 +31,13 @@ export default styled(AvatarPane)`
         height: 75px;
         border:1px solid #ccc;
         margin: 8px auto;
+        position: relative;
+        > * {
+            position: absolute;
+            transform: translate(50%,-50%);
+            top: 50%; right: 50%;
+
+        }
     }
 
     & .avatar-details {
@@ -37,7 +46,7 @@ export default styled(AvatarPane)`
 
         & .avatar-username {
             padding-bottom: 8px;
-            font-size: .9rem;
+            font-size: ${fontSizeLg};
         }
     }
 `;

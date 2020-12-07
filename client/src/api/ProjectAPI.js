@@ -1,8 +1,26 @@
 import axios from 'axios';
 import ProjectPlannerAPI from './ProjectPlannerAPI';
 
+function createGetUrl(url, params) {
+    let paramKeys = Object.keys(params);
+    let first = true;
+    let delimiter = '?';
+    for(let i=0; i < paramKeys.length; i++) {
+        let key = paramKeys[i];
+        let value = params[key];
+        if(value) {
+            url = `${url}${delimiter}${key}=${value}`;
+            if(first) {
+                first = false;
+                delimiter = '&';
+            }
+        }
+    }
+    return url;
+}
+
 let ProjectAPI = function () {
-    this.url = 'http://localhost:3001/boards/';
+    this.url = 'http://localhost:3001/';
 }
 ProjectAPI.prototype = ProjectPlannerAPI;
 ProjectAPI.prototype.getAll = async function (token, id) {
@@ -13,8 +31,8 @@ ProjectAPI.prototype.getAll = async function (token, id) {
         }
     };
 
-    response = await axios.get(`${this.url}user/${id}`, config);
-    response = response['data']['data'];
+    response = await axios.get(`${this.url}boards/user/${id}`, config);
+    response = response.data.data;
     return response;
 }
 ProjectAPI.prototype.getPeople = async function (token, id) {
@@ -25,8 +43,22 @@ ProjectAPI.prototype.getPeople = async function (token, id) {
         }
     };
 
-    response = await axios.get(`${this.url}${id}/people`, config);
-    response = response['data']['data']['users'];
+    response = await axios.get(`${this.url}boards/${id}/people`, config);
+    response = response.data.data.users;
+    return response;
+}
+ProjectAPI.prototype.getUsers = async function (token, username, boardId) {
+    let response = [];
+    let config = {
+        headers: {
+            'Authorization': `Token ${token}`
+        }
+    };
+
+    let url = createGetUrl(`${this.url}users`, {username, boardId});
+    response = await axios.get(url, config);
+    response = response.data.data;
+    
     return response;
 }
 ProjectAPI.prototype.getById = async function (token, id) {
@@ -37,8 +69,9 @@ ProjectAPI.prototype.getById = async function (token, id) {
         }
     };
 
-    response = await axios.get(`${this.url}${id}`, config);
-    response = response['data']['data'];
+    response = await axios.get(`${this.url}boards/${id}`, config);
+    response = response.data.data;
+    
     return response;
 }
 ProjectAPI.prototype.getThreads = async function (token, boardId) {
@@ -49,11 +82,25 @@ ProjectAPI.prototype.getThreads = async function (token, boardId) {
         }
     };
     
-    response = await axios.get(`${this.url}${boardId}/threads`, config);
-    console.log(response.data.data);
-    response = response['data']['data'];
+    response = await axios.get(`${this.url}boards/${boardId}/threads`, config);
+    response = response.data.data;
+    
     return response;
 }
+ProjectAPI.prototype.getComments = async function (token, threadId) {
+    let response = [];
+    let config = {
+        headers: {
+            'Authorization': `Token ${token}`
+        }
+    };
+    
+    response = await axios.get(`${this.url}threads/${threadId}/comments`, config);
+    response = response.data.data;
+    console.log(response);
+    return response;
+}
+
 ProjectAPI.prototype.getThread = async function (token, threadId) {
     let response = [];
     let config = {
@@ -62,20 +109,9 @@ ProjectAPI.prototype.getThread = async function (token, threadId) {
         }
     };
 
-    response = await axios.get(`http://localhost:3001/threads/${threadId}`, config);
-    response = response['data']['data'];
-    return response;
-}
-ProjectAPI.prototype.createProject = async function (token, data) {
-    let response = null;
-    let config = {
-        headers: {
-            'Authorization': `Token ${token}`
-        }
-    };
-    response = await axios.post(`${this.url}`, data, config);
-    response = data['data'];
-
+    response = await axios.get(`${this.url}threads/${threadId}`, config);
+    response = response.data.data;
+    
     return response;
 }
 ProjectAPI.prototype.createThread = async function (token, data) {
@@ -85,9 +121,21 @@ ProjectAPI.prototype.createThread = async function (token, data) {
             'Authorization': `Token ${token}`
         }
     };
-    response = await axios.post(`http://localhost:3001/threads/`, data, config);
-    response = response['data']['data'];
-
+    response = await axios.post(`${this.url}threads/`, data, config);
+    response = response.data.data;
+    
+    return response;
+}
+ProjectAPI.prototype.createBoard = async function (token, data) {
+    let response = null;
+    let config = {
+        headers: {
+            'Authorization': `Token ${token}`
+        }
+    };
+    response = await axios.post(`${this.url}boards`, data, config);
+    response = response.data.data;
+    
     return response;
 }
 ProjectAPI.prototype.createComment = async function (token, threadId, data) {
@@ -97,9 +145,34 @@ ProjectAPI.prototype.createComment = async function (token, threadId, data) {
             'Authorization': `Token ${token}`
         }
     };
-    response = await axios.post(`http://localhost:3001/threads/${threadId}/comments/create`, data, config);
-    response = response['data']['data'];
+    response = await axios.post(`${this.url}threads/${threadId}/comments/create`, data, config);
+    response = response.data.data;
 
+    return response;
+}
+ProjectAPI.prototype.createRating = async function (token, data) {
+    let response = null;
+    let threadId = data.thread;
+    let config = {
+        headers: {
+            'Authorization': `Token ${token}`
+        }
+    };
+    response = await axios.post(`${this.url}threads/${threadId}/comments/rate`, data, config);
+    response = response.data.data;
+    
+    return response;
+}
+ProjectAPI.prototype.addUsersToBoard = async function (token, boardId, data) {
+    let response = null;
+    let config = {
+        headers: {
+            'Authorization': `Token ${token}`
+        }
+    };
+    response = await axios.post(`${this.url}boards/${boardId}/addUser`, data, config);
+    response = response.data.data;
+    
     return response;
 }
 export default new ProjectAPI();

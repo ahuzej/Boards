@@ -7,7 +7,7 @@ import { loginAction } from '../slices/userSlice';
 import DefaultButton from '../ui/DefaultButton';
 import { StyledInput } from '../ui/FormikBasicInput';
 import Title from '../ui/Title';
-import { appName } from '../ui/uiSettings';
+import { appName, fontSizeLg } from '../ui/uiSettings';
 
 function Login(props) {
 
@@ -29,14 +29,14 @@ function Login(props) {
                 <Title className='form-title' dark>{appName}</Title>
                 <form onSubmit={handleSubmit}>
                     <div className='form-input-section'>
-                        <span>Username:</span>
+                        <span className='form-input-text'>Username:</span>
                         <StyledInput type='text' name='username' id='username' value={username} onChange={(event) => setUsername(event.target.value)} />
                     </div>
                     <div className='form-input-section'>
                         <span className='form-input-text'>Password:</span>
                         <StyledInput type='password' name='password' id='password' value={password} onChange={(event) => setPassword(event.target.value)} />
                     </div>
-                    <div>
+                    <div className='form-buttons'>
                         <span></span>
                         <DefaultButton type='submit'>Login</DefaultButton>
                     </div>
@@ -48,19 +48,28 @@ function Login(props) {
 
 export default styled(Login)`
     & > .login-form {
-        height: 500px;
         border: 1px solid #ccc;
         width: 400px;    
+        top: 45%; 
+        right: 50%;
+        transform: translate(50%,-50%);
+        position: absolute;
+        background-color: #f9f9f9;
+        padding: 16px;
     }
     & > .login-form > form {
         display: table;
-        width: 300px;
+        width: 100%;
         > *:last-child {
             text-align: right;
         }
     }
     & > .login-form > .form-title {
         margin-bottom: 8px;
+        color: ${props => props.theme.lightBg};
+    }
+    & .form-input-text {
+        font-size: ${fontSizeLg};
     }
     & .form-input-section {
         height: 50px;
@@ -74,6 +83,11 @@ export default styled(Login)`
 
         > *:first-child {
             margin-right: 8px;
+        }
+    }
+    & .form-buttons {
+        > *:last-child {
+            margin-left: 8px;
         }
     }
     & > .login-form > form > * > * {

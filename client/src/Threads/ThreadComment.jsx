@@ -4,11 +4,40 @@ import AvatarPane from '../ui/AvatarPane';
 import Divider from '../ui/Divider';
 import Moment from 'react-moment';
 import 'moment-timezone';
-import { dateFormat } from '../ui/uiSettings';
+import { dateFormat, fontSizeLg, fontSizeMd } from '../ui/uiSettings';
+import { useDispatch, useSelector } from 'react-redux';
+import { createRating, updateRating } from '../slices/commentsSlice';
+import { getUserSelector } from '../slices/userSlice';
+import { ReactComponent as UpArrow } from '../svgs/up-arrow.svg';
+import { ReactComponent as DownArrow } from '../svgs/down-arrow.svg';
 
 function ThreadComment(props) {
     const { comment, className } = props;
     const { author } = comment;
+    const user = useSelector(getUserSelector);
+    const dispatch = useDispatch();
+    const rating = comment.rating || {};
+
+    async function handleRating(rating) {
+        if (rating !== comment.userRating) {
+            if (comment.userRating) {
+                dispatch(
+                    updateRating({
+                        data: { type: rating, rated: author._id, comment: comment._id, thread: comment.thread },
+                        token: user.token
+                    })
+                );
+            } else {
+                dispatch(
+                    createRating({
+                        data: { type: rating, rated: author._id, comment: comment._id, thread: comment.thread },
+                        token: user.token
+                    })
+                );
+            }
+
+        }
+    }
 
     return (
         <div className={className}>
@@ -17,16 +46,16 @@ function ThreadComment(props) {
                 <Divider />
                 <div className='avatar-arrows'>
                     <div className='avatar-arrow-section'>
-                        <div className='arrow'>
-                            <img src={process.env.PUBLIC_URL + '/images/up-arrow.svg'} alt='' />
+                        <div className='arrow' onClick={() => handleRating('upvote')}>
+                            <UpArrow fill={comment.userRating === 'upvote' ? 'green' : '#ccc'} alt='' />
                         </div>
-                        {comment.upVotes}
+
                     </div>
-                    <div className='avatar-arrow-section'>
+                    {rating.total}
+                    <div className='avatar-arrow-section' onClick={() => handleRating('downvote')}>
                         <div className='arrow'>
-                            <img src={process.env.PUBLIC_URL + '/images/down-arrow.svg'} alt='' />
+                            <DownArrow fill={comment.userRating === 'downvote' ? 'red' : '#ccc'} />
                         </div>
-                        {comment.downVotes}
                     </div>
                 </div>
             </div>
@@ -50,6 +79,7 @@ export default styled(ThreadComment)`
         width: 100%;
         position: relative;
         padding: 8px;
+        font-size: ${fontSizeLg};
     }
     & .thread-info-bar {
         padding: 8px;
@@ -64,11 +94,12 @@ export default styled(ThreadComment)`
     & .avatar-arrows {
         display: flex;
         justify-content: space-around;
+        align-items: center;
         margin-top: 24px;
         & .arrow {
             max-width: 35px;
 
-            & > img {
+            & > svg {
                 width: 100%;
                 height: 100%;
             }

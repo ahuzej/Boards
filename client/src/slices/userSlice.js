@@ -1,6 +1,5 @@
 import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { loginUser } from "../api/AuthAPI";
-import UserAPI from "../api/UserAPI";
 
 export const loginAction = createAsyncThunk('user/login', async (args, { dispatch }) => {
     const { username, password } = args;
@@ -9,15 +8,11 @@ export const loginAction = createAsyncThunk('user/login', async (args, { dispatc
         console.log(response);
         return response;
     } catch (err) {
-        if (err.response) {
-            const { statusCode } = err.response.data;
-            if (statusCode && statusCode === - 100) {
-                dispatch(logoutAction());
-            }
-        } else if (err.request) {
-
+        const { statusCode } = err.response.data;
+        if (statusCode && statusCode === - 100) {
+            dispatch(logoutAction());
         } else {
-
+            throw new Error('Data fetch failed.');
         }
     }
 });
@@ -36,12 +31,6 @@ export const user = createSlice({
     name: 'user',
     initialState: initialState,
     reducers: {
-        signIn(state, action) {
-
-        },
-        signUp(state, action) {
-
-        }
     },
     extraReducers: {
         [loginAction.pending]: (state, action) => {
@@ -64,44 +53,4 @@ export const user = createSlice({
     }
 });
 
-
-
-export const registerAction = createAsyncThunk('user/register', async (args, { dispatch }) => {
-    try {
-        console.log(args);
-        const response = await UserAPI.createUser(args);
-        return response;
-    } catch (err) {
-        if (err.response) {
-            const { statusCode } = err.response.data;
-            if (statusCode && statusCode === - 100) {
-                dispatch(logoutAction());
-            }
-        } else if (err.request) {
-
-        } else {
-
-        }
-    }
-});
-
-
-export const getContacts = createAsyncThunk('user/contacts', async (args, { dispatch, getState }) => {
-    try {
-        const { auth } = getState();
-        const response = await UserAPI.getContacts(auth.token, auth.id);
-        return response;
-    } catch (err) {
-        if (err.response) {
-            const { statusCode } = err.response.data;
-            if (statusCode && statusCode === - 100) {
-                dispatch(logoutAction());
-            }
-        } else if (err.request) {
-
-        } else {
-
-        }
-    }
-});
 

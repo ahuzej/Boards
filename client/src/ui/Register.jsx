@@ -2,12 +2,11 @@ import { Form, Formik } from 'formik';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import DefaultButton from '../ui/DefaultButton';
-import { StyledInput } from '../ui/FormikBasicInput';
-import Title from '../ui/Title';
-import { appName, fontSizeMd } from '../ui/uiSettings';
-import { registerAction } from '../actions/authActions';
-import Divider from '../ui/Divider';
+import DefaultButton from './DefaultButton';
+import { StyledInput } from './FormikBasicInput';
+import Title from './Title';
+import { appName, fontSizeMd } from './uiSettings';
+import Divider from './Divider';
 
 function Register(props) {
 
@@ -17,7 +16,7 @@ function Register(props) {
     function handleSubmit(values, { setSubmitting }) {
         console.log(values);
         setSubmitting(true);
-        dispatch(registerAction(values));
+        //dispatch(registerAction(values));
     }
 
     return (

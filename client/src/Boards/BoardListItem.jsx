@@ -1,16 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import ImageFrame from './ImageFrame';
-import { fontSizeMd } from './uiSettings';
+import { fontSizeMd } from '../ui/uiSettings';
 
 
-function Item(props) {
+function BoardListItem(props) {
     const { id, title, description, className } = props;
     return (
         <Link className={className} to={`/projects/${id}/thread`}>
             <div className='flexed'>
-                <ImageFrame className='img-container' src={process.env.PUBLIC_URL + '/images/green-circle.svg'} alt='' />
                 {title}
             </div>
             <p className='item-description'>
@@ -24,7 +22,7 @@ function Item(props) {
     );
 }
 
-export default styled(Item)`
+export default styled(BoardListItem)`
     margin:0;
     padding: 16px;
     display: block;
@@ -50,7 +48,6 @@ export default styled(Item)`
     & > .item-description {
         margin:0;
         padding-top: 8px;
-        padding-left: 8px;
         text-decoration: none;
         font-size: .8rem;
         color: #3e4384;

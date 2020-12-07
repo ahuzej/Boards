@@ -2,11 +2,12 @@ import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import ProjectAPI from "../api/ProjectAPI";
 import { logoutAction } from "./userSlice";
 
-export const getAllThreads = createAsyncThunk('threads/getAllThreads', async (args, { dispatch }) => {
-    const { boardId, token } = args;
+export const getAllThreads = createAsyncThunk('threads/getAllThreads', async (args, { dispatch, getState }) => {
+    const { boardId } = args;
     try {
-        const response = await ProjectAPI.getThreads(token, boardId);
-        console.log(response);
+        const user = getState().user.data;
+
+        const response = await ProjectAPI.getThreads(user.token, boardId);
         return {
             boardId,
             threads: response
@@ -15,6 +16,8 @@ export const getAllThreads = createAsyncThunk('threads/getAllThreads', async (ar
         const { statusCode } = err.response.data;
         if (statusCode && statusCode === - 100) {
             dispatch(logoutAction());
+        } else {
+            throw new Error('Request failed.');
         }
     }
 });
@@ -28,64 +31,58 @@ export const createThread = createAsyncThunk('threads/createThread', async (args
         const { statusCode } = err.response.data;
         if (statusCode && statusCode === - 100) {
             dispatch(logoutAction());
+        } else {
+            throw new Error('Request failed.');
         }
     }
 });
 
 const initialState = {
-    
+    status: 'idle',
+    data: [],
+    error: null
 };
 
 export const getThreadsSelector = (state) => {
-    let storedBoardIds = Object.keys(state);
-    let allThreads = [];
-    for (let i = 0; i < storedBoardIds.length; i++) {
-        let currentBoardId = storedBoardIds[i];
-        allThreads.push(...state[currentBoardId].data);
-    }
-    return allThreads;
+    return state.threads.data;
 }
 
-export const threadsStatusSelector = (state, boardId) => {
-    let currentThreadState = state.threads[boardId];
-    return currentThreadState ? currentThreadState.status : undefined;
+export const threadsStatusSelector = (state) => {
+    return state.threads.status;
 }
 
-export const getThreadsByBoardIdSelector = (state, boardId) => {
-    let currentThreadState = state.threads[boardId];
-    return currentThreadState ? currentThreadState.data : [];
-}
+export const threadByIdSelector = (state, id) => state.threads.data.find(thread => thread._id === id);
+
 
 export const threads = createSlice({
     name: 'threads',
     initialState,
     reducers: {
+        resetThreads: (state, action) => {
+            state = initialState;
+            return state;
+        }
     },
     extraReducers: {
         [getAllThreads.pending]: (state, action) => {
-            let boardId = action.meta.arg.boardId;
-            state[boardId] = {
-                status: 'loading',
-                data: [],
-                error: null
-            };
+            state.status = 'loading';
             return state;
         },
         [getAllThreads.fulfilled]: (state, action) => {
             if (action.payload) {
-                const { boardId, threads } = action.payload;
-                state[boardId].status = 'complete';
-                state[boardId].data = threads;
+                const { threads } = action.payload;
+                state.status = 'complete';
+                state.data = threads;
                 console.log(current(state));
             }
             return state;
         },
         [getAllThreads.rejected]: (state, action) => {
-            let boardId = action.meta.arg.boardId;
-            state[boardId].status = 'failed';
+            state.status = 'failed';
             return state;
         },
     }
 });
 
 
+export const { resetThreads } = threads.actions;

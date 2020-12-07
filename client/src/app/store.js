@@ -1,18 +1,19 @@
 import { combineReducers, createStore, getDefaultMiddleware, applyMiddleware } from "@reduxjs/toolkit";
-import projectsReducer from '../reducers/projectsReducer';
-import { persistStore, persistReducer } from 'redux-persist';
-import authReducer from '../reducers/authReducer';
-import storage from 'redux-persist/lib/storage';
 import { user } from "../slices/userSlice";
 import { boards } from "../slices/boardsSlice";
 import { threads } from "../slices/threadsSlice";
+import { comments } from "../slices/commentsSlice";
+import { users } from "../slices/usersSlice";
+import { loadFromStorage, saveToStorage } from "./localStorage";
 
-const persistConfig = {
-  key: 'root',
-  storage,
-};
+const initialState = loadFromStorage();
 
-const appReducer = combineReducers({ user: user.reducer, boards: boards.reducer, threads: threads.reducer });
+const appReducer = combineReducers({ 
+  user: user.reducer, 
+  boards: boards.reducer, 
+  threads: threads.reducer, 
+  comments: comments.reducer,
+  users: users.reducer });
 
 const rootReducer = (state, action) => {
   if (action.type === 'auth/logout') {
@@ -22,11 +23,8 @@ const rootReducer = (state, action) => {
   return appReducer(state, action);
 }
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-export default (() => {
-  let store = createStore(persistedReducer, applyMiddleware(...getDefaultMiddleware()));
-  let persistor = persistStore(store);
-
-  return { store, persistor };
+const store = createStore(rootReducer, initialState, applyMiddleware(...getDefaultMiddleware()));
+store.subscribe(() => {
+  saveToStorage(store.getState());
 });
+export default store;
