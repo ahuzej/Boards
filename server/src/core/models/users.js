@@ -7,9 +7,17 @@ const saltRounds = 10;
 const userSchema = new Schema({
     username: { type: String, required: true, minlength: 3 },
     password: { type: String, required: true, minlength: 3 },
-    firstName: { type: String, required: true, minlength: 2 },
-    lastName: { type: String, required: true, minlength: 2 },
-    registrationDate: { type: Date, default: Date.now }
+    firstName: { type: String, required: false, minlength: 2 },
+    lastName: { type: String, required: false, minlength: 2 },
+    registrationDate: { type: Date, required: false },
+    boards: 
+        [
+        {
+            type: Schema.Types.ObjectId,
+            required: false,
+            ref: 'Board'
+        }
+        ]
 });
 
 userSchema.pre('save', function (next) {
@@ -28,7 +36,7 @@ userSchema.pre('save', function (next) {
     }
 });
 
-userSchema.pre('findOneAndUpdate', async function () {
+userSchema.pre('findOneAndUpdate', async function (next) {
     const docToUpdate = await this.model.findOne(this.getQuery());
     bcrypt.hash(docToUpdate.password, saltRounds, function (err, hashedPassword) {
         if (err) {
@@ -44,7 +52,13 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 }
 
+userSchema.virtual('fullName').get(function () {
+    return `${this.firstName} ${this.lastName}`;
+});
+
 var User = mongoose.model('User', userSchema);
 
-
-module.exports = User;
+module.exports = {
+    model: User,
+    schema: userSchema
+};

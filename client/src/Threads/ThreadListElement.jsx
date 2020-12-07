@@ -6,15 +6,17 @@ import FancyTag from '../ui/FancyTag';
 import ImageFrame from '../ui/ImageFrame';
 import Moment from 'react-moment';
 import 'moment-timezone';
-import { dateFormat, fontSizeSm } from '../ui/uiSettings';
+import { dateFormat, fontSizeLg, fontSizeMd, fontSizeSm } from '../ui/uiSettings';
 import moment from 'moment';
 
 function ThreadListElement(props) {
     const { className } = props;
-    const { loaded, thread, owner } = props;
-    const { _id: id, title, sticky, locked, comments, lastComment } = thread;
-    const { username, img } = owner;
-    const { dateTime, author } = lastComment;
+    const { loaded, thread, lastComment } = props;
+    
+    const { _id: id, title, sticky, locked, comments, owner } = thread || {};
+    const { username, img } = owner || {};
+
+    const { dateTime, author } = lastComment || {};
     const history = useHistory();
     const { location } = history;
     const [lastCommentTime, setLastCommentTime] = useState(moment(dateTime).fromNow());
@@ -39,7 +41,7 @@ function ThreadListElement(props) {
                         {loaded ? title : <Skeleton />}
                     </h5>
                     <div className='thread-owner'>
-                        <ImageFrame bordered size='20px' src={img ? img : process.env.PUBLIC_URL + '/images/user.svg'} />
+                        <ImageFrame bordered={true} size='30px' src={img ? img : process.env.PUBLIC_URL + '/images/user.svg'} />
                         <span>{loaded ? username : <Skeleton width='100px' />}</span>
                     </div>
                 </div>
@@ -52,8 +54,8 @@ function ThreadListElement(props) {
                 <div className='thread-last-post'>
                     <span>Latest post:</span>
                     <div className='thread-last-post-author'>
-                        <ImageFrame size='20px' src={img ? img : process.env.PUBLIC_URL + '/images/user.svg'} />
-                        <span>{author.username}</span>
+                        <ImageFrame size='30px' src={img ? img : process.env.PUBLIC_URL + '/images/user.svg'} />
+                        <span>{author && author.username}</span>
                     </div>
                     <span>{lastCommentTime}</span>
                 </div>
@@ -67,7 +69,12 @@ export default styled(ThreadListElement)`
     justify-content: space-between;
     border-left: 2px solid ${props => props.theme.lightBg};
     background-color: ${props => props.sticky ? '#cadefd' : '#f5f5f5'};
-
+    & span {
+        font-size: ${fontSizeMd};
+    }
+    & h5 {
+        font-size: ${fontSizeMd};
+    }
     & .thread-list-el-left:hover {
         transition: background-color 0.2s ease;
         background-color: #2c57af1f;
@@ -85,7 +92,7 @@ export default styled(ThreadListElement)`
         margin:0;
         padding:0;
         font-weight: 400;
-        font-size: 1rem;
+        font-size: ${fontSizeLg};
         color: ${props => props.sticky ? '#374fab' : props.theme.linkTextColor};
         margin-bottom: 5px;
         > * {
@@ -102,6 +109,7 @@ export default styled(ThreadListElement)`
     }
     & .thread-last-post-author {
         display: flex;
+        align-items: center;
     }
     & .thread-owner {
         margin:0;
@@ -109,6 +117,7 @@ export default styled(ThreadListElement)`
         font-size: .9rem;
         color: #6b6b6b;
         display: flex;
+        align-items: center;
         > * {
             :first-child {
                 margin-right: 5px;
@@ -116,7 +125,7 @@ export default styled(ThreadListElement)`
         }
     }
     & .thread-element {
-        font-size: .9rem;
+        font-size: ${fontSizeMd};
     }
     & .thread-flexed {
         margin-top: 8px;

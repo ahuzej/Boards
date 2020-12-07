@@ -4,9 +4,9 @@ import { fontSizeSm } from "./uiSettings";
 function determineTextColor(color) {
     switch(color) {
         case 'sticky':
-            return '#fff';
+            return '#dbe4e6';
         case 'locked':
-            return '#ffd2e9';
+            return '#dbe4e6';
         default:
             break;
     }
@@ -15,9 +15,9 @@ function determineTextColor(color) {
 function determineBackgroundColor(color) {
     switch(color) {
         case 'sticky':
-            return '#21b3d4';
+            return '#6da1ff';
         case 'locked':
-            return '#d0448b';
+            return '#7b3fdc';
         default:
             break;
     }
@@ -29,7 +29,7 @@ function determineBorderColor(color) {
         case 'sticky':
             return '#248094';
         case 'locked':
-            return '#d0448b';
+            return '#4e4e4e';
         default:
             break;
     }

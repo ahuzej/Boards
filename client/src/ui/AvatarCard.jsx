@@ -4,7 +4,7 @@ import React from 'react';
 function AvatarCard(props) {
     const { author, className, onSelect } = props;
     return (
-        <div className={className} onClick={() => onSelect(author.id)}>
+        <div className={className} onClick={() => onSelect(author._id)}>
             <div className='avatar-image'>
             </div>
             <div className='avatar-details'>
