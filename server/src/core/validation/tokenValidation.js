@@ -2,15 +2,15 @@ const jwt = require('jsonwebtoken');
 const secret = 'secretssh';
 
 function isValidJwt(token) {
-    var isValid = false;
+    let tokenData = false;
     if (token) {
         jwt.verify(token, secret, function (err, decoded) {
             if (!err) {
-                isValid = true;
+                tokenData = decoded;
             }
         });
     }
-    return isValid;
+    return tokenData;
 }
 
 module.exports = {

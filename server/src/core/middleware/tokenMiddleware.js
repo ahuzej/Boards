@@ -4,14 +4,20 @@ const { isValidJwt } = require('../validation/tokenValidation');
 function validateToken(req, res, next) {
     let token = req.token ? req.token.value : undefined;
     logger.info(`Validating user token! Token submitted: ${token}`);
-    let isValid = isValidJwt(token);
-    logger.info(`Is valid token: ${isValid}`);
-    if (!isValid) {
+    let tokenData = isValidJwt(token);
+    logger.info(`Token data is: ${JSON.stringify(tokenData)}`);
+    if (!tokenData) {
         req.payloadInfo = {
             ...req.payloadInfo,
             status: 400,
-            msg: 'Token is not valid.'
+            msg: 'Token is not valid.',
+            statusCode: -100
         };
+    } else {
+        req.payloadInfo = {
+            ...req.payloadInfo,
+            tokenData
+        }
     }
     next();
 }

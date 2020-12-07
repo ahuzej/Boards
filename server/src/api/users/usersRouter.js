@@ -1,12 +1,11 @@
 var router = require('express').Router();
-const User = require('../../core/models/users');
-const jwt = require('jsonwebtoken');
-const passport = require('passport');
 const logger = require('../../core/logging/logger');
 const { prepareResponse } = require('../../core/middleware/baseMiddleware');
-const { baseErrorResponse, schemaErrorResponse  } = require('../errorHandling');
+const { baseErrorResponse, schemaErrorResponse } = require('../errorHandling');
 const { isStatusOk } = require('../../core/validation/statusValidation');
-const secret = 'secretssh';
+const mongoose = require('mongoose');
+const { model: User } = require('../../core/models/users');
+const { ObjectId } = mongoose.Types;
 
 /**
  * Route: /users GET
@@ -19,10 +18,22 @@ router.get('/', async function (req, res, next) {
     var data = undefined;
 
     if (isStatusOk(status)) {
+
+        let { username } = req.query;
         try {
-            data = await User.find({});
-            logger.info(`User data: ${JSON.stringify(data)}`);
+            let query = {};
+            if(username && username.length < 3) {
+                data = [];
+
+            } else {
+                if(username) {
+                    query.username = { $regex: username };
+                }
+                data = await User.find(query);
+                logger.info(`User data: ${JSON.stringify(data)}`);    
+            }
         } catch (err) {
+            logger.info(err);
             req.payloadInfo = schemaErrorResponse(req.payloadInfo, 'Error occured while trying to fetch user data.');
         }
 
@@ -71,6 +82,78 @@ router.get('/:userId', async function (req, res, next) {
 }, prepareResponse);
 
 /**
+ * Route: /users/:userId/contacts GET
+ * Fetches an array of contacts from a single document from the 'users' collection that matches the given document ID.
+ * Data: Array of objects.
+ */
+router.get('/:userId/contacts', async function (req, res, next) {
+    const { status } = req.payloadInfo;
+
+    var data = undefined;
+
+    if (isStatusOk(status)) {
+        try {
+            console.log(req.params.userId);
+            data = await User.aggregate([
+                {
+                    $match: {
+                        _id: { $ne: new ObjectId(req.params.userId) }
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'boards',
+                        let: { userId: '$_id' },
+                        pipeline: [
+                            {
+                                $match: {
+                                    $expr: {
+                                        $and: [
+                                            {
+                                                $in: [
+                                                    '$$userId', '$users'
+                                                ]
+                                            },
+                                            {
+                                                $in: [
+                                                    new ObjectId(req.params.userId), '$users'
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        as: 'boards'
+                    }
+                },
+                {
+                    $match: {
+                        'boards.0': { $exists: true}
+                    }
+                }
+            ]).exec();
+            if (!data) {
+                req.payloadInfo = baseErrorResponse(req.payloadInfo, 'No matching document was found for the given document ID.', 400);
+            } else {
+                logger.info(`User data: ${JSON.stringify(data)}`);
+            }
+        } catch (err) {
+            req.payloadInfo = schemaErrorResponse(req.payloadInfo, err, 'Error occured while trying to fetch user data.');
+        }
+
+        req.payloadInfo = {
+            ...req.payloadInfo,
+            data
+        };
+    }
+
+
+    next();
+
+}, prepareResponse);
+
+/**
  * Route: /users POST
  * Creates new document for the 'users' collection and saves it in the database.
  * Data: Object.
@@ -86,14 +169,16 @@ router.post('/', async function (req, res, next) {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 username: req.body.username,
-                password: req.body.password
+                email: req.body.email,
+                password: req.body.password,
+                registrationDate: Date.now()
             });
             data = await user.save({});
 
             if (!data) {
                 req.payloadInfo = baseErrorResponse(req.payloadInfo, 'No matching document was found for the given document ID.', 400);
             } else {
-                logger.info(`Inserted user with id ${data._id}`);
+                logger.info(`New user account registered with id ${data._id}`);
             }
         } catch (err) {
             req.payloadInfo = schemaErrorResponse(req.payloadInfo, err.message, 'Error while inserting new user!');
@@ -179,5 +264,7 @@ router.delete('/:userId', async function (req, res, next) {
     next();
 
 }, prepareResponse);
+
+
 
 module.exports = router;

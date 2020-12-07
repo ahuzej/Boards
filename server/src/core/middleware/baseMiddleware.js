@@ -77,8 +77,8 @@ async function finalizeRequestProcess(req, res, next) {
 
 async function sendResponse(req, res) {
     if (req.payloadInfo) {
-        const { status, msg, data } = req.payloadInfo;
-        res.status(status).send({ msg, data });
+        const { status, requestId, tokenData, ...rest } = req.payloadInfo;
+        res.status(status).send(rest);
     } else {
         res.status(500).send('An error has occured while processing this request.');
     }

@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const secret = 'secretssh';
 
 const authenticationMiddleware = function(req, res, next) {
-    console.log('Entered authenticationMiddleware');
     passport.authenticate('login', {session: false}, async (err, user, info) => {
         try {
             if(err || !user) {
