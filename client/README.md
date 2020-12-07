@@ -29,4 +29,3 @@ Used libraries:
 * **React** for UI
 * **Redux** for state management
 * **Styled-Components** for styling
-
