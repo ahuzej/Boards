@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { loginAction } from '../slices/userSlice';
 import DefaultButton from '../ui/DefaultButton';
@@ -38,6 +39,7 @@ function Login(props) {
                     </div>
                     <div className='form-buttons'>
                         <span></span>
+                        <Link to='/register'>Registration</Link>
                         <DefaultButton type='submit'>Login</DefaultButton>
                     </div>
                 </form>

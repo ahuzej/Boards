@@ -44,11 +44,11 @@ function BoardForm(props) {
                         <SectionHeading title='New board' subtitle='Enter basic information about this board.' />
                         <div>
                             <span>Title:</span>
-                            <StyledInput disabled={formik.isSubmitting} name='title' id='title' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.title} />
+                            <StyledInput type='text' {...formik.getFieldProps('name')} />
                         </div>
                         <div>
                             <span>Description:</span>
-                            <StyledTextArea disabled={formik.isSubmitting} name='description' id='description' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.title} />
+                            <StyledTextArea {...formik.getFieldProps('description')} />
                         </div>
                     </div>
                     <DefaultButton type="submit">Create</DefaultButton>

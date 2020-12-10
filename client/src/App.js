@@ -33,7 +33,7 @@ function App() {
     }
 
   }, [boardStatus, dispatch, user.id, user.loggedIn, user.token]);
-  
+
   /**
    * Render app based on login status.
    */
@@ -42,11 +42,11 @@ function App() {
       <div>
         <Router>
           <Switch>
+            <Route path='/register'>
+              <Register />
+            </Route>
             <Route path='/'>
               <Login />
-            </Route>
-            <Route exact path='/register'>
-              <Register />
             </Route>
           </Switch>
         </Router>

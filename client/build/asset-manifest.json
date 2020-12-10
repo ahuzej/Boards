@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cfe5f560.chunk.css",
+    "main.js": "/static/js/main.afeb9598.chunk.js",
+    "main.js.map": "/static/js/main.afeb9598.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
+    "static/css/2.e6ac38db.chunk.css": "/static/css/2.e6ac38db.chunk.css",
+    "static/js/2.a3fa8a4f.chunk.js": "/static/js/2.a3fa8a4f.chunk.js",
+    "static/js/2.a3fa8a4f.chunk.js.map": "/static/js/2.a3fa8a4f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.327e16083ad2c474c2092125e808e2a9.js": "/precache-manifest.327e16083ad2c474c2092125e808e2a9.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.e6ac38db.chunk.css.map": "/static/css/2.e6ac38db.chunk.css.map",
+    "static/css/main.cfe5f560.chunk.css.map": "/static/css/main.cfe5f560.chunk.css.map",
+    "static/js/2.a3fa8a4f.chunk.js.LICENSE.txt": "/static/js/2.a3fa8a4f.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/OpenSans-Regular.3ed9575d.ttf",
+    "static/media/down-arrow.f59c5c33.svg": "/static/media/down-arrow.f59c5c33.svg",
+    "static/media/up-arrow.13e1a3ad.svg": "/static/media/up-arrow.13e1a3ad.svg",
+    "static/media/user.7de5e5f7.svg": "/static/media/user.7de5e5f7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09b85ec0.js",
+    "static/css/2.e6ac38db.chunk.css",
+    "static/js/2.a3fa8a4f.chunk.js",
+    "static/css/main.cfe5f560.chunk.css",
+    "static/js/main.afeb9598.chunk.js"
+  ]
+}

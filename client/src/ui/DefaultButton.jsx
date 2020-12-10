@@ -3,11 +3,10 @@ import styled from "styled-components";
 export default styled.button`
     border:1px solid ${props => props.disabled ? '#e8e8e8' : '#cac7c7'};
     padding: 8px;
-    border-radius: 5px;
-    width: 120px;
+    width: 100px;
     color: ${props => props.disabled ? '#d0d0d0' : '#797979'};
-    background-color: #e2e2e2;
     cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+    background-color: transparent;
     &:hover {
         transition: background-color 0.2s ease;
         transition: color 0.2s ease;

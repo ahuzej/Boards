@@ -9,7 +9,7 @@ export const StyledInput = styled.input`
     width: 100%;
     box-shadow: none;
     padding: 8px;
-
+    color: #54556b;
 `;
 
 export const StyledTextArea = styled.textarea`
