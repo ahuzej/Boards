@@ -1,10 +1,10 @@
 import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import ProjectAPI from "../api/ProjectAPI";
+import BoardsAPI from "../api/BoardsAPI";
 
 export const loginAction = createAsyncThunk('user/login', async (args, { dispatch }) => {
     const { username, password } = args;
     try {
-        const response = await ProjectAPI.loginUser(username, password);
+        const response = await BoardsAPI.loginUser(username, password);
         console.log(response);
         return response;
     } catch (err) {
@@ -22,7 +22,7 @@ export const registerAction = createAsyncThunk('user/register', async (args, { d
     console.log('bam hit')
     const { username, password, email } = args;
     try {
-        const response = await ProjectAPI.registerUser(username, password, email);
+        const response = await BoardsAPI.registerUser(username, password, email);
         console.log(response);
         return response;
     } catch (err) {

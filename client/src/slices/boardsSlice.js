@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import ProjectAPI from "../api/ProjectAPI";
+import BoardsAPI from "../api/BoardsAPI";
 import { logoutAction } from "./userSlice";
 
 
@@ -7,7 +7,7 @@ import { logoutAction } from "./userSlice";
 export const getAllBoards = createAsyncThunk('boards/getAllBoards', async (args, { dispatch, getState }) => {
     try {
         const user = getState().user.data;
-        const response = await ProjectAPI.getAll(user.token, user.id);
+        const response = await BoardsAPI.getAll(user.token, user.id);
         return response;
     } catch (err) {
         const { statusCode } = err.response.data;
@@ -22,7 +22,7 @@ export const getAllBoards = createAsyncThunk('boards/getAllBoards', async (args,
 export const createBoard = createAsyncThunk('boards/createBoard', async (args, { dispatch }) => {
     const { data, token } = args;
     try {
-        const response = await ProjectAPI.createBoard(token, data);
+        const response = await BoardsAPI.createBoard(token, data);
         return response;
     } catch (err) {
         const { statusCode } = err.response.data;

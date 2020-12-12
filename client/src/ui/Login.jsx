@@ -2,7 +2,6 @@ import { Form, Formik } from 'formik';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { loginAction } from '../slices/userSlice';
 import DefaultButton from '../ui/DefaultButton';
@@ -15,8 +14,8 @@ import LinkButton from './LinkButton';
 import Divider from './Divider';
 
 const LoginSchema = Yup.object().shape({
-    username: Yup.string().required('This field is required'),
-    password: Yup.string().required('This field is required'),
+    username: Yup.string().required('This field is required').min(3),
+    password: Yup.string().required('This field is required').min(3),
 }
 );
 

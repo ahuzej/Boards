@@ -1,5 +1,4 @@
 import axios from 'axios';
-import ProjectPlannerAPI from './ProjectPlannerAPI';
 
 function createGetUrl(url, params) {
     let paramKeys = Object.keys(params);
@@ -19,25 +18,24 @@ function createGetUrl(url, params) {
     return url;
 }
 
-const ProjectAPI = function () {
+const BoardsAPI = function () {
     this.url = 'http://localhost:3001/';
 }
-ProjectAPI.prototype = ProjectPlannerAPI;
-ProjectAPI.prototype.registerUser = async function (username, password, email) {
+BoardsAPI.prototype.registerUser = async function (username, password, email) {
     let response = [];
 
     response = await axios.post(`${this.url}auth/signUp`, { username, password, email});
     response = response.data.data;
     return response;
 }
-ProjectAPI.prototype.loginUser = async function (username, password) {
+BoardsAPI.prototype.loginUser = async function (username, password) {
     let response = [];
 
     response = await axios.post(`${this.url}auth/signIn`, { username, password});
     response = response.data.data;
     return response;
 }
-ProjectAPI.prototype.getAll = async function (token, id) {
+BoardsAPI.prototype.getAll = async function (token, id) {
     let response = [];
     let config = {
         headers: {
@@ -49,7 +47,7 @@ ProjectAPI.prototype.getAll = async function (token, id) {
     response = response.data.data;
     return response;
 }
-ProjectAPI.prototype.getPeople = async function (token, id) {
+BoardsAPI.prototype.getPeople = async function (token, id) {
     let response = [];
     let config = {
         headers: {
@@ -61,7 +59,7 @@ ProjectAPI.prototype.getPeople = async function (token, id) {
     response = response.data.data.users;
     return response;
 }
-ProjectAPI.prototype.getUsers = async function (token, username, boardId) {
+BoardsAPI.prototype.getUsers = async function (token, username, boardId) {
     let response = [];
     let config = {
         headers: {
@@ -75,7 +73,7 @@ ProjectAPI.prototype.getUsers = async function (token, username, boardId) {
     
     return response;
 }
-ProjectAPI.prototype.getById = async function (token, id) {
+BoardsAPI.prototype.getById = async function (token, id) {
     let response = [];
     let config = {
         headers: {
@@ -88,7 +86,7 @@ ProjectAPI.prototype.getById = async function (token, id) {
     
     return response;
 }
-ProjectAPI.prototype.getThreads = async function (token, boardId) {
+BoardsAPI.prototype.getThreads = async function (token, boardId) {
     let response = [];
     let config = {
         headers: {
@@ -101,7 +99,7 @@ ProjectAPI.prototype.getThreads = async function (token, boardId) {
     
     return response;
 }
-ProjectAPI.prototype.getComments = async function (token, threadId) {
+BoardsAPI.prototype.getComments = async function (token, threadId) {
     let response = [];
     let config = {
         headers: {
@@ -115,7 +113,7 @@ ProjectAPI.prototype.getComments = async function (token, threadId) {
     return response;
 }
 
-ProjectAPI.prototype.getThread = async function (token, threadId) {
+BoardsAPI.prototype.getThread = async function (token, threadId) {
     let response = [];
     let config = {
         headers: {
@@ -128,7 +126,7 @@ ProjectAPI.prototype.getThread = async function (token, threadId) {
     
     return response;
 }
-ProjectAPI.prototype.createThread = async function (token, data) {
+BoardsAPI.prototype.createThread = async function (token, data) {
     let response = null;
     let config = {
         headers: {
@@ -140,7 +138,7 @@ ProjectAPI.prototype.createThread = async function (token, data) {
     
     return response;
 }
-ProjectAPI.prototype.createBoard = async function (token, data) {
+BoardsAPI.prototype.createBoard = async function (token, data) {
     let response = null;
     let config = {
         headers: {
@@ -152,7 +150,7 @@ ProjectAPI.prototype.createBoard = async function (token, data) {
     
     return response;
 }
-ProjectAPI.prototype.createComment = async function (token, threadId, data) {
+BoardsAPI.prototype.createComment = async function (token, threadId, data) {
     let response = null;
     let config = {
         headers: {
@@ -164,7 +162,7 @@ ProjectAPI.prototype.createComment = async function (token, threadId, data) {
 
     return response;
 }
-ProjectAPI.prototype.createRating = async function (token, data) {
+BoardsAPI.prototype.createRating = async function (token, data) {
     let response = null;
     let threadId = data.thread;
     let config = {
@@ -177,7 +175,7 @@ ProjectAPI.prototype.createRating = async function (token, data) {
     
     return response;
 }
-ProjectAPI.prototype.addUsersToBoard = async function (token, boardId, data) {
+BoardsAPI.prototype.addUsersToBoard = async function (token, boardId, data) {
     let response = null;
     let config = {
         headers: {
@@ -189,4 +187,4 @@ ProjectAPI.prototype.addUsersToBoard = async function (token, boardId, data) {
     
     return response;
 }
-export default new ProjectAPI();
+export default new BoardsAPI();
