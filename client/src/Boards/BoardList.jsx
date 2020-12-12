@@ -43,7 +43,7 @@ function BoardList(props) {
                     <div className='navigation-controls'>
                         Search:
                         <StyledInput value={filter} onChange={handleFilterChange}></StyledInput>
-                        <Link to='/projects/new'>
+                        <Link to='/boards/new'>
                             New board...
                         </Link>
                     </div>

@@ -4,16 +4,28 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import DefaultButton from './DefaultButton';
 import { StyledInput } from './FormikBasicInput';
-import Title from './Title';
-import { appName, fontSizeMd } from './uiSettings';
+import Title, { Subtitle } from './Title';
+import { appName, fontSizeLg, fontSizeMd } from './uiSettings';
 import Divider from './Divider';
 import * as Yup from 'yup';
+import { registerAction } from '../slices/userSlice';
+import { useHistory } from 'react-router';
+import FormInputGroup from './FormInputGroup';
+import { ReactComponent as BackImage } from '../svgs/left-arrow.svg';
+import ImageFrame from './ImageFrame';
+import { hslToRgb } from '@material-ui/core';
 
 const RegisterSchema = Yup.object().shape({
-    username: Yup.string().required('Required field'),
-    password: Yup.string().required('Required field'),
-    confirmPassword: Yup.string().required('Required field'),
-    email: Yup.string().required('Required field')
+    username: Yup.string().required('This field is required'),
+    password: Yup.string()
+        .min(3, (obj) => `Password must be at least ${obj.min} characters`)
+        .required('This field is required'),
+    confirmPassword: Yup.string()
+            .required('This field is required')
+            .test('passwords-match', 'Passwords must match', function (value) {
+        return this.parent.password === value;
+    }),
+    email: Yup.string().email('Email format is not valid').required('This field is required')
 }
 );
 
@@ -21,10 +33,20 @@ function Register(props) {
 
     const { className } = props;
     const dispatch = useDispatch();
+    const history = useHistory();
 
-    function handleSubmit(values, { setSubmitting }) {
+    async function handleSubmit(values, { setSubmitting }) {
         setSubmitting(true);
-        //dispatch(registerAction(values));
+        try {
+            let dispatchResult = await dispatch(registerAction(values));
+            console.log(dispatchResult);
+            history.push('/boards');
+        } catch (err) {
+        }
+    }
+
+    function goBack() {
+        history.goBack();
     }
 
     return (
@@ -37,52 +59,55 @@ function Register(props) {
                     email: ''
                 }}
                 onSubmit={handleSubmit}
-                validationSchema={RegisterSchema}>
+                validationSchema={RegisterSchema}
+                enableReinitialize={true}>
                 {formik => (
                     <Form className='login-form'>
-                        <Title className='form-title' dark>{appName}</Title>
-                        <span className='form-subtitle'>Create your account...</span>
+                        <div className='form-title-group'>
+                            <ImageFrame onClick={goBack} size='30px' component={<BackImage cursor='pointer' />} />
+                            <Title className='form-title' dark>{appName}</Title>
+                        </div>
+                        <Subtitle color='#515f6b'>Create your account...</Subtitle>
                         <Divider color='#dcdcdc' />
-                        <div className='form-input-section'>
-                            <span className='form-input-text'>Username:</span>
+                        <FormInputGroup label='Username' error={formik.touched.username && formik.errors.username}>
                             <StyledInput
-                                inError={formik.errors.username}
+                                disabled={formik.isSubmitting}
+                                inError={formik.touched.username && formik.errors.username}
                                 type='text'
                                 className='form-input-element'
                                 {...formik.getFieldProps('username')}
                             />
-                            {formik.errors.username}
-                        </div>
-                        <div className='form-input-section'>
-                            <span className='form-input-text'>Email:</span>
+                        </FormInputGroup>
+                        <FormInputGroup label='Email' className='form-input-section' error={formik.touched.email && formik.errors.email}>
                             <StyledInput
-                                inError={formik.errors.email}
+                                disabled={formik.isSubmitting}
+                                inError={formik.touched.email && formik.errors.email}
                                 type='email'
                                 className='form-input-element'
                                 {...formik.getFieldProps('email')}
                             />
-                            {formik.errors.email}
-                        </div>
-                        <div className='form-input-section'>
-                            <span className='form-input-text'>Password:</span>
+                        </FormInputGroup>
+                        <FormInputGroup  label='Password' error={formik.touched.password && formik.errors.password}>
                             <StyledInput
-                                inError={formik.errors.password}
+                                disabled={formik.isSubmitting}
+                                type='password'
+                                inError={formik.touched.password && formik.errors.password}
                                 className='form-input-element'
                                 {...formik.getFieldProps('password')} />
-                            {formik.errors.password}
-                        </div>
-                        <div className='form-input-section'>
-                            <span className='form-input-text'>Confim password:</span>
+                        </FormInputGroup>
+                        <FormInputGroup label='Confirm password' error={formik.touched.confirmPassword && formik.errors.confirmPassword}>
                             <StyledInput
-                                inError={formik.errors.confirmPassword}
+                                disabled={formik.isSubmitting}
+                                type='password'
+                                inError={formik.touched.confirmPassword && formik.errors.confirmPassword}
                                 className='form-input-element'
                                 {...formik.getFieldProps('confirmPassword')}
                             />
-                            {formik.errors.confirmPassword}
-                        </div>
+                        </FormInputGroup>
                         <div className='form-action-control'>
-                            <span></span>
-                            <DefaultButton type='submit'>Register</DefaultButton>
+                            <DefaultButton
+                                disabled={formik.isSubmitting}
+                                type='submit'>Register</DefaultButton>
                         </div>
                     </Form>
                 )}
@@ -102,6 +127,10 @@ export default styled(Register)`
         transform: translate(-50%, -50%);
 
     }
+    & .form-title-group {
+        display: flex;
+
+    }
     & > .login-form > form {
         display: table;
         width: 100%;
@@ -114,26 +143,22 @@ export default styled(Register)`
     }
     & .form-title {
         margin-bottom: 8px;
-        font-weight: bold;
     }
     & .form-subtitle {
         color: #515f6b;
     }
-    & .form-input-section {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 5px 0;
-        > .form-input-text {
-            width: 350px;
-            color: #515f6b;
-        }
-        > .form-input-element {
-            height: 40px;
-        }
-        > *:last-child {
-            display: initial;
-        }
+    & .form-input-error {
+        color: red;
+        width: 10px;
+        min-width: 10px;
+        text-align: center;
+        padding-left: 3px;
+    }
+    & .form-input-error, & .form-input-text {
+        font-size: ${fontSizeLg};
+    }
+    & .form-input-element {
+        height: 36px;
     }
     & .form-action-control {
         margin-top: 16px;

@@ -33,7 +33,7 @@ function BoardForm(props) {
                 (values, {setSubmitting}) => {
                     setSubmitting(true);
                     dispatch(createBoard({ token: user.token, data: values }));
-                    history.push('/projects');
+                    history.push('/boards');
                 }
             }
             validationSchema={BoardSchema}

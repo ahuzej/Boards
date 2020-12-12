@@ -6,11 +6,10 @@ const loginUser = (username, password) => {
             username, password
         },{withCredentials: true, credentials: 'include'})
         .then((data) => {
-            let { token, name, id } = data.data.data;
+            let { token, id } = data.data.data;
             let loginCredentials = {
                 loggedIn: true,
                 token,
-                name,
                 username,
                 id
             };

@@ -1,5 +1,5 @@
+import { Form, Formik } from 'formik';
 import React from 'react';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -7,51 +7,81 @@ import styled from 'styled-components';
 import { loginAction } from '../slices/userSlice';
 import DefaultButton from '../ui/DefaultButton';
 import { StyledInput } from '../ui/FormikBasicInput';
-import Title from '../ui/Title';
+import * as Yup from 'yup';
+import Title, { Subtitle } from '../ui/Title';
 import { appName, fontSizeLg } from '../ui/uiSettings';
+import FormInputGroup from './FormInputGroup';
+import LinkButton from './LinkButton';
+import Divider from './Divider';
+
+const LoginSchema = Yup.object().shape({
+    username: Yup.string().required('This field is required'),
+    password: Yup.string().required('This field is required'),
+}
+);
+
 
 function Login(props) {
 
     const { className } = props;
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
 
-    async function handleSubmit(event) {
-        event.preventDefault();
-        dispatch(loginAction({ username, password }));
-        history.push('/projects');
+    async function handleSubmit(values, { setSubmitting }) {
+        setSubmitting(true);
+        await dispatch(loginAction(values));
+        history.push('/boards');
     }
 
     return (
         <div className={className}>
-            <div className='login-form'>
-                <Title className='form-title' dark>{appName}</Title>
-                <form onSubmit={handleSubmit}>
-                    <div className='form-input-section'>
-                        <span className='form-input-text'>Username:</span>
-                        <StyledInput type='text' name='username' id='username' value={username} onChange={(event) => setUsername(event.target.value)} />
-                    </div>
-                    <div className='form-input-section'>
-                        <span className='form-input-text'>Password:</span>
-                        <StyledInput type='password' name='password' id='password' value={password} onChange={(event) => setPassword(event.target.value)} />
-                    </div>
-                    <div className='form-buttons'>
-                        <span></span>
-                        <Link to='/register'>Registration</Link>
-                        <DefaultButton type='submit'>Login</DefaultButton>
-                    </div>
-                </form>
-            </div>
+            <Formik
+                initialValues={
+                    {
+                        username: '',
+                        password: ''
+                    }
+                }
+                onSubmit={handleSubmit}
+                validationSchema={LoginSchema}
+                enableReinitialize={true}>
+                {(formik) => (
+                    <Form>
+                        <div className='login-form'>
+                            <Title className='form-title' dark>{appName}</Title>
+                            <Subtitle color='#515f6b'>Sign in to your account</Subtitle>
+                            <Divider color='#dcdcdc' />
+                            <FormInputGroup label='Username' error={formik.touched.username && formik.errors.username}>
+                                <StyledInput
+                                    inError={formik.touched.username && formik.errors.username}
+                                    type='text'
+                                    className='form-input-element'
+                                    {...formik.getFieldProps('username')}
+                                />
+                            </FormInputGroup>
+                            <FormInputGroup label='Password' error={formik.touched.password && formik.errors.password}>
+                                <StyledInput
+                                    type='password'
+                                    inError={formik.touched.password && formik.errors.password}
+                                    className='form-input-element'
+                                    {...formik.getFieldProps('password')} />
+                            </FormInputGroup>
+                            <div className='form-buttons'>
+                                <LinkButton to='/register'>Registration</LinkButton>
+                                <DefaultButton type='submit'>Login</DefaultButton>
+                            </div>
+                        </div>
+                    </Form>
+                )}
+            </Formik>
         </div>
     );
 }
 
 export default styled(Login)`
-    & > .login-form {
+    & .login-form {
         border: 1px solid #ccc;
-        width: 400px;    
+        width: 400px;
         top: 45%; 
         right: 50%;
         transform: translate(50%,-50%);
@@ -59,48 +89,20 @@ export default styled(Login)`
         background-color: #f9f9f9;
         padding: 16px;
     }
-    & > .login-form > form {
-        display: table;
-        width: 100%;
-        > *:last-child {
-            text-align: right;
-        }
-    }
-    & > .login-form > .form-title {
+    & .form-title {
         margin-bottom: 8px;
-        color: ${props => props.theme.lightBg};
+    }
+    & .form-buttons {
+        text-align: right;
+        margin-top: 16px;
+        > *:first-child {
+            margin-right: 4px;
+        }
+        > *:last-child {
+            margin-left: 4px;
+        }
     }
     & .form-input-text {
         font-size: ${fontSizeLg};
-    }
-    & .form-input-section {
-        height: 50px;
-
-        > *:last-child {
-            display: initial;
-        }
-    }
-    & > .login-form > form > * {
-        display: table-row;
-
-        > *:first-child {
-            margin-right: 8px;
-        }
-    }
-    & .form-buttons {
-        > *:last-child {
-            margin-left: 8px;
-        }
-    }
-    & > .login-form > form > * > * {
-        display: table-cell;
-
-        > *:first-child {
-            margin-right: 8px;
-        }
-
-        > *:last-child {
-            margin-left: 8px;
-        }
     }
 `;

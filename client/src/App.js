@@ -20,7 +20,6 @@ function App() {
   const [currentNavigation, setCurrentNavigation] = useState(appName);
   const boardStatus = useSelector(state => state.boards.status);
 
-
   useEffect(() => {
     if (user.loggedIn && boardStatus === 'idle') {
       dispatch(getAllBoards());
@@ -62,12 +61,12 @@ function App() {
         }}>
           <Navbar />
           <Switch>
-            <PrivateRoute path='/projects/new'>
+            <PrivateRoute path='/boards/new'>
               <BoardForm />
             </PrivateRoute>
-            <PrivateRoute path='/projects/:id' component={BoardHome}>
+            <PrivateRoute path='/boards/:id' component={BoardHome}>
             </PrivateRoute>
-            <PrivateRoute exact path='/projects'>
+            <PrivateRoute exact path='/boards'>
               <BoardList />
             </PrivateRoute>
 

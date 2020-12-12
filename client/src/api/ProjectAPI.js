@@ -19,10 +19,24 @@ function createGetUrl(url, params) {
     return url;
 }
 
-let ProjectAPI = function () {
+const ProjectAPI = function () {
     this.url = 'http://localhost:3001/';
 }
 ProjectAPI.prototype = ProjectPlannerAPI;
+ProjectAPI.prototype.registerUser = async function (username, password, email) {
+    let response = [];
+
+    response = await axios.post(`${this.url}auth/signUp`, { username, password, email});
+    response = response.data.data;
+    return response;
+}
+ProjectAPI.prototype.loginUser = async function (username, password) {
+    let response = [];
+
+    response = await axios.post(`${this.url}auth/signIn`, { username, password});
+    response = response.data.data;
+    return response;
+}
 ProjectAPI.prototype.getAll = async function (token, id) {
     let response = [];
     let config = {

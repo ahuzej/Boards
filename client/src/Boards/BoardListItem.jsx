@@ -7,7 +7,7 @@ import { fontSizeMd } from '../ui/uiSettings';
 function BoardListItem(props) {
     const { id, title, description, className } = props;
     return (
-        <Link className={className} to={`/projects/${id}/thread`}>
+        <Link className={className} to={`/boards/${id}/thread`}>
             <div className='flexed'>
                 {title}
             </div>
