@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
-import ProjectAPI from "../api/ProjectAPI";
+import BoardsAPI from "../api/BoardsAPI";
 import { logoutAction } from "./userSlice";
 
 export const getAllThreads = createAsyncThunk('threads/getAllThreads', async (args, { dispatch, getState }) => {
@@ -7,7 +7,7 @@ export const getAllThreads = createAsyncThunk('threads/getAllThreads', async (ar
     try {
         const user = getState().user.data;
 
-        const response = await ProjectAPI.getThreads(user.token, boardId);
+        const response = await BoardsAPI.getThreads(user.token, boardId);
         return {
             boardId,
             threads: response
@@ -25,7 +25,7 @@ export const getAllThreads = createAsyncThunk('threads/getAllThreads', async (ar
 export const createThread = createAsyncThunk('threads/createThread', async (args, { dispatch }) => {
     const { data, token } = args;
     try {
-        const response = await ProjectAPI.createThread(token, data);
+        const response = await BoardsAPI.createThread(token, data);
         return response;
     } catch (err) {
         const { statusCode } = err.response.data;

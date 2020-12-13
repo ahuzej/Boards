@@ -12,9 +12,9 @@ function Navbar(props) {
 
     return (
         <div className={className}>
-            <Title className='nav-title'>{navigation.title}</Title>
+            <Title color='#fff' className='nav-title'>{navigation.title}</Title>
             <div className='flexed'>
-                <Link className='nav-item' to='/projects'>Boards</Link>
+                <Link className='nav-item' to='/boards'>Boards</Link>
                 <div className='relative-container'>
                     <ProfileIcon />
                 </div>

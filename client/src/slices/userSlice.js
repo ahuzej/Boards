@@ -1,10 +1,10 @@
 import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { loginUser } from "../api/AuthAPI";
+import BoardsAPI from "../api/BoardsAPI";
 
 export const loginAction = createAsyncThunk('user/login', async (args, { dispatch }) => {
     const { username, password } = args;
     try {
-        const response = await loginUser(username, password);
+        const response = await BoardsAPI.loginUser(username, password);
         console.log(response);
         return response;
     } catch (err) {
@@ -17,6 +17,31 @@ export const loginAction = createAsyncThunk('user/login', async (args, { dispatc
     }
 });
 
+
+export const registerAction = createAsyncThunk('user/register', async (args, { dispatch, rejectWithValue }) => {
+    const { username, password, email } = args.data;
+    const { onOk, onError } = args;
+    try {
+        const response = await BoardsAPI.registerUser(username, password, email);
+        onOk();
+        return response;
+    } catch (err) {
+        onError();
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
+        }
+        return rejectWithValue(rejectMessage);
+    }
+});
+
+
 export const logoutAction = createAction('user/logout');
 
 const initialState = {
@@ -25,12 +50,21 @@ const initialState = {
     error: null
 };
 
-export const getUserSelector = (state) => state.user.data ?? {};
+export const getUserSelector = (state) => {
+    return state.user.data;
+};
+export const getUserStatus = (state) => state.user.status;
+
+export const getUserError = (state) => state.user.error;
 
 export const user = createSlice({
     name: 'user',
     initialState: initialState,
     reducers: {
+        resetUser: (state, action) => {
+            state = initialState;
+            return state;
+        }
     },
     extraReducers: {
         [loginAction.pending]: (state, action) => {
@@ -39,7 +73,9 @@ export const user = createSlice({
         },
         [loginAction.fulfilled]: (state, action) => {
             state.status = 'complete';
-            state.data = action.payload;
+            const user = action.payload;
+            user.loggedIn = true;
+            state.data = user;
             return state;
         },
         [loginAction.rejected]: (state, action) => {
@@ -47,10 +83,29 @@ export const user = createSlice({
             return state;
         },
         [logoutAction]: (state, action) => {
-            state = {};
+            state.data = {
+                loggedIn: false
+            };
+            state.status = 'idle';
             return state;
         },
+        [registerAction.pending]: (state, action) => {
+            state.status = 'loading';
+            return state;
+        },
+        [registerAction.fulfilled]: (state, action) => {
+            let userData = action.payload;
+            state.data = userData;
+            state.status = 'completeAAA';
+            return state;
+        },
+        [registerAction.rejected]: (state, action) => {
+            state.status = 'failed';
+            state.error = action.payload;
+            return state;
+        }
     }
 });
 
 
+export const { resetUser } = user.actions;

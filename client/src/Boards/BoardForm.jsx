@@ -10,6 +10,8 @@ import DefaultButton from '../ui/DefaultButton';
 import { useHistory } from 'react-router';
 import { createBoard } from '../slices/boardsSlice';
 import { getUserSelector } from '../slices/userSlice';
+import Title, { Subtitle } from '../ui/Title';
+import FormInputGroup from '../ui/FormInputGroup';
 
 const BoardSchema = Yup.object().shape({
     name: Yup.string().required('Required field'),
@@ -33,7 +35,7 @@ function BoardForm(props) {
                 (values, {setSubmitting}) => {
                     setSubmitting(true);
                     dispatch(createBoard({ token: user.token, data: values }));
-                    history.push('/projects');
+                    history.push('/boards');
                 }
             }
             validationSchema={BoardSchema}
@@ -41,15 +43,14 @@ function BoardForm(props) {
             {(formik) =>
                 <Form className={className}>
                     <div>
-                        <SectionHeading title='New board' subtitle='Enter basic information about this board.' />
-                        <div>
-                            <span>Title:</span>
-                            <StyledInput disabled={formik.isSubmitting} name='title' id='title' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.title} />
-                        </div>
-                        <div>
-                            <span>Description:</span>
-                            <StyledTextArea disabled={formik.isSubmitting} name='description' id='description' onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.title} />
-                        </div>
+                        <Title>New board</Title>
+                        <Subtitle>Enter basic information about this board</Subtitle>
+                        <FormInputGroup label='Title' error=''>
+                            <StyledInput type='text' {...formik.getFieldProps('name')} />
+                        </FormInputGroup>
+                        <FormInputGroup label='Description' error=''>
+                            <StyledTextArea {...formik.getFieldProps('description')} />
+                        </FormInputGroup>
                     </div>
                     <DefaultButton type="submit">Create</DefaultButton>
 

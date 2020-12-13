@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import ProjectAPI from "../api/ProjectAPI";
+import BoardsAPI from "../api/BoardsAPI";
 import { logoutAction } from "./userSlice";
 
 export const getAllComments = createAsyncThunk('comments/getAllComments', async (args, { dispatch, getState }) => {
     const { threadId } = args;
     try {
         const user = getState().user.data;
-        const response = await ProjectAPI.getComments(user.token, threadId);
+        const response = await BoardsAPI.getComments(user.token, threadId);
         return response;
     } catch (err) {
         const { statusCode } = err.response.data;
@@ -22,7 +22,7 @@ export const createComment = createAsyncThunk('comments/createComment', async (a
     const { comment, threadId } = args;
     try {
         const user = getState().user.data;
-        const response = await ProjectAPI.createComment(user.token, threadId, comment);
+        const response = await BoardsAPI.createComment(user.token, threadId, comment);
         return response;
     } catch (err) {
         const { statusCode } = err.response.data;
@@ -37,7 +37,7 @@ export const createComment = createAsyncThunk('comments/createComment', async (a
 export const createRating = createAsyncThunk('comments/createRating', async (args, { dispatch }) => {
     const { data, token } = args;
     try {
-        const response = await ProjectAPI.createRating(token, data);
+        const response = await BoardsAPI.createRating(token, data);
         return response;
     } catch (err) {
         const { statusCode } = err.response.data;
@@ -52,7 +52,7 @@ export const createRating = createAsyncThunk('comments/createRating', async (arg
 export const updateRating = createAsyncThunk('comments/updateRating', async (args, { dispatch }) => {
     const { data, token } = args;
     try {
-        const response = await ProjectAPI.createRating(token, data);
+        const response = await BoardsAPI.createRating(token, data);
         if(response) {
             return {
                 userRating: response,

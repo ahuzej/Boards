@@ -20,13 +20,15 @@ function ProfileIcon() {
       }
 
     useEffect(() => {
+        let isMounted = true;
         let bubbleListener = document.addEventListener('mousedown', function (evt) {
-            if(!evt.path.includes(contextMenuRef.current)) {
+            if(!evt.path.includes(contextMenuRef.current) && isMounted) {
                 setVisible(false);
             }
         });
         
         return () => { 
+            isMounted = false;
             document.removeEventListener('mousedown', bubbleListener); 
         }
     }, []);

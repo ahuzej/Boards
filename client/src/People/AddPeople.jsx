@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { addUsersToBoard, fetchUsersForBoard, userByUsernameSelector } from '../slices/usersSlice';
@@ -8,6 +8,9 @@ import DefaultButton from '../ui/DefaultButton';
 import Divider from '../ui/Divider';
 import ScrollBox from '../ui/ScrollBox';
 import Title from '../ui/Title';
+import { debounce } from 'lodash';
+import { getUserStatus } from '../slices/userSlice';
+import ModalLoader from '../ui/ModalLoader';
 
 function AddPeople(props) {
 
@@ -17,9 +20,10 @@ function AddPeople(props) {
     const [contacts] = useState([]);
     const dispatch = useDispatch();
     const [searchText, setSearchText] = useState('');
-    
+
     const users = useSelector(state => userByUsernameSelector(state, searchText, boardId));
-    console.log(users);
+    const usersStatus = useSelector(getUserStatus);
+    console.log(usersStatus);
     function handleClick(id) {
         let prevValues = [...peopleIds];
         if (!peopleIds.includes(id)) {
@@ -37,19 +41,23 @@ function AddPeople(props) {
     }, [boardId, dispatch]);
 
     function submitValues() {
-        dispatch(addUsersToBoard({users: peopleIds, boardId: boardId}));
+        dispatch(addUsersToBoard({ users: peopleIds, boardId: boardId }));
         // values are peopleIds..
     }
 
+    const fetchUsers = useCallback(debounce((searchText) => dispatch(fetchUsersForBoard({ username: searchText, boardId: boardId })), 500), 
+        [boardId, dispatch]);
+
     function handleSearchChange(evt) {
+        console.log('TRIGGER')
         setSearchText(evt.target.value);
-    }
+    };
 
     useEffect(() => {
         if (searchText.length >= 3) {
-            dispatch(fetchUsersForBoard({username: searchText, boardId: boardId }));
+            fetchUsers(searchText);
         }
-    }, [boardId, dispatch, searchText]);
+    }, [boardId, dispatch, fetchUsers, searchText]);
 
     return (
         <div className={className}>
@@ -73,6 +81,7 @@ function AddPeople(props) {
                         <div className='bottom-toolbar'>
                         </div>
                         <ScrollBox height='500px'>
+                            {usersStatus === 'loading' && <ModalLoader />}
                             {users && users.map(user => <AvatarCard onSelect={handleClick} selected={peopleIds.includes(user._id)} key={user._id} author={user} />)}
                         </ScrollBox>
                         <Divider />
