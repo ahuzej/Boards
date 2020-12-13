@@ -67,7 +67,10 @@ function App() {
             <PrivateRoute exact path='/boards'>
               <BoardList />
             </PrivateRoute>
+            <PrivateRoute>
+              <BoardList />
 
+            </PrivateRoute>
           </Switch>
 
         </NavigationContext.Provider>

@@ -10,6 +10,8 @@ import DefaultButton from '../ui/DefaultButton';
 import { useHistory } from 'react-router';
 import { createBoard } from '../slices/boardsSlice';
 import { getUserSelector } from '../slices/userSlice';
+import Title, { Subtitle } from '../ui/Title';
+import FormInputGroup from '../ui/FormInputGroup';
 
 const BoardSchema = Yup.object().shape({
     name: Yup.string().required('Required field'),
@@ -41,15 +43,14 @@ function BoardForm(props) {
             {(formik) =>
                 <Form className={className}>
                     <div>
-                        <SectionHeading title='New board' subtitle='Enter basic information about this board.' />
-                        <div>
-                            <span>Title:</span>
+                        <Title>New board</Title>
+                        <Subtitle>Enter basic information about this board</Subtitle>
+                        <FormInputGroup label='Title' error=''>
                             <StyledInput type='text' {...formik.getFieldProps('name')} />
-                        </div>
-                        <div>
-                            <span>Description:</span>
+                        </FormInputGroup>
+                        <FormInputGroup label='Description' error=''>
                             <StyledTextArea {...formik.getFieldProps('description')} />
-                        </div>
+                        </FormInputGroup>
                     </div>
                     <DefaultButton type="submit">Create</DefaultButton>
 

@@ -19,7 +19,7 @@ function createGetUrl(url, params) {
 }
 
 const BoardsAPI = function () {
-    this.url = 'http://localhost:3001/';
+    this.url = process.env.REACT_APP_API_URL;
 }
 BoardsAPI.prototype.registerUser = async function (username, password, email) {
     let response = [];

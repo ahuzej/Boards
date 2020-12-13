@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
@@ -14,7 +14,7 @@ import LinkButton from './LinkButton';
 import Divider from './Divider';
 import { getUserStatus } from '../slices/userSlice';
 import ModalLoader from './ModalLoader';
-import { resetUser} from '../slices/userSlice';
+import { resetUser } from '../slices/userSlice';
 
 const LoginSchema = Yup.object().shape({
     username: Yup.string().required('This field is required').min(3),
@@ -28,11 +28,20 @@ function Login(props) {
     const dispatch = useDispatch();
     const history = useHistory();
     const userStatus = useSelector(getUserStatus);
+    
     async function handleSubmit(values, { setSubmitting }) {
         setSubmitting(true);
         await dispatch(loginAction(values));
         history.push('/boards');
     }
+
+    useEffect(() => {
+        return () => {
+            if(userStatus === 'failed') {
+                dispatch(resetUser());
+            }
+        }
+    });
 
     return (
         <div className={className}>
@@ -71,7 +80,7 @@ function Login(props) {
                             <div className='form-footer'>
                                 {userStatus === 'failed' ? <span className='form-input-error'>Login failed.</span> : <span></span>}
                                 <div className='form-button-group'>
-                                    <LinkButton to='/register' onClick={() => dispatch(resetUser)}>Registration</LinkButton>
+                                    <LinkButton to='/register'>Registration</LinkButton>
                                     <DefaultButton type='submit'>Login</DefaultButton>
                                 </div>
                             </div>

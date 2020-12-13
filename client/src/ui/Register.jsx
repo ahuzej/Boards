@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import DefaultButton from './DefaultButton';
@@ -8,7 +8,7 @@ import Title, { Subtitle } from './Title';
 import { appName, fontSizeLg, fontSizeMd } from './uiSettings';
 import Divider from './Divider';
 import * as Yup from 'yup';
-import { getUserStatus, registerAction } from '../slices/userSlice';
+import { getUserError, getUserStatus, registerAction, resetUser } from '../slices/userSlice';
 import { useHistory } from 'react-router';
 import FormInputGroup from './FormInputGroup';
 import { ReactComponent as BackImage } from '../svgs/left-arrow.svg';
@@ -35,22 +35,24 @@ function Register(props) {
     const dispatch = useDispatch();
     const history = useHistory();
     const userStatus = useSelector(getUserStatus);
+    const userError = useSelector(getUserError);
 
-    async function handleSubmit(values, { setSubmitting }) {
+    function handleSubmit(values, { setSubmitting }) {
         setSubmitting(true);
-        try {
-            await dispatch(registerAction(values));
-            if (userStatus === 'complete') {
-                console.log(userStatus);
-                history.push('/boards');
-            }
-        } catch (err) {
-        }
+        dispatch(registerAction({ data: values, onOk: () => { history.push('/boards')}, onError: () => { setSubmitting(false); } }));
     }
 
     function goBack() {
         history.goBack();
     }
+
+    useEffect(() => {
+        return () => {
+            if (userStatus === 'failed') {
+                dispatch(resetUser());
+            }
+        }
+    });
 
     return (
         <div className={className}>
@@ -109,7 +111,7 @@ function Register(props) {
                             />
                         </FormInputGroup>
                         <div className='form-action-control'>
-                            {userStatus === 'failed' ? <span className='form-input-error'>An error has occured.</span> : <span></span>}
+                            {userStatus === 'failed' ? <span className='form-input-error'>{userError}</span> : <span></span>}
                             <DefaultButton
                                 disabled={formik.isSubmitting}
                                 type='submit'>Register</DefaultButton>
