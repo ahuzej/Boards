@@ -1,6 +1,6 @@
 import { Form, Formik } from 'formik';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { loginAction } from '../slices/userSlice';
@@ -12,6 +12,9 @@ import { appName, fontSizeLg } from '../ui/uiSettings';
 import FormInputGroup from './FormInputGroup';
 import LinkButton from './LinkButton';
 import Divider from './Divider';
+import { getUserStatus } from '../slices/userSlice';
+import ModalLoader from './ModalLoader';
+import { resetUser} from '../slices/userSlice';
 
 const LoginSchema = Yup.object().shape({
     username: Yup.string().required('This field is required').min(3),
@@ -19,13 +22,12 @@ const LoginSchema = Yup.object().shape({
 }
 );
 
-
 function Login(props) {
 
     const { className } = props;
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const userStatus = useSelector(getUserStatus);
     async function handleSubmit(values, { setSubmitting }) {
         setSubmitting(true);
         await dispatch(loginAction(values));
@@ -47,6 +49,7 @@ function Login(props) {
                 {(formik) => (
                     <Form>
                         <div className='login-form'>
+                            {userStatus === 'loading' && <ModalLoader />}
                             <Title className='form-title' dark>{appName}</Title>
                             <Subtitle color='#515f6b'>Sign in to your account</Subtitle>
                             <Divider color='#dcdcdc' />
@@ -65,9 +68,12 @@ function Login(props) {
                                     className='form-input-element'
                                     {...formik.getFieldProps('password')} />
                             </FormInputGroup>
-                            <div className='form-buttons'>
-                                <LinkButton to='/register'>Registration</LinkButton>
-                                <DefaultButton type='submit'>Login</DefaultButton>
+                            <div className='form-footer'>
+                                {userStatus === 'failed' ? <span className='form-input-error'>Login failed.</span> : <span></span>}
+                                <div className='form-button-group'>
+                                    <LinkButton to='/register' onClick={() => dispatch(resetUser)}>Registration</LinkButton>
+                                    <DefaultButton type='submit'>Login</DefaultButton>
+                                </div>
                             </div>
                         </div>
                     </Form>
@@ -91,17 +97,27 @@ export default styled(Login)`
     & .form-title {
         margin-bottom: 8px;
     }
-    & .form-buttons {
+    & .form-input-error {
+        color: red;
+        text-align: center;
+    }
+    & .form-input-error, & .form-input-text {
+        font-size: ${fontSizeLg};
+    }
+    & .form-footer {
         text-align: right;
         margin-top: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+    & .form-button-group {
         > *:first-child {
             margin-right: 4px;
         }
         > *:last-child {
             margin-left: 4px;
         }
-    }
-    & .form-input-text {
-        font-size: ${fontSizeLg};
     }
 `;

@@ -4,10 +4,10 @@ import styled from "styled-components";
 import { fontSizeMd } from "./uiSettings";
 
 
-function LinkButton({children, to, className}) {
+function LinkButton({children, to, onClick, className}) {
     return (
         <>
-            <Link className={className} to={to}>{children}</Link>
+            <Link onClick={onClick} className={className} to={to}>{children}</Link>
         </>
     )
 }

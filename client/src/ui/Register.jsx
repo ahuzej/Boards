@@ -1,6 +1,6 @@
 import { Form, Formik } from 'formik';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import DefaultButton from './DefaultButton';
 import { StyledInput } from './FormikBasicInput';
@@ -8,12 +8,12 @@ import Title, { Subtitle } from './Title';
 import { appName, fontSizeLg, fontSizeMd } from './uiSettings';
 import Divider from './Divider';
 import * as Yup from 'yup';
-import { registerAction } from '../slices/userSlice';
+import { getUserStatus, registerAction } from '../slices/userSlice';
 import { useHistory } from 'react-router';
 import FormInputGroup from './FormInputGroup';
 import { ReactComponent as BackImage } from '../svgs/left-arrow.svg';
 import ImageFrame from './ImageFrame';
-import { hslToRgb } from '@material-ui/core';
+import ModalLoader from './ModalLoader';
 
 const RegisterSchema = Yup.object().shape({
     username: Yup.string().required('This field is required'),
@@ -21,10 +21,10 @@ const RegisterSchema = Yup.object().shape({
         .min(3, (obj) => `Password must be at least ${obj.min} characters`)
         .required('This field is required'),
     confirmPassword: Yup.string()
-            .required('This field is required')
-            .test('passwords-match', 'Passwords must match', function (value) {
-        return this.parent.password === value;
-    }),
+        .required('This field is required')
+        .test('passwords-match', 'Passwords must match', function (value) {
+            return this.parent.password === value;
+        }),
     email: Yup.string().email('Email format is not valid').required('This field is required')
 }
 );
@@ -34,13 +34,16 @@ function Register(props) {
     const { className } = props;
     const dispatch = useDispatch();
     const history = useHistory();
+    const userStatus = useSelector(getUserStatus);
 
     async function handleSubmit(values, { setSubmitting }) {
         setSubmitting(true);
         try {
-            let dispatchResult = await dispatch(registerAction(values));
-            console.log(dispatchResult);
-            history.push('/boards');
+            await dispatch(registerAction(values));
+            if (userStatus === 'complete') {
+                console.log(userStatus);
+                history.push('/boards');
+            }
         } catch (err) {
         }
     }
@@ -63,6 +66,7 @@ function Register(props) {
                 enableReinitialize={true}>
                 {formik => (
                     <Form className='login-form'>
+                        { userStatus === 'loading' && <ModalLoader />}
                         <div className='form-title-group'>
                             <ImageFrame onClick={goBack} size='30px' component={<BackImage cursor='pointer' />} />
                             <Title className='form-title' dark>{appName}</Title>
@@ -87,7 +91,7 @@ function Register(props) {
                                 {...formik.getFieldProps('email')}
                             />
                         </FormInputGroup>
-                        <FormInputGroup  label='Password' error={formik.touched.password && formik.errors.password}>
+                        <FormInputGroup label='Password' error={formik.touched.password && formik.errors.password}>
                             <StyledInput
                                 disabled={formik.isSubmitting}
                                 type='password'
@@ -105,6 +109,7 @@ function Register(props) {
                             />
                         </FormInputGroup>
                         <div className='form-action-control'>
+                            {userStatus === 'failed' ? <span className='form-input-error'>An error has occured.</span> : <span></span>}
                             <DefaultButton
                                 disabled={formik.isSubmitting}
                                 type='submit'>Register</DefaultButton>
@@ -149,10 +154,7 @@ export default styled(Register)`
     }
     & .form-input-error {
         color: red;
-        width: 10px;
-        min-width: 10px;
         text-align: center;
-        padding-left: 3px;
     }
     & .form-input-error, & .form-input-text {
         font-size: ${fontSizeLg};
@@ -161,8 +163,11 @@ export default styled(Register)`
         height: 36px;
     }
     & .form-action-control {
-        margin-top: 16px;
         text-align: right;
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     & > .login-form > form > * {
         display: table-row;

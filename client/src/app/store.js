@@ -1,4 +1,4 @@
-import { combineReducers, createStore, getDefaultMiddleware, applyMiddleware } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { user } from "../slices/userSlice";
 import { boards } from "../slices/boardsSlice";
 import { threads } from "../slices/threadsSlice";
@@ -13,7 +13,8 @@ const appReducer = combineReducers({
   boards: boards.reducer, 
   threads: threads.reducer, 
   comments: comments.reducer,
-  users: users.reducer });
+  users: users.reducer 
+});
 
 const rootReducer = (state, action) => {
   if (action.type === 'auth/logout') {
@@ -23,7 +24,13 @@ const rootReducer = (state, action) => {
   return appReducer(state, action);
 }
 
-const store = createStore(rootReducer, initialState, applyMiddleware(...getDefaultMiddleware()));
+const store = configureStore(
+  {
+    reducer: rootReducer, 
+    preloadedState: initialState, 
+    devTools: true
+  }
+);
 store.subscribe(() => {
   saveToStorage(store.getState());
 });

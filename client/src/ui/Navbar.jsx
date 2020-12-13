@@ -9,7 +9,7 @@ import ProfileIcon from './ProfileIcon';
 function Navbar(props) {
     const { className } = props;
     const navigation = useContext(NavigationContext);
-    console.log(navigation);
+
     return (
         <div className={className}>
             <Title color='#fff' className='nav-title'>{navigation.title}</Title>

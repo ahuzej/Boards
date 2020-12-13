@@ -19,7 +19,6 @@ function App() {
   const dispatch = useDispatch();
   const [currentNavigation, setCurrentNavigation] = useState(appName);
   const boardStatus = useSelector(state => state.boards.status);
-
   useEffect(() => {
     if (user.loggedIn && boardStatus === 'idle') {
       dispatch(getAllBoards());
@@ -52,7 +51,6 @@ function App() {
       </div>
     );
   } else {
-
     return (
       <Router>
         <NavigationContext.Provider value={{
