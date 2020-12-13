@@ -5,6 +5,7 @@ import { threads } from "../slices/threadsSlice";
 import { comments } from "../slices/commentsSlice";
 import { users } from "../slices/usersSlice";
 import { loadFromStorage, saveToStorage } from "./localStorage";
+import { throttle } from 'lodash';
 
 const initialState = loadFromStorage();
 
@@ -31,7 +32,7 @@ const store = configureStore(
     devTools: true
   }
 );
-store.subscribe(() => {
+store.subscribe(throttle(() => {
   saveToStorage(store.getState());
-});
+}, 1000));
 export default store;
