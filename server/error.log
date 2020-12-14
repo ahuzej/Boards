@@ -45,3 +45,7 @@
 {"message":"data.populate(...).execPopulate(...).toObject is not a function","level":"error"}
 {"level":"error"}
 {"message":"Error has occured while processing your request.","level":"error"}
+{"level":"error"}
+{"message":"Argument passed in must be a single String of 12 bytes or a string of 24 hex characters","level":"error"}
+{"level":"error"}
+{"message":"Argument passed in must be a single String of 12 bytes or a string of 24 hex characters","level":"error"}

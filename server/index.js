@@ -18,6 +18,9 @@ const authenticationRouter = require('./src/api/authentication/authenticationRou
 const { createProtectedRoute, createBaseRoute, exportRoute } = require('./src/api/routing');
 // ACCESS LOGGER
 const morgan = require('morgan');
+if (!fs.existsSync(process.env.LOGFOLDER)){
+    fs.mkdirSync(process.env.LOGFOLDER);
+}
 const accessLogStream = fs.createWriteStream(path.join(__dirname, process.env.LOGFOLDER, 'access.log'), { flags: 'a' })
 app.use(morgan('combined', { stream: accessLogStream }));
 
@@ -25,7 +28,7 @@ app.use(morgan('combined', { stream: accessLogStream }));
 const logger = require('./src/core/logging/logger');
 
 // REQUEST CONFIGURATION
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true, origin: process.env.CORSORIGINURL}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
