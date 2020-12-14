@@ -385,8 +385,15 @@ router.post('/:threadId/comments/create', async function (req, res, next) {
                 dateTime: Date.now()
             });
             data = await comment.save({});
-            data.populate('users').execPopulate();
-            logger.info(`Added comment to thread id ${threadId}`);
+            await data.populate('author', 'username boards').execPopulate();
+
+            data = data.toObject();
+            data.rating = {
+                totalUpvotes: 0,
+                totalDownvotes: 0,
+                total: 0
+            };
+            logger.info(`Added comment to thread id ${threadId}, comment ${data}`);
         } catch (err) {
             req.payloadInfo = schemaErrorResponse(req.payloadInfo, err, 'Error occured while adding new tasks!');
         }

@@ -275,7 +275,7 @@ router.get('/:boardId/threads', async function (req, res, next) {
             if (!data) {
                 req.payloadInfo = baseErrorResponse(req.payloadInfo, 'No matching document was found for the given document ID.', 400);
             } else {
-                logger.info(data);
+                logger.info(JSON.stringify(data));
                 if (!Array.isArray(data) || data.length <= 0) { // this shouldn't happen, so prevent any faulty data being sent.
                     data = [];
                 }
