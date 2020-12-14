@@ -29,7 +29,7 @@ function ThreadListElement(props) {
 
             return () => clearInterval(interval);
         }
-    }, []);
+    }, [dateTime]);
 
     return (
         <div className={className} onClick={() => history.push(`${location.pathname}/${id}`)}>

@@ -4,7 +4,7 @@ import AvatarPane from '../ui/AvatarPane';
 import Divider from '../ui/Divider';
 import Moment from 'react-moment';
 import 'moment-timezone';
-import { dateFormat, fontSizeLg, fontSizeMd } from '../ui/uiSettings';
+import { dateFormat, fontSizeLg } from '../ui/uiSettings';
 import { useDispatch, useSelector } from 'react-redux';
 import { createRating, updateRating } from '../slices/commentsSlice';
 import { getUserSelector } from '../slices/userSlice';

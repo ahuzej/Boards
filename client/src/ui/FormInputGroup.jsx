@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ErrorLabel from './ErrorLabel';
 
 
 function FormInputGroup(props) {
@@ -8,7 +9,7 @@ function FormInputGroup(props) {
         <div className={className}>
             <span className='form-input-text'>{label}:</span>
             {children}
-            <span className='form-input-error'>{error}</span>
+            <ErrorLabel className='form-input-error'>{error}</ErrorLabel>
         </div>
     );
 }

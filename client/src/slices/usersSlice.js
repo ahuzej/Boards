@@ -2,24 +2,28 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import BoardsAPI from "../api/BoardsAPI";
 import { logoutAction } from "./userSlice";
 
-export const fetchUsersForBoard = createAsyncThunk('users/fetchUsersForBoard', async (args, { dispatch, getState }) => {
+export const fetchUsersForBoard = createAsyncThunk('users/fetchUsersForBoard', async (args, { dispatch, getState, rejectWithValue }) => {
     const { username, boardId } = args;
     try {
         const user = getState().user.data;
         const response = await BoardsAPI.getUsers(user.token, username, boardId);
-        console.log(response);
         return response;
     } catch (err) {
-        const { statusCode } = err.response.data;
-        if (statusCode && statusCode === - 100) {
-            dispatch(logoutAction());
-        } else {
-            throw new Error('Request failed.');
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
         }
+        return rejectWithValue(rejectMessage);
     }
 });
 
-export const addUsersToBoard = createAsyncThunk('users/addUsersToBoard', async (args, { dispatch, getState }) => {
+export const addUsersToBoard = createAsyncThunk('users/addUsersToBoard', async (args, { dispatch, getState, rejectWithValue }) => {
     const { users, boardId } = args;
     try {
         const user = getState().user.data;
@@ -29,12 +33,17 @@ export const addUsersToBoard = createAsyncThunk('users/addUsersToBoard', async (
             users
         };
     } catch (err) {
-        const { statusCode } = err.response.data;
-        if (statusCode && statusCode === - 100) {
-            dispatch(logoutAction());
-        } else {
-            throw new Error('Request failed.');
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
         }
+        return rejectWithValue(rejectMessage);
     }
 });
 
@@ -59,6 +68,8 @@ export const userByUsernameSelector = (state, username, boardId) => {
 export const usersByBoardSelector = (state, boardId) => {
     return state.users.data.filter(user => user.boards.includes(boardId));
 }
+
+export const getUsersError = (state) => state.users.error;
 
 export const users = createSlice({
     name: 'users',

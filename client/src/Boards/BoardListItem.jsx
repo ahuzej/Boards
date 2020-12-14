@@ -15,8 +15,6 @@ function BoardListItem(props) {
                 {description}
             </p>
             <div className='item-info'>
-                <p>3 new posts</p>
-                <p>15 new comments</p>
             </div>
         </Link>
     );

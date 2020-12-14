@@ -1,5 +1,3 @@
-import { useField } from 'formik';
-import React from 'react';
 import styled from 'styled-components';
 
 export const StyledInput = styled.input`
@@ -22,21 +20,3 @@ export const StyledTextArea = styled.textarea`
     height: 150px;
     font-family: inherit;
 `;
-
-function FormikBasicInput(props) {
-    const [field, meta, helpers] = useField(props);
-    const { error, touched } = meta;
-    const inError = touched && error;
-    return (
-        <>
-            {props.children({ field, inError })}
-
-            { inError && <div style={{ color: 'red' }}>
-                {error}
-            </div>}
-        </>
-    );
-}
-
-
-export default FormikBasicInput;

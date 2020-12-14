@@ -35,4 +35,5 @@ const store = configureStore(
 store.subscribe(throttle(() => {
   saveToStorage(store.getState());
 }, 1000));
+
 export default store;

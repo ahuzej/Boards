@@ -1,4 +1,3 @@
-import React, { useMemo } from 'react';
 import { useHistory } from 'react-router';
 import useQuery from './useQuery';
 

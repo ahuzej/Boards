@@ -26,6 +26,7 @@ function PeopleHome(props) {
 export default styled(PeopleHome)`
     & .people-person-list {
         display: flex;
+        flex-wrap: wrap;
     }
     .people-avatar-icon:hover {
         background-color: ${props => props.theme.hoverColor};

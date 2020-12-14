@@ -14,13 +14,13 @@ function ThreadListPane(props) {
 
     return (
         <div className={className}>
-            {threadsStatus === 'error' ? 
+            {threadsStatus === 'error' ?
                 <div className='thread-error'>
                     <ModalBox><span>An error has occured while loading threads. Please try again.</span></ModalBox>
                 </div> :
                 <div className='thread-list'>
                     {threadsStatus === 'complete' && threads.length === 0 && <span className='info-empty-board'>This board is empty!</span>}
-                    {threads && threadsStatus === 'complete' ? threads.map(thread => {
+                    {threads && threadsStatus === 'complete' && threads.map(thread => {
                         return (
                             <ThreadListElement
                                 key={thread._id}
@@ -30,12 +30,17 @@ function ThreadListPane(props) {
                                 loaded={true}
                             />
                         );
-                    }) : <>
+                    }) 
+                    }
+                    {threadsStatus !== 'failed' && threadsStatus === 'loading'
+                        &&
+                        <>
                             <ThreadListElement loaded={false} />
                             <ThreadListElement loaded={false} />
                             <ThreadListElement loaded={false} />
                             <ThreadListElement loaded={false} />
                             <ThreadListElement loaded={false} />
+
                         </>
                     }
                 </div>

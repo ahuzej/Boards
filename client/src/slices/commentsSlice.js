@@ -18,38 +18,50 @@ export const getAllComments = createAsyncThunk('comments/getAllComments', async 
     }
 });
 
-export const createComment = createAsyncThunk('comments/createComment', async (args, { dispatch, getState }) => {
-    const { comment, threadId } = args;
+export const createComment = createAsyncThunk('comments/createComment', async (args, { dispatch, getState, rejectWithValue }) => {
+    const { comment, threadId, onOk, onError } = args;
     try {
         const user = getState().user.data;
         const response = await BoardsAPI.createComment(user.token, threadId, comment);
+        onOk();
         return response;
     } catch (err) {
-        const { statusCode } = err.response.data;
-        if (statusCode && statusCode === - 100) {
-            dispatch(logoutAction());
-        } else {
-            throw new Error('Data fetch failed.');
+        onError();
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
         }
+        return rejectWithValue(rejectMessage);
     }
 });
 
-export const createRating = createAsyncThunk('comments/createRating', async (args, { dispatch }) => {
+export const createRating = createAsyncThunk('comments/createRating', async (args, { dispatch, rejectWithValue }) => {
     const { data, token } = args;
     try {
         const response = await BoardsAPI.createRating(token, data);
         return response;
     } catch (err) {
-        const { statusCode } = err.response.data;
-        if (statusCode && statusCode === - 100) {
-            dispatch(logoutAction());
-        } else {
-            throw new Error('Request failed.');
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
         }
+        return rejectWithValue(rejectMessage);
     }
 });
 
-export const updateRating = createAsyncThunk('comments/updateRating', async (args, { dispatch }) => {
+export const updateRating = createAsyncThunk('comments/updateRating', async (args, { dispatch, rejectWithValue }) => {
     const { data, token } = args;
     try {
         const response = await BoardsAPI.createRating(token, data);
@@ -61,12 +73,17 @@ export const updateRating = createAsyncThunk('comments/updateRating', async (arg
         }
         return response;
     } catch (err) {
-        const { statusCode } = err.response.data;
-        if (statusCode && statusCode === - 100) {
-            dispatch(logoutAction());
-        } else {
-            throw new Error('Request failed.');
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
         }
+        return rejectWithValue(rejectMessage);
     }
 });
 
@@ -93,6 +110,8 @@ export const commentsPagingSelector = (state, page, itemsPerPage) => {
     return { items: comments.slice((page - 1) * itemsPerPage, page * itemsPerPage), totalAmountOfPages };
 }
 
+export const getCommentsErrorSelector = (state) => state.comments.error;
+
 export const comments = createSlice({
     name: 'comments',
     initialState,
@@ -107,7 +126,6 @@ export const comments = createSlice({
             if (action.payload) {
                 state.status = 'complete';
                 state.data = action.payload;
-                console.log(action.payload);
             }
             return state;
         },
@@ -119,7 +137,6 @@ export const comments = createSlice({
             return state;
         },
         [createRating.fulfilled]: (state, action) => {
-            console.log('createRating')
             const newRating = action.payload;
             let { comment: commentId } = action.meta.arg.data;
             let targetComment = state.data.find(comment => comment._id === commentId);
@@ -136,7 +153,6 @@ export const comments = createSlice({
         },
         [createComment.fulfilled]: (state, action) => {
             const newComment = action.payload;
-            console.log(action.payload);
             state.data.push(newComment);
             return state;
         },

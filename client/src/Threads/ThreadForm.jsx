@@ -7,11 +7,12 @@ import Divider from '../ui/Divider';
 import Title from '../ui/Title';
 import * as Yup from 'yup';
 import LinkText from '../ui/LinkText';
-import FormikBasicInput, { StyledInput, StyledTextArea } from '../ui/FormikBasicInput';
+import { StyledInput, StyledTextArea } from '../ui/FormikBasicInput';
 import { appName } from '../ui/uiSettings';
 import { useDispatch, useSelector } from 'react-redux';
 import { createThread } from '../slices/threadsSlice';
 import { getUserSelector } from '../slices/userSlice';
+import FormInputGroup from '../ui/FormInputGroup';
 
 const ThreadSchema = Yup.object().shape({
     title: Yup.string().required('This field is required.').max(50),
@@ -20,21 +21,15 @@ const ThreadSchema = Yup.object().shape({
 
 function ThreadForm(props) {
 
-    const { className, boardId, redirectTo, onSubmit } = props;
+    const { className, boardId, redirectTo } = props;
     const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector(getUserSelector);
     document.title = `New thread - ${appName}`;
 
-    async function handleSubmit(values, { setSubmitting }) {
+    function handleSubmit(values, { setSubmitting }) {
         setSubmitting(true);
-        try {
-            await dispatch(createThread({token: user.token, data: values}));
-            history.push(redirectTo);
-            onSubmit();
-        } catch (err) {
-            setSubmitting(false);
-        }
+        dispatch(createThread({ token: user.token, data: values, onOk: () => { history.push(redirectTo); }, onError: () => { setSubmitting(false); } }));
     }
 
     return (
@@ -51,7 +46,7 @@ function ThreadForm(props) {
             onSubmit={handleSubmit}
             validationSchema={ThreadSchema}
         >
-            {(formik) => 
+            {(formik) =>
                 <Form className={className}>
                     <div>
                         <LinkText onClick={() => history.goBack()}>Go back</LinkText>
@@ -59,45 +54,39 @@ function ThreadForm(props) {
                     <Title dark>New Thread</Title>
                     <Divider />
                     <div>
-                        <span>Title:</span>
-                        <FormikBasicInput name='title'>
-                            {
-                                ({ field, inError, props }) => { return (<StyledInput disabled={formik.isSubmitting} inError={inError} type="text" {...field} />) }
-                            }
-                        </FormikBasicInput>
+                        <FormInputGroup label='Title'>
+                            <StyledInput
+                                inError={formik.touched.title && formik.errors.title}
+                                type='text'
+                                {...formik.getFieldProps('title')} />
+                        </FormInputGroup>
                     </div>
                     <div>
-                        <span>Text:</span>
-                        <FormikBasicInput name='text'>
-                            {
-                                ({ field, inError, props }) => { return (<StyledTextArea disabled={formik.isSubmitting} size='area' inError={inError} type="text" {...field} />) }
-                            }
-                        </FormikBasicInput>
+                        <FormInputGroup label='Text' >
+                            <StyledTextArea
+                                inError={formik.touched.title && formik.errors.title}
+                                type='text'
+                                {...formik.getFieldProps('text')} />
+                        </FormInputGroup>
                     </div>
-                    <div className='inline-blocked'>
-                        <div>
-                            <span>Sticky:</span>
-                            <FormikBasicInput name='sticky'>
-                                {
-                                    ({ field, inError, props }) => { return (<input type='checkbox' inError={inError} {...field} />) }
-                                }
-                            </FormikBasicInput>
-                        </div>
-                        <div>
-                            <span>Locked:</span>
-                            <FormikBasicInput name='locked'>
-                                {
-                                    ({ field, inError, props }) => { return (<input type='checkbox' inError={inError} {...field} />) }
-                                }
-                            </FormikBasicInput>
+                    <div className='flexed'>
+                        <span className='text-label'>Sticky:</span>
+                        <input
+                            type='checkbox'
+                            {...formik.getFieldProps('sticky')} />
+                    </div>
+                    <div className='flexed'>
+                        <span className='text-label'>Locked:</span>
+                        <input
+                            type='checkbox'
+                            {...formik.getFieldProps('locked')} />
 
-                        </div>
                     </div>
                     <DefaultButton type='submit'>Submit</DefaultButton>
                 </Form>
             }
 
-        </Formik>
+        </Formik >
     );
 }
 
@@ -105,6 +94,9 @@ export default styled(ThreadForm)`
     padding: 8px;
     & > span {
         display: block;
+    }
+    & .text-label {
+        color: #515f6b;
     }
     & .input {
         width: 100%;
@@ -114,9 +106,7 @@ export default styled(ThreadForm)`
         padding: 8px;
         font-size: .9rem;
     }
-    & > .inline-blocked {
-        > * {
-            display: inline-block;
-        }
+    & .flexed {
+        display: flex;
     }
 `;

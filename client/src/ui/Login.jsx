@@ -17,8 +17,8 @@ import ModalLoader from './ModalLoader';
 import { resetUser } from '../slices/userSlice';
 
 const LoginSchema = Yup.object().shape({
-    username: Yup.string().required('This field is required').min(3),
-    password: Yup.string().required('This field is required').min(3),
+    username: Yup.string().required('This field is required').min(3, (obj) => `Username must be at least ${obj.min} characters`),
+    password: Yup.string().required('This field is required').min(3, (obj) => `Password must be at least ${obj.min} characters`),
 }
 );
 

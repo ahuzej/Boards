@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams, Switch, useLocation } from 'react-router';
 import Container from '../ui/Container';
@@ -23,7 +23,6 @@ function BoardHome(props) {
     const { id } = useParams();
     const board = useSelector(state => boardByIdSelector(state, id)) || {};
     const threadsStatus = useSelector(state => threadsStatusSelector(state, id));
-    const pageTitle = useRef('Loading...');
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
@@ -33,12 +32,10 @@ function BoardHome(props) {
      * After every render, change the page title only if board name has changed. 
      */
     useEffect(() => {
-        if (board.name) {
-            pageTitle.current = board.name;
-        }
-        document.title = `${pageTitle.current} - ${appName}`;
-        navContext.setTitle(pageTitle.current);
-
+        let title = board.name ?? 'Error!';
+        document.title = `${title} - ${appName}`;
+        navContext.setTitle(title);
+        
     }, [board.name, navContext]);
 
     useEffect(() => {

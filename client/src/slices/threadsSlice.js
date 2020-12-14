@@ -1,8 +1,8 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import BoardsAPI from "../api/BoardsAPI";
 import { logoutAction } from "./userSlice";
 
-export const getAllThreads = createAsyncThunk('threads/getAllThreads', async (args, { dispatch, getState }) => {
+export const getAllThreads = createAsyncThunk('threads/getAllThreads', async (args, { dispatch, getState, rejectWithValue }) => {
     const { boardId } = args;
     try {
         const user = getState().user.data;
@@ -13,27 +13,39 @@ export const getAllThreads = createAsyncThunk('threads/getAllThreads', async (ar
             threads: response
         };
     } catch (err) {
-        const { statusCode } = err.response.data;
-        if (statusCode && statusCode === - 100) {
-            dispatch(logoutAction());
-        } else {
-            throw new Error('Request failed.');
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
         }
+        return rejectWithValue(rejectMessage);
     }
 });
 
-export const createThread = createAsyncThunk('threads/createThread', async (args, { dispatch }) => {
-    const { data, token } = args;
+export const createThread = createAsyncThunk('threads/createThread', async (args, { dispatch, rejectWithValue }) => {
+    const { data, token, onOk, onError } = args;
     try {
         const response = await BoardsAPI.createThread(token, data);
+        onOk();
         return response;
     } catch (err) {
-        const { statusCode } = err.response.data;
-        if (statusCode && statusCode === - 100) {
-            dispatch(logoutAction());
-        } else {
-            throw new Error('Request failed.');
+        onError();
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
         }
+        return rejectWithValue(rejectMessage);
     }
 });
 
@@ -52,6 +64,8 @@ export const threadsStatusSelector = (state) => {
 }
 
 export const threadByIdSelector = (state, id) => state.threads.data.find(thread => thread._id === id);
+
+export const getThreadsErrorSelector = (state) => state.threads.error;
 
 
 export const threads = createSlice({
@@ -73,11 +87,23 @@ export const threads = createSlice({
                 const { threads } = action.payload;
                 state.status = 'complete';
                 state.data = threads;
-                console.log(current(state));
             }
             return state;
         },
         [getAllThreads.rejected]: (state, action) => {
+            state.status = 'failed';
+            return state;
+        },
+        [createThread.pending]: (state, action) => {
+            state.status = 'loading';
+            return state;
+        },
+        [createThread.fulfilled]: (state, action) => {
+            const thread = action.payload;
+            state.data.push(thread);
+            return state;
+        },
+        [createThread.rejected]: (state, action) => {
             state.status = 'failed';
             return state;
         },

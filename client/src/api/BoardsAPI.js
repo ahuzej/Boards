@@ -109,7 +109,6 @@ BoardsAPI.prototype.getComments = async function (token, threadId) {
     
     response = await axios.get(`${this.url}threads/${threadId}/comments`, config);
     response = response.data.data;
-    console.log(response);
     return response;
 }
 

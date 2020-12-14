@@ -1,19 +1,24 @@
 import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import BoardsAPI from "../api/BoardsAPI";
 
-export const loginAction = createAsyncThunk('user/login', async (args, { dispatch }) => {
+export const loginAction = createAsyncThunk('user/login', async (args, { dispatch, rejectWithValue }) => {
     const { username, password } = args;
     try {
         const response = await BoardsAPI.loginUser(username, password);
         console.log(response);
         return response;
     } catch (err) {
-        const { statusCode } = err.response.data;
-        if (statusCode && statusCode === - 100) {
-            dispatch(logoutAction());
-        } else {
-            throw new Error('Data fetch failed.');
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
         }
+        return rejectWithValue(rejectMessage);
     }
 });
 
@@ -96,7 +101,7 @@ export const user = createSlice({
         [registerAction.fulfilled]: (state, action) => {
             let userData = action.payload;
             state.data = userData;
-            state.status = 'completeAAA';
+            state.status = 'complete';
             return state;
         },
         [registerAction.rejected]: (state, action) => {

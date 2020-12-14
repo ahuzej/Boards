@@ -3,18 +3,18 @@ import React from 'react';
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import SectionHeading from '../ui/SectionHeading';
 import styled from 'styled-components';
 import { StyledInput, StyledTextArea } from '../ui/FormikBasicInput';
 import DefaultButton from '../ui/DefaultButton';
 import { useHistory } from 'react-router';
-import { createBoard } from '../slices/boardsSlice';
-import { getUserSelector } from '../slices/userSlice';
+import { createBoard, getBoardsErrorSelector } from '../slices/boardsSlice';
 import Title, { Subtitle } from '../ui/Title';
 import FormInputGroup from '../ui/FormInputGroup';
+import ErrorLabel from '../ui/ErrorLabel';
+import Divider from '../ui/Divider';
 
 const BoardSchema = Yup.object().shape({
-    name: Yup.string().required('Required field'),
+    name: Yup.string().required('This field is required'),
     description: Yup.string()
 }
 );
@@ -22,8 +22,8 @@ const BoardSchema = Yup.object().shape({
 function BoardForm(props) {
     const { className } = props;
     const dispatch = useDispatch();
-    const user = useSelector(getUserSelector);
     const history = useHistory();
+    const boardsError = useSelector(getBoardsErrorSelector);
 
     return (
         <Formik
@@ -32,10 +32,9 @@ function BoardForm(props) {
                 description: ''
             }}
             onSubmit={
-                (values, {setSubmitting}) => {
+                (values, { setSubmitting }) => {
                     setSubmitting(true);
-                    dispatch(createBoard({ token: user.token, data: values }));
-                    history.push('/boards');
+                    dispatch(createBoard({ data: values, onOk: () => { history.push('/boards'); }, onError: () => { setSubmitting(false); } }));
                 }
             }
             validationSchema={BoardSchema}
@@ -44,15 +43,23 @@ function BoardForm(props) {
                 <Form className={className}>
                     <div>
                         <Title>New board</Title>
-                        <Subtitle>Enter basic information about this board</Subtitle>
-                        <FormInputGroup label='Title' error=''>
-                            <StyledInput type='text' {...formik.getFieldProps('name')} />
+                        <Subtitle color='#515f6b'>Enter basic information about this board</Subtitle>
+                        <Divider />
+                        <FormInputGroup label='Title' error={formik.touched.name && formik.errors.name}>
+                            <StyledInput
+                                inError={formik.touched.name && formik.errors.name}
+                                type='text'
+                                {...formik.getFieldProps('name')} />
                         </FormInputGroup>
-                        <FormInputGroup label='Description' error=''>
-                            <StyledTextArea {...formik.getFieldProps('description')} />
+                        <FormInputGroup label='Description' error={formik.touched.description && formik.errors.description}>
+                            <StyledTextArea
+                                inError={formik.touched.description && formik.errors.description}
+                                type='text'
+                                {...formik.getFieldProps('description')} />
                         </FormInputGroup>
                     </div>
                     <DefaultButton type="submit">Create</DefaultButton>
+                    {boardsError && <div><ErrorLabel>{boardsError}</ErrorLabel></div>}
 
                 </Form>
             }
