@@ -49,6 +49,27 @@ export const createThread = createAsyncThunk('threads/createThread', async (args
     }
 });
 
+export const updateThreadLock = createAsyncThunk('threads/updateThreadLock', async (args, { dispatch, rejectWithValue, getState }) => {
+    const { locked, threadId } = args;
+    try {
+        const user = getState().user.data;
+        const response = await BoardsAPI.updateThreadLock(user.token, threadId, locked);
+        return response;
+    } catch (err) {
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
+        }
+        return rejectWithValue(rejectMessage);
+    }
+});
+
 const initialState = {
     status: 'idle',
     data: [],
@@ -107,6 +128,19 @@ export const threads = createSlice({
             state.status = 'failed';
             return state;
         },
+        [updateThreadLock.pending]: (state, action) => {
+            state.status = 'loading';
+            return state;
+        },
+        [updateThreadLock.fulfilled]: (state, action) => {
+            const thread = action.payload;
+
+            return state;
+        },
+        [updateThreadLock.rejected]: (state, action) => {
+            state.status = 'failed';
+            return state;
+        }
     }
 });
 

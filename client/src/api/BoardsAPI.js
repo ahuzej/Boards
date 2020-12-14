@@ -4,12 +4,12 @@ function createGetUrl(url, params) {
     let paramKeys = Object.keys(params);
     let first = true;
     let delimiter = '?';
-    for(let i=0; i < paramKeys.length; i++) {
+    for (let i = 0; i < paramKeys.length; i++) {
         let key = paramKeys[i];
         let value = params[key];
-        if(value) {
+        if (value) {
             url = `${url}${delimiter}${key}=${value}`;
-            if(first) {
+            if (first) {
                 first = false;
                 delimiter = '&';
             }
@@ -24,14 +24,14 @@ const BoardsAPI = function () {
 BoardsAPI.prototype.registerUser = async function (username, password, email) {
     let response = [];
 
-    response = await axios.post(`${this.url}auth/signUp`, { username, password, email});
+    response = await axios.post(`${this.url}auth/signUp`, { username, password, email });
     response = response.data.data;
     return response;
 }
 BoardsAPI.prototype.loginUser = async function (username, password) {
     let response = [];
 
-    response = await axios.post(`${this.url}auth/signIn`, { username, password});
+    response = await axios.post(`${this.url}auth/signIn`, { username, password });
     response = response.data.data;
     return response;
 }
@@ -67,10 +67,10 @@ BoardsAPI.prototype.getUsers = async function (token, username, boardId) {
         }
     };
 
-    let url = createGetUrl(`${this.url}users`, {username, boardId});
+    let url = createGetUrl(`${this.url}users`, { username, boardId });
     response = await axios.get(url, config);
     response = response.data.data;
-    
+
     return response;
 }
 BoardsAPI.prototype.getById = async function (token, id) {
@@ -83,7 +83,7 @@ BoardsAPI.prototype.getById = async function (token, id) {
 
     response = await axios.get(`${this.url}boards/${id}`, config);
     response = response.data.data;
-    
+
     return response;
 }
 BoardsAPI.prototype.getThreads = async function (token, boardId) {
@@ -93,10 +93,10 @@ BoardsAPI.prototype.getThreads = async function (token, boardId) {
             'Authorization': `Token ${token}`
         }
     };
-    
+
     response = await axios.get(`${this.url}boards/${boardId}/threads`, config);
     response = response.data.data;
-    
+
     return response;
 }
 BoardsAPI.prototype.getComments = async function (token, threadId) {
@@ -106,7 +106,7 @@ BoardsAPI.prototype.getComments = async function (token, threadId) {
             'Authorization': `Token ${token}`
         }
     };
-    
+
     response = await axios.get(`${this.url}threads/${threadId}/comments`, config);
     response = response.data.data;
     return response;
@@ -122,7 +122,7 @@ BoardsAPI.prototype.getThread = async function (token, threadId) {
 
     response = await axios.get(`${this.url}threads/${threadId}`, config);
     response = response.data.data;
-    
+
     return response;
 }
 BoardsAPI.prototype.createThread = async function (token, data) {
@@ -134,7 +134,7 @@ BoardsAPI.prototype.createThread = async function (token, data) {
     };
     response = await axios.post(`${this.url}threads/`, data, config);
     response = response.data.data;
-    
+
     return response;
 }
 BoardsAPI.prototype.createBoard = async function (token, data) {
@@ -146,7 +146,7 @@ BoardsAPI.prototype.createBoard = async function (token, data) {
     };
     response = await axios.post(`${this.url}boards`, data, config);
     response = response.data.data;
-    
+
     return response;
 }
 BoardsAPI.prototype.createComment = async function (token, threadId, data) {
@@ -171,7 +171,7 @@ BoardsAPI.prototype.createRating = async function (token, data) {
     };
     response = await axios.post(`${this.url}threads/${threadId}/comments/rate`, data, config);
     response = response.data.data;
-    
+
     return response;
 }
 BoardsAPI.prototype.addUsersToBoard = async function (token, boardId, data) {
@@ -183,7 +183,20 @@ BoardsAPI.prototype.addUsersToBoard = async function (token, boardId, data) {
     };
     response = await axios.post(`${this.url}boards/${boardId}/addUser`, data, config);
     response = response.data.data;
-    
+
     return response;
 }
+BoardsAPI.prototype.updateThreadLock = async function (token, threadId, locked) {
+    let response = null;
+    let config = {
+        headers: {
+            'Authorization': `Token ${token}`
+        }
+    };
+    response = await axios.post(`${this.url}threads/${threadId}/changeThreadState`, { locked }, config);
+    response = response.data.data;
+
+    return response;
+}
+
 export default new BoardsAPI();

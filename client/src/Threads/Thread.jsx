@@ -9,10 +9,11 @@ import CommentForm from './CommentForm';
 import LinkText from '../ui/LinkText';
 import Moment from 'react-moment';
 import { dateFormat } from '../ui/uiSettings';
-import { threadByIdSelector, threadsStatusSelector } from '../slices/threadsSlice';
+import { lockThread, threadByIdSelector, threadsStatusSelector, updateThreadLock } from '../slices/threadsSlice';
 import { commentsPagingSelector, commentsStatusSelector, getAllComments } from '../slices/commentsSlice';
 import usePaging from '../hooks/usePaging';
 import NavigationContext from '../contexts/NavigationContext';
+import DefaultButton from '../ui/DefaultButton';
 
 function Thread(props) {
     const { className } = props;
@@ -28,7 +29,7 @@ function Thread(props) {
     const commentsStatus = useSelector(commentsStatusSelector);
     // Paging thread comments
     const pageNumbers = [...Array(totalAmountOfPages + 1).keys()].slice(1);
-
+    console.log(thread);
     useEffect(() => {
         dispatch(
             getAllComments(
@@ -37,8 +38,12 @@ function Thread(props) {
         );
     }, [dispatch, threadId]);
 
+    function lockButtonClick() {
+        dispatch(updateThreadLock({locked: !thread.locked}));
+    }
+
     useEffect(() => {
-        if(commentsStatus === 'failed') {
+        if (commentsStatus === 'failed') {
             navContext.setTitle('Error!');
         }
     }, [commentsStatus, navContext]);
@@ -48,6 +53,9 @@ function Thread(props) {
             <Container light>
                 <Title color='white'>{thread.title}</Title>
                 {thread.dateTime && <Subtitle light><Moment format={dateFormat}>{thread.dateTime}</Moment></Subtitle>}
+                <div className='action-controls'>
+                    <DefaultButton onClick={lockButtonClick}>{thread.locked ? 'Unlock' : 'Lock'}</DefaultButton>
+                </div>
             </Container>
             <Container>
                 <div className='thread-comments'>
@@ -71,7 +79,9 @@ export default styled(Thread)`
 & .thread-comment-form {
     margin-top: 16px;
 }
-
+& .action-controls {
+    margin-top: 8px;
+}
 .thread-pages > * {
     padding: 3px;
 }

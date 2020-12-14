@@ -103,7 +103,6 @@ export const commentsStatusSelector = (state) => {
 
 export const commentByIdSliceSelector = (state, id) => state.data.find(comment => comment._id === id);
 
-
 export const commentsPagingSelector = (state, page, itemsPerPage) => {
     const comments = state.comments.data;
     const totalAmountOfPages = Math.ceil(comments.length / itemsPerPage);
