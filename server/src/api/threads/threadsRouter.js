@@ -369,6 +369,7 @@ router.post('/', async function (req, res, next) {
  * Data: Object.
  */
 router.post('/:threadId/comments/create', async function (req, res, next) {
+    logger.info('Entered threadsRouter.js post /threads/:threadId/comments/create');
 
     const { text } = req.body;
     const { threadId } = req.params;
@@ -404,6 +405,51 @@ router.post('/:threadId/comments/create', async function (req, res, next) {
         };
     }
 
+    logger.info('Exiting threadsRouter.js post /threads/:threadId/comments/create');
+    next();
+
+}, prepareResponse);
+
+/**
+ * Route: /threads/:threadId/changeThreadState POST
+ * Updates threads collection that matches the given document id and saves it in the database.
+ * Data: Object.
+ */
+router.post('/:threadId/changeThreadState', async function (req, res, next) {
+    logger.info('Entered threadsRouter.js post /threads/:threadId/changeThreadState');
+
+    const { locked, sticky } = req.body;
+    const { threadId } = req.params;
+    const { status } = req.payloadInfo;
+    let data = undefined;
+    if (isStatusOk(status)) {
+
+        try {
+            const thread = await Thread.findById(threadId);
+            logger.info(`Thread JSON: ${JSON.stringify(thread)}`);
+
+            if(thread) {
+                if(typeof locked === 'boolean') {
+                    thread.locked = locked;
+                }
+                if(typeof sticky === 'boolean') {
+                    thread.sticky = sticky;
+                }
+                await thread.save();
+                logger.info(`Thread ${threadId} updated.`);
+                data = thread;
+            }
+        } catch (err) {
+            req.payloadInfo = schemaErrorResponse(req.payloadInfo, err, 'An error has occured while updating!');
+        }
+
+        req.payloadInfo = {
+            ...req.payloadInfo,
+            data
+        };
+    }
+
+    logger.info('Exiting threadsRouter.js post /threads/:threadId/changeThreadState');
     next();
 
 }, prepareResponse);

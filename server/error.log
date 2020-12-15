@@ -49,3 +49,7 @@
 {"message":"Argument passed in must be a single String of 12 bytes or a string of 24 hex characters","level":"error"}
 {"level":"error"}
 {"message":"Argument passed in must be a single String of 12 bytes or a string of 24 hex characters","level":"error"}
+{"message":"Thread validation failed: sticky: Path `sticky` is required.","level":"error"}
+{"message":"Cast to ObjectId failed for value \"undefined\" at path \"_id\" for model \"Thread\"","level":"error"}
+{"level":"error"}
+{"message":"Argument passed in must be a single String of 12 bytes or a string of 24 hex characters","level":"error"}
