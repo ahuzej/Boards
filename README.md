@@ -1,5 +1,9 @@
 ## Boards
-Full-stack boards/threads web application built with Javascript. Includes:
+Full-stack boards/threads web application built with Javascript. 
+
+Hosted at: http://ec2-52-28-222-58.eu-central-1.compute.amazonaws.com:5000/
+
+Includes:
 
 * Creating a new Board
 * Adding people to Boards
