@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import BoardsAPI from "../api/BoardsAPI";
 import { logoutAction } from "./userSlice";
 
@@ -70,6 +70,28 @@ export const updateThreadLock = createAsyncThunk('threads/updateThreadLock', asy
     }
 });
 
+export const updateThreadSticky = createAsyncThunk('threads/updateThreadSticky', async (args, { dispatch, rejectWithValue, getState }) => {
+    const { sticky, threadId } = args;
+    try {
+        const user = getState().user.data;
+        console.log(args);
+        const response = await BoardsAPI.updateThreadSticky(user.token, threadId, sticky);
+        return response;
+    } catch (err) {
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
+        }
+        return rejectWithValue(rejectMessage);
+    }
+});
+
 const initialState = {
     status: 'idle',
     data: [],
@@ -116,7 +138,6 @@ export const threads = createSlice({
             return state;
         },
         [createThread.pending]: (state, action) => {
-            state.status = 'loading';
             return state;
         },
         [createThread.fulfilled]: (state, action) => {
@@ -128,17 +149,40 @@ export const threads = createSlice({
             state.status = 'failed';
             return state;
         },
-        [updateThreadLock.pending]: (state, action) => {
-            state.status = 'loading';
-            return state;
-        },
         [updateThreadLock.fulfilled]: (state, action) => {
-            const thread = action.payload;
-
+            if (action.payload) {
+                const updatedThread = action.payload;
+                state.data = state.data.map(thread => thread._id === updatedThread._id ? { ...thread, locked: updatedThread.locked } : thread);
+            }
             return state;
         },
-        [updateThreadLock.rejected]: (state, action) => {
-            state.status = 'failed';
+        [updateThreadSticky.fulfilled]: (state, action) => {
+            if (action.payload) {
+                const updatedThread = action.payload;
+                let oldThread = null;
+                let oldThreadIdx; // finding previous state of thread being updated
+                let lastStickyIdx = null; // finding idx of the last stickied thread
+                for (let i = 0; i < state.data.length; i++) {
+                    if (lastStickyIdx && oldThreadIdx) { // bail out if we've found everything
+                        break;
+                    }
+                    let currentIterationThread = state.data[i];
+                    if (currentIterationThread._id === updatedThread._id) {
+                        oldThread = currentIterationThread;
+                        oldThreadIdx = i;
+                    }
+                    if (currentIterationThread.sticky) {
+                        lastStickyIdx = i;
+                    }
+                }
+
+                if (lastStickyIdx + 1 !== oldThreadIdx) {
+                    state.data.splice(lastStickyIdx != null ? lastStickyIdx + 1 : 0, 0, { ...oldThread, sticky: updatedThread.sticky });
+                    state.data.splice(oldThreadIdx, 1);
+                } else {
+                    state.data[oldThreadIdx].sticky = updatedThread.sticky;
+                }
+            }
             return state;
         }
     }

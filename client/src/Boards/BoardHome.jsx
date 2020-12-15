@@ -14,7 +14,7 @@ import AddPeople from '../People/AddPeople';
 import { Link } from 'react-router-dom';
 import PrivateRoute from '../ui/PrivateRoute';
 import { appName, fontSizeMd } from '../ui/uiSettings';
-import { getAllThreads, resetThreads, threadsStatusSelector } from '../slices/threadsSlice';
+import { getAllThreads, resetThreads } from '../slices/threadsSlice';
 import { boardByIdSelector } from '../slices/boardsSlice';
 import NavigationContext from '../contexts/NavigationContext';
 
@@ -22,7 +22,6 @@ function BoardHome(props) {
     const { match, className } = props;
     const { id } = useParams();
     const board = useSelector(state => boardByIdSelector(state, id)) || {};
-    const threadsStatus = useSelector(state => threadsStatusSelector(state, id));
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
@@ -35,19 +34,16 @@ function BoardHome(props) {
         let title = board.name ?? 'Error!';
         document.title = `${title} - ${appName}`;
         navContext.setTitle(title);
-        
+
     }, [board.name, navContext]);
 
     useEffect(() => {
-        if(threadsStatus === 'idle') {
-            dispatch(getAllThreads({ boardId: id }));
+        dispatch(getAllThreads({ boardId: id }));
+
+        return function () {
+            dispatch(resetThreads());
         }
-        return function() {
-            if(threadsStatus === 'complete') {
-                dispatch(resetThreads());
-            }
-        }
-    }, [dispatch, id, threadsStatus]);
+    }, [dispatch, id]);
 
     function handleTabItemClick(tabValue) {
         switch (tabValue) {

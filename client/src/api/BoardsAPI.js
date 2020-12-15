@@ -198,5 +198,18 @@ BoardsAPI.prototype.updateThreadLock = async function (token, threadId, locked) 
 
     return response;
 }
+BoardsAPI.prototype.updateThreadSticky = async function (token, threadId, sticky) {
+    let response = null;
+    let config = {
+        headers: {
+            'Authorization': `Token ${token}`
+        }
+    };
+    response = await axios.post(`${this.url}threads/${threadId}/changeThreadState`, { sticky }, config);
+    console.log(response);
+    response = response.data.data;
+
+    return response;
+}
 
 export default new BoardsAPI();

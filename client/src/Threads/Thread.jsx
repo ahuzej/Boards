@@ -9,7 +9,7 @@ import CommentForm from './CommentForm';
 import LinkText from '../ui/LinkText';
 import Moment from 'react-moment';
 import { dateFormat } from '../ui/uiSettings';
-import { lockThread, threadByIdSelector, threadsStatusSelector, updateThreadLock } from '../slices/threadsSlice';
+import { threadByIdSelector, threadsStatusSelector, updateThreadLock, updateThreadSticky } from '../slices/threadsSlice';
 import { commentsPagingSelector, commentsStatusSelector, getAllComments } from '../slices/commentsSlice';
 import usePaging from '../hooks/usePaging';
 import NavigationContext from '../contexts/NavigationContext';
@@ -18,7 +18,6 @@ import DefaultButton from '../ui/DefaultButton';
 function Thread(props) {
     const { className } = props;
     const { threadId } = useParams();
-
     const navContext = useContext(NavigationContext);
     const itemsPerPage = 10;
     const [page, changeCurrentPage] = usePaging('page');
@@ -29,7 +28,6 @@ function Thread(props) {
     const commentsStatus = useSelector(commentsStatusSelector);
     // Paging thread comments
     const pageNumbers = [...Array(totalAmountOfPages + 1).keys()].slice(1);
-    console.log(thread);
     useEffect(() => {
         dispatch(
             getAllComments(
@@ -39,7 +37,11 @@ function Thread(props) {
     }, [dispatch, threadId]);
 
     function lockButtonClick() {
-        dispatch(updateThreadLock({locked: !thread.locked}));
+        dispatch(updateThreadLock({locked: !thread.locked, threadId: thread._id}));
+    }
+
+    function stickyButtonClick() {
+        dispatch(updateThreadSticky({sticky: !thread.sticky, threadId: thread._id}));
     }
 
     useEffect(() => {
@@ -55,6 +57,7 @@ function Thread(props) {
                 {thread.dateTime && <Subtitle light><Moment format={dateFormat}>{thread.dateTime}</Moment></Subtitle>}
                 <div className='action-controls'>
                     <DefaultButton onClick={lockButtonClick}>{thread.locked ? 'Unlock' : 'Lock'}</DefaultButton>
+                    <DefaultButton onClick={stickyButtonClick}>{thread.sticky ? 'Unsticky' : 'Sticky'}</DefaultButton>
                 </div>
             </Container>
             <Container>
@@ -66,7 +69,7 @@ function Thread(props) {
                     {pageNumbers && pageNumbers.map((num, idx) => <LinkText key={idx} onClick={() => changeCurrentPage(num)} selected={num === page}>{num}</LinkText>)}
                 </div>
                 }
-                {(!thread.locked && threadsStatus !== 'failed') && <CommentForm className='thread-comment-form' threadId={threadId} />}
+                {(!thread.locked) && <CommentForm className='thread-comment-form' threadId={threadId} />}
             </Container>
         </div>
     );
@@ -81,6 +84,12 @@ export default styled(Thread)`
 }
 & .action-controls {
     margin-top: 8px;
+    > *:first-child {
+        margin-right: 4px;
+    }
+    > *:last-child {
+        margin-left: 4px;
+    }
 }
 .thread-pages > * {
     padding: 3px;
