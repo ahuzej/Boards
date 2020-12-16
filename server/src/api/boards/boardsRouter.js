@@ -147,102 +147,6 @@ router.get('/:boardId/threads', async function (req, res, next) {
                 },
                 {
                     $lookup: {
-                        from: 'ratings',
-                        let: { commentId: '$commentList._id', thread: '$_id', ratedBy: new ObjectId(id) },
-                        pipeline: [
-                            {
-                                $match: {
-                                    $expr: {
-                                        $and: [
-                                            { $eq: ['$comment', '$$commentId'] },
-                                            { $eq: ['$thread', '$$thread'] },
-                                            { $eq: ['$ratedBy', '$$ratedBy'] }
-                                        ]
-                                    }
-                                }
-                            }
-                        ],
-                        as: 'commentList.userRating'
-                    }
-                },
-                {
-                    $lookup: {
-                        from: 'ratings',
-                        let: { commentId: '$commentList._id', thread: '$_id', ratedBy: new ObjectId(id) },
-                        pipeline: [
-                            {
-                                $match: {
-                                    $expr: {
-                                        $and: [
-                                            { $eq: ['$comment', '$$commentId'] },
-                                            { $eq: ['$thread', '$$thread'] },
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                $group: {
-                                    _id: '$type',
-                                    count: { $sum: 1 }
-                                }
-                            },
-                            {
-                                $project: {
-                                    result: {
-                                        $cond: [
-                                            { $eq: ['$_id', 'upvote'] },
-                                            { 'upvotes': '$count' },
-                                            { 'downvotes': '$count' }
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                $group: {
-                                    _id: '$$thread',
-                                    totalUpvotes: { $sum: "$result.upvotes" },
-                                    totalDownvotes: { $sum: "$result.downvotes" }
-                                }
-                            },
-                            {
-                                $addFields: {
-                                    total: {
-                                        $subtract: ['$totalUpvotes', '$totalDownvotes']
-                                    }
-                                }
-                            }
-                        ],
-                        as: 'commentList.rating'
-                    }
-                },
-                {
-                    $unwind: {
-                        path: '$commentList.rating',
-                        preserveNullAndEmptyArrays: true
-                    }
-                },
-                {
-                    $addFields: {
-                        'commentList.rating.totalUpvotes': {
-                            $ifNull: ['$commentList.rating.totalUpvotes', 0]
-                        },
-
-                        'commentList.rating.totalDownvotes': {
-                            $ifNull: ['$commentList.rating.totalDownvotes', 0]
-                        },
-                        'commentList.rating.total': {
-                            $ifNull: ['$commentList.rating.total', 0]
-                        }
-                    }
-                },
-                {
-                    $unwind: {
-                        path: '$commentList.userRating',
-                        preserveNullAndEmptyArrays: true
-                    }
-                },
-                {
-                    $lookup: {
                         from: 'users',
                         localField: 'commentList.author',
                         foreignField: '_id',
@@ -267,6 +171,9 @@ router.get('/:boardId/threads', async function (req, res, next) {
                 },
                 {
                     $addFields: { "comments": { $size: '$commentList' }, 'lastComment': { $last: '$commentList' } },
+                },
+                {
+                    $unset: 'commentList'
                 },
                 {
                     $sort: { 'sticky': -1 }
