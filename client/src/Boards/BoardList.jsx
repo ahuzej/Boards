@@ -20,13 +20,7 @@ function BoardList(props) {
     const itemsPerPage = 10;
     const [page, changeCurrentPage] = usePaging('page');
     const { items: boards, totalAmountOfPages } = useSelector(state => boardsPagingSelector(state, page, itemsPerPage, filter));
-    const dispatch = useDispatch();
     const navContext = useContext(NavigationContext);
-
-
-    useEffect(() => {
-        dispatch(getAllBoards());
-    }, [dispatch]);
 
     useEffect(() => {
         navContext.setTitle(appName);
