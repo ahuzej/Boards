@@ -47,7 +47,6 @@ export const registerAction = createAsyncThunk('user/register', async (args, { d
 });
 
 
-export const logoutAction = createAction('user/logout');
 
 const initialState = {
     status: 'idle',
@@ -69,6 +68,14 @@ export const user = createSlice({
         resetUser: (state, action) => {
             state = initialState;
             return state;
+        },
+        logoutAction: (state, action) => {
+            state.data = {
+                loggedIn: false
+            };
+            state.status = 'idle';
+            return state;
+
         }
     },
     extraReducers: {
@@ -85,13 +92,6 @@ export const user = createSlice({
         },
         [loginAction.rejected]: (state, action) => {
             state.status = 'failed';
-            return state;
-        },
-        [logoutAction]: (state, action) => {
-            state.data = {
-                loggedIn: false
-            };
-            state.status = 'idle';
             return state;
         },
         [registerAction.pending]: (state, action) => {
@@ -111,6 +111,8 @@ export const user = createSlice({
         }
     }
 });
+
+export const { logoutAction } = user.actions;
 
 
 export const { resetUser } = user.actions;

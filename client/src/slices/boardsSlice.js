@@ -57,6 +57,7 @@ const initialState = {
 export const getBoardsSelector = (state) => state.boards.data;
 
 export const boardsByNameSelector = (state, name) => {
+    console.log(state.boards);
     return state.boards.data.filter(board => board.name.toLowerCase().includes(name.toLowerCase()));
 }
 

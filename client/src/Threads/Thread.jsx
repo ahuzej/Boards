@@ -37,11 +37,11 @@ function Thread(props) {
     }, [dispatch, threadId]);
 
     function lockButtonClick() {
-        dispatch(updateThreadLock({locked: !thread.locked, threadId: thread._id}));
+        dispatch(updateThreadLock({ locked: !thread.locked, threadId: thread._id }));
     }
 
     function stickyButtonClick() {
-        dispatch(updateThreadSticky({sticky: !thread.sticky, threadId: thread._id}));
+        dispatch(updateThreadSticky({ sticky: !thread.sticky, threadId: thread._id }));
     }
 
     useEffect(() => {
@@ -55,21 +55,22 @@ function Thread(props) {
             <Container light>
                 <Title color='white'>{thread.title}</Title>
                 {thread.dateTime && <Subtitle light><Moment format={dateFormat}>{thread.dateTime}</Moment></Subtitle>}
-                <div className='action-controls'>
+                {threadsStatus === 'complete' && <div className='action-controls'>
                     <DefaultButton onClick={lockButtonClick}>{thread.locked ? 'Unlock' : 'Lock'}</DefaultButton>
                     <DefaultButton onClick={stickyButtonClick}>{thread.sticky ? 'Unsticky' : 'Sticky'}</DefaultButton>
                 </div>
+                }
             </Container>
             <Container>
                 <div className='thread-comments'>
                     {commentsStatus === 'complete' && comments.map(comment => <ThreadComment comment={comment} key={comment._id} />)}
                 </div>
-                {threadsStatus === 'complete' && totalAmountOfPages > 1 && <div className='thread-pages'>
+                {commentsStatus === 'complete' && totalAmountOfPages > 1 && <div className='thread-pages'>
                     Go to page...
                     {pageNumbers && pageNumbers.map((num, idx) => <LinkText key={idx} onClick={() => changeCurrentPage(num)} selected={num === page}>{num}</LinkText>)}
                 </div>
                 }
-                {(!thread.locked) && <CommentForm className='thread-comment-form' threadId={threadId} />}
+                {(!thread.locked && threadsStatus === 'complete') && <CommentForm className='thread-comment-form' threadId={threadId} />}
             </Container>
         </div>
     );
