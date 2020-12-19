@@ -24,8 +24,8 @@ export const getAllBoards = createAsyncThunk('boards/getAllBoards', async (args,
     }
 });
 
-export const createBoard = createAsyncThunk('boards/createBoard', async (args, { dispatch, getState, rejectWithValue}) => {
-    const { data, onOk, onError} = args;
+export const createBoard = createAsyncThunk('boards/createBoard', async (args, { dispatch, getState, rejectWithValue }) => {
+    const { data, onOk, onError } = args;
     try {
         const user = getState().user.data;
 
@@ -60,6 +60,7 @@ export const boardsByNameSelector = (state, name) => {
     console.log(state.boards);
     return state.boards.data.filter(board => board.name.toLowerCase().includes(name.toLowerCase()));
 }
+
 
 export const boardsPagingSelector = (state, page, itemsPerPage, filter) => {
     const boards = boardsByNameSelector(state, filter);

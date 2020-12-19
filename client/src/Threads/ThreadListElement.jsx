@@ -13,7 +13,7 @@ function ThreadListElement(props) {
     const { className } = props;
     const { loaded, thread, lastComment } = props;
     
-    const { _id: id, title, sticky, locked, comments, owner } = thread || {};
+    const { _id: id, title, sticky, locked, comments, owner, dateTime: threadDate } = thread || {};
     const { username, img } = owner || {};
 
     const { dateTime, author } = lastComment || {};
@@ -47,7 +47,7 @@ function ThreadListElement(props) {
                 </div>
                 <div className='thread-flexed'>
                     <span className='thread-element'>{loaded ? `${comments} comments` : <Skeleton width='110px' />}</span>
-                    <span className='thread-element'>{loaded ? (dateTime ? <Moment format={dateFormat}>{dateTime}</Moment> : null) : <Skeleton width='100px' />}</span>
+                    <span className='thread-element'>{loaded ? (threadDate ? <Moment format={dateFormat}>{threadDate}</Moment> : null) : <Skeleton width='100px' />}</span>
                 </div>
             </div>
             <div className='thread-list-el-right'>

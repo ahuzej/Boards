@@ -95,8 +95,38 @@ export const updateThreadSticky = createAsyncThunk('threads/updateThreadSticky',
 const initialState = {
     status: 'idle',
     data: [],
-    error: null
+    error: null,
+    sortOrder: null
 };
+
+export const sortThreadSelectorOutput = (data, sortBy) => {
+    let sortFunction;
+    switch (sortBy) {
+        case 'none':
+        default:
+            sortFunction = null;
+            break;
+        case 'dateNew':
+            sortFunction = (a, b) => {
+                let dateA = new Date(a.dateTime);
+                let dateB = new Date(b.dateTime);
+                return -(dateA - dateB);
+            }
+            break;
+        case 'dateOld':
+            sortFunction = (a, b) => {
+                let dateA = new Date(a.dateTime);
+                let dateB = new Date(b.dateTime);
+                return (dateA - dateB);
+            }
+            break;
+    }
+    if (sortFunction != null) {
+        data = data.slice().sort(sortFunction);
+    }
+    return data;
+}
+
 
 export const getThreadsSelector = (state) => {
     return state.threads.data;
@@ -106,6 +136,9 @@ export const threadsStatusSelector = (state) => {
     return state.threads.status;
 }
 
+export const threadsSortSelector = (state) => {
+    return state.threads.sortOrder;
+}
 export const threadByIdSelector = (state, id) => state.threads.data.find(thread => thread._id === id);
 
 export const getThreadsErrorSelector = (state) => state.threads.error;
@@ -117,6 +150,10 @@ export const threads = createSlice({
     reducers: {
         resetThreads: (state, action) => {
             state = initialState;
+            return state;
+        },
+        threadSortChanged: (state, action) => {
+            state.sortOrder = action.payload;
             return state;
         }
     },
@@ -190,3 +227,6 @@ export const threads = createSlice({
 
 
 export const { resetThreads } = threads.actions;
+export const { threadSortChanged } = threads.actions;
+
+

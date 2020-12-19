@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { getThreadsSelector, threadsStatusSelector } from '../slices/threadsSlice';
+import { getThreadsSelector, threadsStatusSelector, sortThreadSelectorOutput, threadsSortSelector } from '../slices/threadsSlice';
 import Divider from '../ui/Divider';
 import ModalBox from '../ui/ModalBox';
 import ThreadListElement from './ThreadListElement';
@@ -9,7 +9,8 @@ import ThreadListElement from './ThreadListElement';
 function ThreadListPane(props) {
 
     const { className, boardId } = props;
-    const threads = useSelector(getThreadsSelector);
+    const threadSort = useSelector(threadsSortSelector)
+    const threads = sortThreadSelectorOutput(useSelector(getThreadsSelector), threadSort);
     const threadsStatus = useSelector(state => threadsStatusSelector(state, boardId));
 
     return (

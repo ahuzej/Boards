@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import NavigationContext from '../contexts/NavigationContext';
 import usePaging from '../hooks/usePaging';
-import { getAllBoards, boardsPagingSelector } from '../slices/boardsSlice';
+import { boardsPagingSelector, sortBoardSelectorOutput } from '../slices/boardsSlice';
 import Divider from '../ui/Divider';
 import { StyledInput } from '../ui/FormikInput';
 import ItemList from './BoardItemList';
@@ -19,7 +19,8 @@ function BoardList(props) {
     const [filter, setFilter] = useState('');
     const itemsPerPage = 10;
     const [page, changeCurrentPage] = usePaging('page');
-    const { items: boards, totalAmountOfPages } = useSelector(state => boardsPagingSelector(state, page, itemsPerPage, filter));
+    const [ sortOption, setSortOption ] = useState('dateNew');
+    const { items: boards, totalAmountOfPages } = useSelector(state => (boardsPagingSelector(state, page, itemsPerPage, filter)));
     const navContext = useContext(NavigationContext);
 
     useEffect(() => {
@@ -30,17 +31,27 @@ function BoardList(props) {
         setFilter(evt.target.value);
     }
 
+
     return (
         <div className={className}>
             <div className='board-list-section'>
                 <div className='flexed-title'>
-                    <div className='navigation-controls'>
+                    <div className='action-control'>
+                        Sort:
+                        <StyledInput as='select'>
+                            <option>Ascending</option>
+                            <option>Descending</option>
+                        </StyledInput>
+                    </div>
+                    <div className='action-control'>
                         Search:
                         <StyledInput value={filter} onChange={handleFilterChange}></StyledInput>
-                        <Link to='/boards/new'>
-                            New board...
-                        </Link>
                     </div>
+                </div>
+                <div className='right-aligned'>
+                    <Link className='nav-link' to='/boards/new'>
+                        New board...
+                        </Link>
                 </div>
                 <Divider />
                 <div className='content-section'>
@@ -49,8 +60,8 @@ function BoardList(props) {
                     </div>
                 </div>
                 <div className='board-navigation'>
-                    {page !== 1 && <LinkText onClick={() => changeCurrentPage(page - 1)}>Previous page...</LinkText> }
-                    {page < totalAmountOfPages && <LinkText onClick={() => changeCurrentPage(page + 1)}>Next page...</LinkText> 
+                    {page !== 1 && <LinkText onClick={() => changeCurrentPage(page - 1)}>Previous page...</LinkText>}
+                    {page < totalAmountOfPages && <LinkText onClick={() => changeCurrentPage(page + 1)}>Next page...</LinkText>
                     }
                 </div>
             </div>
@@ -70,7 +81,7 @@ export default styled(BoardList)`
     & > .activity-section {
         flex-grow: .2;
     }
-    & > .board-list-section > .content-section {
+    & .content-section {
         display: flex;
         justify-content: space-around;
 
@@ -78,10 +89,16 @@ export default styled(BoardList)`
     
     & .flexed-title {
         display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
+        justify-content: space-between;
+        align-items: center;
     }
-    & > .board-list-section > .flexed-title > .navigation-controls {
+    & .right-aligned {
+        text-align: right;
+    }
+    & .nav-link {
+        font-size: ${fontSizeMd};
+    }
+    & .action-control {
         font-size: ${fontSizeMd};
         width: 250px;
     }

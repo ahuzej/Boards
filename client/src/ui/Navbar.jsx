@@ -14,7 +14,7 @@ function Navbar(props) {
         <div className={className}>
             <Title color='#fff' className='nav-title'>{navigation.title}</Title>
             <div className='flexed'>
-                <Link className='nav-item' to='/boards'>Boards</Link>
+                <Link className='nav-item' to='/boards'>Home</Link>
                 <div className='relative-container'>
                     <ProfileIcon />
                 </div>

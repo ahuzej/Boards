@@ -14,9 +14,10 @@ import AddPeople from '../People/AddPeople';
 import { Link } from 'react-router-dom';
 import PrivateRoute from '../ui/PrivateRoute';
 import { appName, fontSizeMd } from '../ui/uiSettings';
-import { getAllThreads, resetThreads } from '../slices/threadsSlice';
+import { getAllThreads, resetThreads, threadSortChanged } from '../slices/threadsSlice';
 import { boardByIdSelector } from '../slices/boardsSlice';
 import NavigationContext from '../contexts/NavigationContext';
+import { StyledInput } from '../ui/FormikBasicInput';
 
 function BoardHome(props) {
     const { match, className } = props;
@@ -58,6 +59,10 @@ function BoardHome(props) {
         }
     }
 
+    function handleChange(evt) {
+        dispatch(threadSortChanged(evt.target.value));
+    }
+
     return (
         <div className={className}>
             <TabHeader>
@@ -70,6 +75,13 @@ function BoardHome(props) {
                         <PrivateRoute path={`${match.url}/thread`} render={(props) => (
                             <Switch>
                                 <PrivateRoute exact path={`${match.url}/thread`}>
+                                    <div>
+                                        <StyledInput as='select' onChange={handleChange}>
+                                            <option value='none'>Default</option>
+                                            <option value='dateNew'>Date - newest</option>
+                                            <option value='dateOld'>Date - oldest</option>
+                                        </StyledInput>
+                                    </div>
                                     <div className='flexed'>
                                         <Link to={`${match.url}/thread/new`}  >+ New thread...</Link>
                                     </div>
