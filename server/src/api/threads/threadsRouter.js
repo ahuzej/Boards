@@ -348,6 +348,11 @@ router.post('/', async function (req, res, next) {
             }
             );
             await comment.save();
+
+            data = data.toObject();
+
+            data.comments = 1;
+
             logger.info(`Inserted thread with id ${data._id}`);
         } catch (err) {
             req.payloadInfo = schemaErrorResponse(req.payloadInfo, err, 'Error while inserting new thread!');
