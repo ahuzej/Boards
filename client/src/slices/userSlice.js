@@ -5,7 +5,6 @@ export const loginAction = createAsyncThunk('user/login', async (args, { dispatc
     const { username, password } = args;
     try {
         const response = await BoardsAPI.loginUser(username, password);
-        console.log(response);
         return response;
     } catch (err) {
         let rejectMessage = 'Error has occured.';

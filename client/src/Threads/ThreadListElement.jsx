@@ -46,7 +46,7 @@ function ThreadListElement(props) {
                     </div>
                 </div>
                 <div className='thread-flexed'>
-                    <span className='thread-element'>{loaded ? `${comments} comments` : <Skeleton width='110px' />}</span>
+                    <span className='thread-element'>{loaded ? `${comments} ${comments === 1 ? 'comment' : 'comments'}` : <Skeleton width='110px' />}</span>
                     <span className='thread-element'>{loaded ? (threadDate ? <Moment format={dateFormat}>{threadDate}</Moment> : null) : <Skeleton width='100px' />}</span>
                 </div>
             </div>
