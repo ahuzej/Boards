@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import NavigationContext from '../contexts/NavigationContext';
 import usePaging from '../hooks/usePaging';
-import { boardsPagingSelector, sortBoardSelectorOutput } from '../slices/boardsSlice';
+import { boardsPagingSelector, sortBoardsSelectorOutput, boardSortChanged, boardsSortSelector} from '../slices/boardsSlice';
 import Divider from '../ui/Divider';
 import { StyledInput } from '../ui/FormikInput';
 import ItemList from './BoardItemList';
@@ -19,9 +19,11 @@ function BoardList(props) {
     const [filter, setFilter] = useState('');
     const itemsPerPage = 10;
     const [page, changeCurrentPage] = usePaging('page');
-    const [ sortOption, setSortOption ] = useState('dateNew');
-    const { items: boards, totalAmountOfPages } = useSelector(state => (boardsPagingSelector(state, page, itemsPerPage, filter)));
+    const boardSort = useSelector(boardsSortSelector);
+
+    const { items: boards, totalAmountOfPages } = sortBoardsSelectorOutput(useSelector(state => (boardsPagingSelector(state, page, itemsPerPage, filter))), boardSort);
     const navContext = useContext(NavigationContext);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         navContext.setTitle(appName);
@@ -31,6 +33,10 @@ function BoardList(props) {
         setFilter(evt.target.value);
     }
 
+    function handleSortChange(evt) {
+        dispatch(boardSortChanged(evt.target.value));
+    }
+
 
     return (
         <div className={className}>
@@ -38,9 +44,10 @@ function BoardList(props) {
                 <div className='flexed-title'>
                     <div className='action-control'>
                         Sort:
-                        <StyledInput as='select'>
-                            <option>Ascending</option>
-                            <option>Descending</option>
+                        <StyledInput value={boardSort ?? ''} as='select' onChange={handleSortChange}>
+                            <option value='none'>Default</option>
+                            <option value='ascending'>Ascending</option>
+                            <option value='descending'>Descending</option>
                         </StyledInput>
                     </div>
                     <div className='action-control'>

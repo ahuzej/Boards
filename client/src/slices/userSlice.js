@@ -1,4 +1,4 @@
-import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import BoardsAPI from "../api/BoardsAPI";
 
 export const loginAction = createAsyncThunk('user/login', async (args, { dispatch, rejectWithValue }) => {

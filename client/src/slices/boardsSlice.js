@@ -2,8 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import BoardsAPI from "../api/BoardsAPI";
 import { logoutAction } from "./userSlice";
 
-
-
 export const getAllBoards = createAsyncThunk('boards/getAllBoards', async (args, { dispatch, getState, rejectWithValue }) => {
     try {
         const user = getState().user.data;
@@ -51,13 +49,13 @@ export const createBoard = createAsyncThunk('boards/createBoard', async (args, {
 const initialState = {
     status: 'idle',
     data: [],
-    error: null
+    error: null,
+    sortOrder: null
 };
 
 export const getBoardsSelector = (state) => state.boards.data;
 
 export const boardsByNameSelector = (state, name) => {
-    console.log(state.boards);
     return state.boards.data.filter(board => board.name.toLowerCase().includes(name.toLowerCase()));
 }
 
@@ -72,9 +70,59 @@ export const boardByIdSelector = (state, id) => {
     return state.boards.data ? state.boards.data.find(board => board._id === id) : {};
 }
 
+export const boardsSortSelector = (state) => {
+    return state.boards.sortOrder;
+}
 export const boardsArraySizeSelector = (state) => state.boards.data.length;
 
 export const getBoardsErrorSelector = (state) => state.boards.error;
+
+export const sortBoardsSelectorOutput = (data, sortBy) => {
+    let items = data.items;
+    let sortFunction;
+    switch (sortBy) {
+        case 'none':
+        default:
+            sortFunction = null;
+            break;
+        case 'ascending':
+            sortFunction = (a, b) => {
+                let nameA = a.name.toUpperCase();
+                let nameB = b.name.toUpperCase();
+
+                if(nameA > nameB) {
+                    return 1;
+                }
+                if(nameA < nameB) {
+                    return -1;
+                }
+                return 0;
+            }
+            break;
+        case 'descending':
+            sortFunction = (a, b) => {
+                let nameA = a.name.toUpperCase();
+                let nameB = b.name.toUpperCase();
+
+                if(nameA < nameB) {
+                    return 1;
+                }
+                if(nameA > nameB) {
+                    return -1;
+                }
+                return 0;
+
+            }
+            break;
+    }
+    if (sortFunction != null) {
+        items = items.slice().sort(sortFunction);
+    }
+    return  {
+        ...data,
+        items
+    };
+}
 
 export const boards = createSlice({
     name: 'boards',
@@ -82,6 +130,10 @@ export const boards = createSlice({
     reducers: {
         resetBoards: (state, action) => {
             state = initialState;
+            return state;
+        },
+        boardSortChanged: (state, action) => {
+            state.sortOrder = action.payload;
             return state;
         }
     },
@@ -105,4 +157,5 @@ export const boards = createSlice({
 });
 
 export const { resetBoards } = boards.actions;
+export const { boardSortChanged } = boards.actions;
 

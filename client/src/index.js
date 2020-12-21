@@ -5,9 +5,6 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './app/store';
 import { ThemeProvider } from 'styled-components';
-const test = React.createElement(App, null, null);
-console.log(test);
-console.log(test);
 const theme = {
   lightBg: '#395490',
   bgColor: '#315cb9',

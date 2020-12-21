@@ -22,7 +22,6 @@ function ProfileIcon() {
     useEffect(() => {
         let isMounted = true;
         let bubbleListener = document.addEventListener('mousedown', function (evt) {
-            console.log(evt);
             if(!evt.composedPath().includes(contextMenuRef.current) && isMounted) {
                 setVisible(false);
             }

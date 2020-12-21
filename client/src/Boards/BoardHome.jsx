@@ -14,7 +14,7 @@ import AddPeople from '../People/AddPeople';
 import { Link } from 'react-router-dom';
 import PrivateRoute from '../ui/PrivateRoute';
 import { appName, fontSizeMd } from '../ui/uiSettings';
-import { getAllThreads, resetThreads, threadSortChanged } from '../slices/threadsSlice';
+import { getAllThreads, resetThreads, threadSortChanged, threadsSortSelector} from '../slices/threadsSlice';
 import { boardByIdSelector } from '../slices/boardsSlice';
 import NavigationContext from '../contexts/NavigationContext';
 import { StyledInput } from '../ui/FormikBasicInput';
@@ -26,6 +26,7 @@ function BoardHome(props) {
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
+    const threadSort = useSelector(threadsSortSelector)
     const navContext = useContext(NavigationContext);
 
     /**
@@ -75,8 +76,9 @@ function BoardHome(props) {
                         <PrivateRoute path={`${match.url}/thread`} render={(props) => (
                             <Switch>
                                 <PrivateRoute exact path={`${match.url}/thread`}>
-                                    <div>
-                                        <StyledInput as='select' onChange={handleChange}>
+                                    <div className='action-control'>
+                                        Sort:
+                                        <StyledInput value={threadSort ?? ''} as='select' onChange={handleChange}>
                                             <option value='none'>Default</option>
                                             <option value='dateNew'>Date - newest</option>
                                             <option value='dateOld'>Date - oldest</option>
@@ -117,5 +119,17 @@ export default styled(BoardHome)`
     & .flexed {
         text-align: right;
         font-size: ${fontSizeMd};
+    }
+    .dropdown-sort {
+        width: 300px;
+    }
+    & .action-control {
+        font-size: ${fontSizeMd};
+        width: 250px;
+    }
+    @media (max-width: 700px) {
+        .dropdown-sort {
+            width: 100%;
+        }
     }
 `;
