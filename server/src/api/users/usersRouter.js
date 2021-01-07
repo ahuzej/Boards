@@ -5,7 +5,12 @@ const { baseErrorResponse, schemaErrorResponse } = require('../errorHandling');
 const { isStatusOk } = require('../../core/validation/statusValidation');
 const mongoose = require('mongoose');
 const { model: User } = require('../../core/models/users');
+const { current: fileUploader } = require('../fileUploader');
 const { ObjectId } = mongoose.Types;
+const multer = require('multer');
+const storage = multer.memoryStorage(); 
+const upload = multer({ storage: storage });
+
 
 /**
  * Route: /users GET
@@ -22,15 +27,15 @@ router.get('/', async function (req, res, next) {
         let { username } = req.query;
         try {
             let query = {};
-            if(username && username.length < 3) {
+            if (username && username.length < 3) {
                 data = [];
 
             } else {
-                if(username) {
+                if (username) {
                     query.username = { $regex: username };
                 }
                 data = await User.find(query);
-                logger.info(`User data: ${JSON.stringify(data)}`);    
+                logger.info(`User data: ${JSON.stringify(data)}`);
             }
         } catch (err) {
             logger.info(err);
@@ -129,7 +134,7 @@ router.get('/:userId/contacts', async function (req, res, next) {
                 },
                 {
                     $match: {
-                        'boards.0': { $exists: true}
+                        'boards.0': { $exists: true }
                     }
                 }
             ]).exec();
@@ -202,16 +207,16 @@ router.post('/', async function (req, res, next) {
  */
 router.put('/:userId', async function (req, res, next) {
     const { status } = req.payloadInfo;
+    const { userId } = req.params;
+    const { username, password } = req.body;
 
     var data = undefined;
 
     if (isStatusOk(status)) {
         try {
-            data = await User.findOneAndUpdate({ _id: req.params.userId }, {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                username: req.body.username,
-                password: req.body.password
+            data = await User.findOneAndUpdate({ _id: userId }, {
+                username,
+                password,
             }, { new: true });
             if (!data) {
                 req.payloadInfo = baseErrorResponse(req.payloadInfo, 'No matching document was found for the given document ID.', 400);
@@ -220,6 +225,49 @@ router.put('/:userId', async function (req, res, next) {
             }
         } catch (err) {
             req.payloadInfo = schemaErrorResponse(req.payloadInfo, 'Error occured while trying to update user!', 500);
+        }
+
+        req.payloadInfo = {
+            ...req.payloadInfo,
+            data
+        };
+    }
+
+    next();
+
+}, prepareResponse);
+
+/**
+ * Route: /users/:userId/uploadAvatar
+ * Uploads image and updates avatar url field from the 'users' collection that matches the given document ID.
+ * Data: Object.
+ */
+router.put('/:userId/uploadAvatar', upload.single('avatarImg'), async function (req, res, next) {
+    console.log('#"(##"/#/"#/""#/')
+    const { status } = req.payloadInfo;
+    const { userId } = req.params;
+    const avatarImg = req.file;
+    console.log(req.file);
+    var data = undefined;
+
+    if (isStatusOk(status)) {
+        try {
+            if (avatarImg) { // do file upload
+                let avatarUrl = null;
+
+                avatarUrl = await fileUploader.upload(avatarImg);
+                console.log('BEFORE UPDATE ERHREHRHE %s', avatarUrl);
+                data = await User.findOneAndUpdate({ _id: userId }, {
+                    avatarUrl
+                }, { new: true });
+            }
+            if (!data) {
+                req.payloadInfo = baseErrorResponse(req.payloadInfo, 'No matching document was found for the given document ID.', 400);
+            } else {
+                logger.info(`User data: ${JSON.stringify(data)}`);
+            }
+        } catch (err) {
+            req.payloadInfo = schemaErrorResponse(req.payloadInfo, 'Error occured while trying to update avatar image!', 500);
         }
 
         req.payloadInfo = {

@@ -6,7 +6,7 @@ async function initiateRequestProcess(req, res, next) {
     const method = req.method;
     const currentTime = Date.now();
     logger.info(`Initiating HTTP request process at: ${currentTime}, target is: ${url}, method is: ${method}`);
-    var ip = (req.headers['x-forwarded-for'] || '').split(',')[0] ||
+    let ip = (req.headers['x-forwarded-for'] || '').split(',')[0] ||
         req.connection.remoteAddress ||
         req.socket.remoteAddress ||
         req.connection.socket.remoteAddress;

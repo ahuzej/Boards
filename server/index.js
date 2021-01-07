@@ -16,6 +16,7 @@ const boardsRouter = require('./src/api/boards/boardsRouter');
 const threadsRouter = require('./src/api/threads/threadsRouter');
 const authenticationRouter = require('./src/api/authentication/authenticationRouter');
 const { createProtectedRoute, createBaseRoute, exportRoute } = require('./src/api/routing');
+
 // ACCESS LOGGER
 const morgan = require('morgan');
 if (!fs.existsSync(process.env.LOGFOLDER)){
