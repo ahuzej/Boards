@@ -13,6 +13,7 @@ import { getUserSelector } from './slices/userSlice';
 import { getAllBoards, resetBoards } from './slices/boardsSlice';
 import NavigationContext from './contexts/NavigationContext';
 import { appName } from './ui/uiSettings';
+import ProfileHome from './Profile/ProfileHome';
 
 function App() {
   const user = useSelector(getUserSelector);
@@ -66,6 +67,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute exact path='/boards'>
               <BoardList />
+            </PrivateRoute>
+            <PrivateRoute exact path='/profile/:id'>
+              <ProfileHome />
             </PrivateRoute>
             <PrivateRoute>
               <BoardList />

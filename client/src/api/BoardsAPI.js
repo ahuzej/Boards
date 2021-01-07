@@ -28,6 +28,23 @@ BoardsAPI.prototype.registerUser = async function (username, password, email) {
     response = response.data.data;
     return response;
 }
+BoardsAPI.prototype.uploadAvatar = async function (token, id, avatarImg) {
+    let response = null;
+    let config = {
+        headers: {
+            'Authorization': `Token ${token}`
+        }
+    };
+
+    const formData = new FormData();
+    console.log('HEHREHREH')
+
+    formData.append('avatarImg', avatarImg, 'test.png');
+    console.log('HEHREHREH')
+    response = await axios.put(`${this.url}users/${id}/uploadAvatar`, formData, config);
+    response = response.data.data;
+    return response;
+}
 BoardsAPI.prototype.loginUser = async function (username, password) {
     let response = [];
 
@@ -68,6 +85,20 @@ BoardsAPI.prototype.getUsers = async function (token, username, boardId) {
     };
 
     let url = createGetUrl(`${this.url}users`, { username, boardId });
+    response = await axios.get(url, config);
+    response = response.data.data;
+
+    return response;
+}
+BoardsAPI.prototype.getUserById = async function (token, id) {
+    let response = [];
+    let config = {
+        headers: {
+            'Authorization': `Token ${token}`
+        }
+    };
+
+    let url = `${this.url}users/${id}`;
     response = await axios.get(url, config);
     response = response.data.data;
 

@@ -46,6 +46,29 @@ export const registerAction = createAsyncThunk('user/register', async (args, { d
 });
 
 
+export const uploadAvatar = createAsyncThunk('user/uploadAvatar', async (args, { dispatch, rejectWithValue, getState }) => {
+    const { avatarImg } = args.data;
+    const { onOk, onError } = args;
+    try {
+        const user = getState().user.data;
+        const response = await BoardsAPI.uploadAvatar(user.token, user.id, avatarImg);
+        onOk();
+        return response;
+    } catch (err) {
+        onError();
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
+        }
+        return rejectWithValue(rejectMessage);
+    }
+});
 
 const initialState = {
     status: 'idle',
@@ -87,6 +110,11 @@ export const user = createSlice({
             const user = action.payload;
             user.loggedIn = true;
             state.data = user;
+            return state;
+        },
+        [uploadAvatar.fulfilled]: (state, action) => {
+            const avatarUrl = action.payload;
+            state.data.avatarUrl = avatarUrl;
             return state;
         },
         [loginAction.rejected]: (state, action) => {

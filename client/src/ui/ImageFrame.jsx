@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ReactComponent as UserImage } from '../svgs/user.svg';
 
 
 function ImageFrame(props) {
 
-    const { className, src, component, onClick } = props;
+    const { className, component, src, onClick } = props;
+
     return (
         <div className={className} onClick={onClick}>
+            {!component && !src && <UserImage />}
             {component ? component : <img src={src} alt='' /> }
         </div>
     );
