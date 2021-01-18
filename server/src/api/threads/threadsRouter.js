@@ -391,7 +391,7 @@ router.post('/:threadId/comments/create', async function (req, res, next) {
                 dateTime: Date.now()
             });
             data = await comment.save({});
-            await data.populate('author', 'username boards').execPopulate();
+            await data.populate('author', 'username boards avatarUrl').execPopulate();
 
             data = data.toObject();
             data.rating = {
@@ -399,7 +399,7 @@ router.post('/:threadId/comments/create', async function (req, res, next) {
                 totalDownvotes: 0,
                 total: 0
             };
-            logger.info(`Added comment to thread id ${threadId}, comment ${data}`);
+            logger.info(`Added comment to thread id ${threadId}, comment ${JSON.stringify(data)}`);
         } catch (err) {
             req.payloadInfo = schemaErrorResponse(req.payloadInfo, err, 'Error occured while adding new tasks!');
         }

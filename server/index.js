@@ -46,7 +46,7 @@ app.use('/auth', authenticationRoute);
 app.listen(port, () => logger.info(`App listening at port ${port}`)); 
 
 // MONGO CONFIGURATION
-mongoose.connect(`mongodb://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@127.0.0.1:27017/project-planner`, {
+mongoose.connect(`mongodb://127.0.0.1:27017/project-planner`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false

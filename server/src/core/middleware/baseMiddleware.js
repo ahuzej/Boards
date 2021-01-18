@@ -1,6 +1,11 @@
 const logger = require('../logging/logger');
 const Request = require('../models/requests');
+const { displayJsonWithoutSensitiveData } = require('../util');
 
+/**
+ * First middleware that gets called in the request chain. 
+ * Gets the data of the incoming request and initializes variables used in the processing pipeline.
+ */
 async function initiateRequestProcess(req, res, next) {
     const url = req.originalUrl;
     const method = req.method;
@@ -27,7 +32,7 @@ async function initiateRequestProcess(req, res, next) {
         status: 200
     };
     req.payloadInfo = payloadInfo;
-    logger.info(`Request body is: ${JSON.stringify(req.body)}`);
+    logger.info(`Request body is: ${displayJsonWithoutSensitiveData(req.body)}`);
     next();
 }
 
@@ -53,6 +58,10 @@ function prepareResponse(req, res, next) {
     next();
 }
 
+/**
+ * This middleware does final checks and saves the current request into the DB. 
+ * Response will be sent even if the insert fails.
+ */
 async function finalizeRequestProcess(req, res, next) {
     const currentTime = Date.now();
     logger.info(`Finalizing HTTP request process at: ${currentTime}`);
@@ -75,6 +84,9 @@ async function finalizeRequestProcess(req, res, next) {
     next();
 }
 
+/**
+ * Final middleware in the pipeline. Collects informaton from variables and sends it back to the user. 
+ */
 async function sendResponse(req, res) {
     if (req.payloadInfo) {
         const { status, requestId, tokenData, ...rest } = req.payloadInfo;

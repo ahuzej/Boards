@@ -38,7 +38,8 @@ router.post('/signIn', function (req, res, next) {
                             token,
                             username: user.username,
                             id: user.id,
-                            loggedIn: true
+                            loggedIn: true,
+                            avatarUrl: user.avatarUrl
                         };
                     }
                 });

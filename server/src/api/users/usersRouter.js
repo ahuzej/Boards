@@ -243,7 +243,6 @@ router.put('/:userId', async function (req, res, next) {
  * Data: Object.
  */
 router.put('/:userId/uploadAvatar', upload.single('avatarImg'), async function (req, res, next) {
-    console.log('#"(##"/#/"#/""#/')
     const { status } = req.payloadInfo;
     const { userId } = req.params;
     const avatarImg = req.file;
@@ -255,8 +254,7 @@ router.put('/:userId/uploadAvatar', upload.single('avatarImg'), async function (
             if (avatarImg) { // do file upload
                 let avatarUrl = null;
 
-                avatarUrl = await fileUploader.upload(avatarImg);
-                console.log('BEFORE UPDATE ERHREHRHE %s', avatarUrl);
+                avatarUrl = await fileUploader.upload(avatarImg, userId);
                 data = await User.findOneAndUpdate({ _id: userId }, {
                     avatarUrl
                 }, { new: true });
