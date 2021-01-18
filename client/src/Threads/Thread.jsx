@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import CommentForm from './CommentForm';
 import LinkText from '../ui/LinkText';
 import Moment from 'react-moment';
-import { dateFormat } from '../ui/uiSettings';
+import { dateFormat, fontSizeLg } from '../ui/uiSettings';
 import { threadByIdSelector, threadsStatusSelector, updateThreadLock, updateThreadSticky } from '../slices/threadsSlice';
 import { commentsPagingSelector, commentsStatusSelector, getAllComments } from '../slices/commentsSlice';
 import usePaging from '../hooks/usePaging';
@@ -91,6 +91,10 @@ export default styled(Thread)`
     > *:last-child {
         margin-left: 4px;
     }
+}
+.thread-pages {
+    margin-top: 8px;
+    font-size: ${fontSizeLg};
 }
 .thread-pages > * {
     padding: 3px;

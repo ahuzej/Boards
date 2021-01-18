@@ -6,3 +6,4 @@ export const fontSizeSm = '.75rem';
 export const fontDefault = 'font-weight: 300;'
 export const appName = 'Boards';
 export const dateFormat = 'DD.MM.YYYY HH:mm:ss';
+export const screenWidthMd = '600px';

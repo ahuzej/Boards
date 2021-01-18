@@ -167,7 +167,12 @@ export const users = createSlice({
             if(!exists) {
                 users.push(fetchedUser);
             }
+            state.status = 'complete';
             return state;
-        }
+        },
+        [fetchUserById.rejected]: (state, action) => {
+            state.status = 'failed';
+            return state;
+        },
     }
 });

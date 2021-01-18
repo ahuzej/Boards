@@ -12,9 +12,9 @@ import moment from 'moment';
 function ThreadListElement(props) {
     const { className } = props;
     const { loaded, thread, lastComment } = props;
-    
+
     const { _id: id, title, sticky, locked, comments, owner, dateTime: threadDate } = thread || {};
-    const { username, img } = owner || {};
+    const { username, avatarUrl } = owner || {};
 
     const { dateTime, author } = lastComment || {};
     const history = useHistory();
@@ -31,8 +31,12 @@ function ThreadListElement(props) {
         }
     }, [dateTime]);
 
+    function handleClick() {
+        loaded && history.push(`${location.pathname}/${id}`);
+    }
+
     return (
-        <div className={className} onClick={() => history.push(`${location.pathname}/${id}`)}>
+        <div className={className} onClick={handleClick}>
             <div className='thread-list-el-left'>
                 <div>
                     <h5 className='thread-title'>
@@ -41,7 +45,7 @@ function ThreadListElement(props) {
                         {loaded ? title : <Skeleton />}
                     </h5>
                     <div className='thread-owner'>
-                        <ImageFrame bordered={true} size='30px' src={img ? img : process.env.PUBLIC_URL + '/images/user.svg'} />
+                        <ImageFrame bordered={true} padding='0px'  width='30px' height='23px' src={avatarUrl ? avatarUrl : process.env.PUBLIC_URL + '/images/user.svg'} />
                         <span>{loaded ? username : <Skeleton width='100px' />}</span>
                     </div>
                 </div>
@@ -54,7 +58,7 @@ function ThreadListElement(props) {
                 <div className='thread-last-post'>
                     <span>Latest post:</span>
                     <div className='thread-last-post-author'>
-                        <ImageFrame size='30px' src={img ? img : process.env.PUBLIC_URL + '/images/user.svg'} />
+                        <ImageFrame width='30px' padding='0px' height='23px' src={avatarUrl ? avatarUrl : process.env.PUBLIC_URL + '/images/user.svg'} />
                         <span>{author && author.username}</span>
                     </div>
                     <span>{lastCommentTime}</span>
