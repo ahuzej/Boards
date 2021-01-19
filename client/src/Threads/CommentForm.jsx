@@ -12,12 +12,13 @@ import Title from "../ui/Title";
 import * as Yup from "yup";
 import ErrorLabel from "../ui/ErrorLabel";
 import { incrementCommentCount } from "../slices/threadsSlice";
+import { maxCommentSize } from "../ui/uiSettings";
 
 const CommentSchema = Yup.object().shape({
   text: Yup.string()
     .required("Comment can't be empty.")
     .min(1)
-    .max(3000, (obj) => `Text must not be longer than ${obj.max} characters`),
+    .max(maxCommentSize, (obj) => `Text must not be longer than ${obj.max} characters`),
 });
 
 function CommentForm(props) {

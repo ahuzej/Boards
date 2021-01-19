@@ -39,6 +39,7 @@ function BoardHome(props) {
 
     }, [board.name, navContext]);
 
+    
     useEffect(() => {
         dispatch(getAllThreads({ boardId: id }));
 

@@ -7,11 +7,12 @@ import styled from 'styled-components';
 import { StyledInput, StyledTextArea } from '../ui/FormikBasicInput';
 import DefaultButton from '../ui/DefaultButton';
 import { useHistory } from 'react-router';
-import { createBoard, getBoardsErrorSelector } from '../slices/boardsSlice';
+import { createBoard, getBoardsErrorSelector, getBoardsStatus } from '../slices/boardsSlice';
 import Title, { Subtitle } from '../ui/Title';
 import FormInputGroup from '../ui/FormInputGroup';
 import ErrorLabel from '../ui/ErrorLabel';
 import Divider from '../ui/Divider';
+import ModalLoader from '../ui/ModalLoader';
 
 const BoardSchema = Yup.object().shape({
     name: Yup.string().required('This field is required'),
@@ -23,6 +24,7 @@ function BoardForm(props) {
     const { className } = props;
     const dispatch = useDispatch();
     const history = useHistory();
+    const boardsStatus = useSelector(getBoardsStatus);
     const boardsError = useSelector(getBoardsErrorSelector);
 
     return (
@@ -42,6 +44,7 @@ function BoardForm(props) {
             {(formik) =>
                 <Form className={className}>
                     <div>
+                        {boardsStatus === 'loading' && <ModalLoader />}
                         <Title>New board</Title>
                         <Subtitle color='#515f6b'>Enter basic information about this board</Subtitle>
                         <Divider />
@@ -49,16 +52,18 @@ function BoardForm(props) {
                             <StyledInput
                                 inError={formik.touched.name && formik.errors.name}
                                 type='text'
+                                disabled={formik.isSubmitting} 
                                 {...formik.getFieldProps('name')} />
                         </FormInputGroup>
                         <FormInputGroup label='Description' error={formik.touched.description && formik.errors.description}>
                             <StyledTextArea
                                 inError={formik.touched.description && formik.errors.description}
                                 type='text'
+                                disabled={formik.isSubmitting} 
                                 {...formik.getFieldProps('description')} />
                         </FormInputGroup>
                     </div>
-                    <DefaultButton type="submit">Create</DefaultButton>
+                    <DefaultButton disabled={formik.isSubmitting} type="submit">Create</DefaultButton>
                     {boardsError && <div><ErrorLabel>{boardsError}</ErrorLabel></div>}
 
                 </Form>

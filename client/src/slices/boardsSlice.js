@@ -57,7 +57,7 @@ export const getBoardsSelector = (state) => state.boards.data;
 
 export const boardsByNameSelector = (state, name) => {
     let data = state.boards.data;
-    return data ? data.filter(board => board.name.toLowerCase().includes(name.toLowerCase())) : {};
+    return data ? data.filter(board => board.name.toLowerCase().includes(name.toLowerCase())) : [];
 }
 
 export const boardsPagingSelector = (state, page, itemsPerPage, filter) => {
@@ -74,6 +74,8 @@ export const boardsSortSelector = (state) => {
     return state.boards.sortOrder;
 }
 export const boardsArraySizeSelector = (state) => state.boards.data.length;
+
+export const getBoardsStatus = (state) => state.boards.status;
 
 export const getBoardsErrorSelector = (state) => state.boards.error;
 
@@ -156,7 +158,6 @@ export const boards = createSlice({
         [createBoard.fulfilled]: (state, action) => {
             state.status = 'complete';
             state.error = null;
-            console.log(action.payload);
             state.data.push(action.payload);
             return state;
         }

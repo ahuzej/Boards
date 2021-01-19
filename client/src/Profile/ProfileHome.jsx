@@ -10,9 +10,11 @@ import {
   usersStatusSelector,
 } from "../slices/usersSlice";
 import DefaultButton from "../ui/DefaultButton";
+import Divider from "../ui/Divider";
 import { StyledInput } from "../ui/FormikInput";
 import ImageFrame from "../ui/ImageFrame";
 import StatsLabel from "../ui/StatsLabel";
+import Title from "../ui/Title";
 import { appName } from "../ui/uiSettings";
 
 function ProfileHome(props) {
@@ -81,7 +83,7 @@ function ProfileHome(props) {
           className="hidden"
           type="file"
           ref={fileInputRef}
-          accept=".gif,.jpg,.jpeg,.png"
+          accept=".jpg,.jpeg,.png"
         />
         <DefaultButton
           className="avatar-upload-button"
@@ -100,19 +102,28 @@ function ProfileHome(props) {
           {input}
         </div>
         <div className="details-section">
-        <StatsLabel label="Member since:" value="December 28 2020" />
+          <StatsLabel label="Member since:" value="December 28 2020" />
           <StatsLabel label="Total posts:" value="6" />
           <StatsLabel label="Total comments:" value="15" />
           <StatsLabel label="Total upvotes:" value="27" />
           <StatsLabel label="Total downvotes:" value="8" />
         </div>
       </div>
-      <div>
-        <div>
-          <span>Threads</span>
+      <Divider />
+
+      <div className='flexed'>
+        <div className='category-list'>
+          <Title dark>Threads</Title>
+          <Divider />
+          <div>
+            <div>
+              <span>Blabla</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <span>Comments</span>
+        <div className='category-list'>
+          <Title dark>Comments</Title>
+          <Divider />
         </div>
       </div>
     </div>
@@ -122,6 +133,21 @@ function ProfileHome(props) {
 }
 
 export default styled(ProfileHome)`
+  & .flexed {
+    display: flex;
+    justify-content: space-around;
+    
+    &:first-child {
+      margin-right: 12px;
+    }
+  }
+  & .category-list {
+    width: 100%;
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+  }
   & .hidden {
     display: none;
   }
