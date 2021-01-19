@@ -59,8 +59,8 @@ function prepareResponse(req, res, next) {
 }
 
 /**
- * This middleware does final checks and saves the current request into the DB. 
- * Response will be sent even if the insert fails.
+ * This middleware does final checks and saves the current request data into the DB. 
+ * Response will be sent even if the insert of log data fails.
  */
 async function finalizeRequestProcess(req, res, next) {
     const currentTime = Date.now();
@@ -85,7 +85,7 @@ async function finalizeRequestProcess(req, res, next) {
 }
 
 /**
- * Final middleware in the pipeline. Collects informaton from variables and sends it back to the user. 
+ * Final middleware in the pipeline. Gathers status and response from variables and sends it back to the user. 
  */
 async function sendResponse(req, res) {
     if (req.payloadInfo) {
