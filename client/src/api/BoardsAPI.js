@@ -104,6 +104,20 @@ BoardsAPI.prototype.getUserById = async function (token, id) {
 
     return response;
 }
+BoardsAPI.prototype.fetchProfileById = async function (token, id) {
+    let response = [];
+    let config = {
+        headers: {
+            'Authorization': `Token ${token}`
+        }
+    };
+
+    let url = `${this.url}users/${id}/profile`;
+    response = await axios.get(url, config);
+    response = response.data.data;
+
+    return response;
+}
 BoardsAPI.prototype.getById = async function (token, id) {
     let response = [];
     let config = {

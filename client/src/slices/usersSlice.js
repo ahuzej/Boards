@@ -44,6 +44,28 @@ export const fetchUserById = createAsyncThunk('users/fetchUserById', async (args
     }
 });
 
+export const fetchProfileById = createAsyncThunk('users/fetchProfileById', async (args, { dispatch, getState, rejectWithValue }) => {
+    const { id } = args;
+    try {
+        const user = getState().user.data;
+        const response = await BoardsAPI.fetchProfileById(user.token, id);
+        console.log(response)
+        return response;
+    } catch (err) {
+        let rejectMessage = 'Error has occured.';
+        if (err.response) {
+            const { statusCode } = err.response.data;
+            if (statusCode === - 100) {
+                dispatch(logoutAction());
+                return;
+            } else {
+                rejectMessage = err.response.data.msg;
+            }
+        }
+        return rejectWithValue(rejectMessage);
+    }
+});
+
 export const addUsersToBoard = createAsyncThunk('users/addUsersToBoard', async (args, { dispatch, getState, rejectWithValue }) => {
     const { users, boardId } = args;
     try {
@@ -103,6 +125,12 @@ export const usersByIdSelector = (state, id) => {
 }
 
 export const getUsersError = (state) => state.users.error;
+
+function setStatusToFailed(state, action) {
+    state.status = 'failed';
+    return state;
+
+}
 
 export const users = createSlice({
     name: 'users',
@@ -170,9 +198,25 @@ export const users = createSlice({
             state.status = 'complete';
             return state;
         },
-        [fetchUserById.rejected]: (state, action) => {
-            state.status = 'failed';
+        [fetchProfileById.fulfilled]: (state, action) => {
+            let users = state.data;
+            let fetchedUser  = action.payload;
+            let exists = false;
+            for (let i = 0; i < users.length; i++) {
+                let currentUser = users[i];
+                if(currentUser._id === fetchedUser._id) {
+                    Object.assign(users[i], fetchedUser);
+                    exists = true;
+                    break;
+                }
+            }
+            if(!exists) {
+                users.push(fetchedUser);
+            }
+            state.status = 'complete';
             return state;
         },
+        [fetchUserById.rejected]: setStatusToFailed,
+        [fetchProfileById.rejected]: setStatusToFailed,
     }
 });
